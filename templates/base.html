@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/css/all.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <!-- Custom -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <title>register</title>
+  </head>
+
+  <body>
+
+{% include 'partials/_topbar.html'%}   # jijia 中的Statement，這是一條Link Call 結構中的頁面
+{% include 'partials/_navbar.html'%}
+{% block content%}  {% endblock %} 這是內容中的結構 
+{% include 'partials/_footer.html'%}
+
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js "></script>
+
+  </body>
+
+
+</html>
