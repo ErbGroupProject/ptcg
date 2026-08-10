@@ -56,7 +56,11 @@ INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 
 MIDDLEWARE = [
+<<<<<<< HEAD
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+=======
+    'django_toolbar.middleware.DebugToolbarMiddleware',
+>>>>>>> origin/main
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
