@@ -10,5 +10,4 @@ def shops(request):
     return render(request, "pages/shops.html")
 
 def index(request):
-
     return render(request, "pages/index.html")
