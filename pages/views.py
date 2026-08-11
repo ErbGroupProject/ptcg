@@ -3,12 +3,10 @@ from django.shortcuts import render
 
 
 def home(request):
-
     return render(request, "pages/home.html")
 
 def shops(request):
     return render(request, "pages/shops.html")
 
 def index(request):
-
     return render(request, "pages/index.html")
