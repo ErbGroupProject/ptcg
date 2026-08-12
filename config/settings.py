@@ -47,6 +47,7 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     # 'filters.apps.FiltersConfig'
     "pages.apps.PagesConfig",
+    # "accounts.apps.AccountsConfig",
 ]
 
 
@@ -91,14 +92,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
 DATABASES = {
     "default": {
+<<<<<<< HEAD
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "ptcg_db",
         "USER": "ptcg_user",
         "PASSWORD": "1234",
         "HOST": "localhost",
         "PORT": "5432",
+=======
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": 'ptcg_db',
+        "USER": 'ptcg_user',
+        "PASSWORD" : '1234',
+        "HOST" : 'localhost',
+        "PORT" : '5432',
+>>>>>>> origin/main
     }
 }
 
@@ -121,10 +132,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-STATIC_ROOT=os.path.join(BASE_DIR,'static')
-STATIC_URL = 'static/'
-STATICFILES_DIRS=[os.path.join(BASE_DIR,'config/static')]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -140,10 +147,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
+STATIC_URL = '/static/'
+
 
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'config/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'config/static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
