@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %} 
+
+<!-- Showcase -->
+<section id="showcase">
+    <div class="container text-center">
+    <div class="home-search p-2">
+        <div class="search">
+            {% comment %} <form action={% url 'listings:search' %}> {% endcomment %}
+            <div class="form-row">
+                <div class="col mb-2">
+                    <label class="sr-only">Keywords</label>
+                    <input type="text" name="keywords" class="form-control" placeholder="Search shop name" value="{{values.keywords}}">
+                </div>
+                <div class="col mb-2">
+                    <label class="sr-only">District</label>
+                    <select name="district" class="form-control">
+                        <option {% if not values.district %} selected="true" {% endif %} value="">District (All)</option>
+                        {% for key,value in district_choices.items %}
+                        <option value="{{key}}" {% if values.district == key %} selected="true"{% endif %}>{{value}}</option>
+                        {% endfor %}
+                </select>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary btn-block" type="submit">Search Pokemon TCG shops</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<!-- search result list -->
+<section id="listings">
+    <div class="container">
+        <h3 class="text mb-4">Search Results:</h3>
+    </div>
+
+    
+    <div class="container">
+        <div class="row">
+            <!--{% if shop_list %}
+            {% for list in shop_lists %}-->
+            <div class col-1>
+                <img src="https://picsum.photos/id/12/50/50" alt="" class="card-img-top">
+                <!-- <img src={{shop_lists.logo}} alt="" class="card-img-top">
+                -->
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <h3 class="">shop_name</h3>
+                <!-- shop_address -->
+                <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> shop_address</h6>
+            </div>
+
+            <!-- {%if shop_lists.webpage %}-->
+            <!-- webpage + url -->
+                <!--<a href={{shop_lists.webpage}} target="_blank">{{shop_lists.webpage}}</a>
+            {% endif %}
+
+            {%if shop_lists.phone_number %}
+                <li>{{shop_list.phone_number}}</li>
+            {% endif %}
+            
+            {%if shop_lists.time %}
+                <li>{{shop_list.time.mon}}</li>
+                <li>{{shop_list.time.tue}}</li>
+                <li>{{shop_list.time.wed}}</li>
+                <li>{{shop_list.time.thur}}</li>
+                <li>{{shop_list.time.fri}}</li>
+                <li>{{shop_list.time.sat}}</li>
+                <li>{{shop_list.time.sun}}</li>
+            {% endif %}
+            {%if shop_lists.identification %}
+            
+                <li>{{shop_lists.identification}}</li>
+            {% endif %}
+            -->
+        
+        </div>
+        <br/>
+    </div>
+
+        <!-- list 2 -->
+    
+    <div class="container">
+        <div class="row">
+            <div class col-1>
+                <img src="https://picsum.photos/id/12/50/50" alt="" class="card-img-top">
+                <!-- <img src={{shop_lists.logo}} alt="" class="card-img-top">
+                -->
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <h3>shop_name</h3>
+            <!-- shop_address -->
+                <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> shop_address</h6>
+            <a href="{{shop_lists.webpage}}" target="_blank">{{shop_lists.webpage}}</a>
+            <h6>{{shop_list.phone_number}}</h6>
+            <!--<h6>{{shop_list.time.mon}}</h6>
+            <h6>{{shop_list.time.tue}}</h6>
+            <h6>{{shop_list.time.wed}}</h6>
+            <h6>{{shop_list.time.thur}}</h6>
+            <h6>{{shop_list.time.fri}}</h6>
+            <h6>{{shop_list.time.sat}}</h6>
+            <h6>{{shop_list.time.sun}}</h6>
+            <h6>{{shop_lists.identification}}</h6>
+            -->
+            </div>
+        </div>
+        <br/>
+            {% endfor %}
+            {% else %}
+                <div class="col-md-12">
+                    <h3>No shop on the list !</h3>
+                </div>
+        {% endif %}    
+    </div>
+
+</section>
+
+{% endblock %}
