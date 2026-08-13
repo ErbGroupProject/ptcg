@@ -20,13 +20,19 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from debug_toolbar.toolbar import debug_toolbar_urls
-from pages.views import index
-
 
 urlpatterns = [
+<<<<<<< HEAD
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('', index, name='home'),
+=======
+    path('', include("pages.urls",namespace='pages')),
+    path('shops/', include("shops.urls",namespace='shops')),
+    path('accounts/', include("accounts.urls",namespace='accounts')),
+    path('admin/', admin.site.urls)
+    # path('filters/', include("filters.urls")),
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+debug_toolbar_urls()
+>>>>>>> origin/ki2
 
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + debug_toolbar_urls()
