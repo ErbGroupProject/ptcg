@@ -32,61 +32,7 @@
     </div>
 </section>
 
-
-<!-- search result list -->
-<section id="listings">
-    <div class="container">
-        <h3 class="text mb-4">Search Results:</h3>
-    </div>
-
-    
-    <div class="container">
-        <div class="row">
-            <!--{% if shop_list %}
-            {% for list in shop_lists %}-->
-            <div class col-1>
-                <img src="https://picsum.photos/id/12/50/50" alt="" class="card-img-top">
-                <!-- <img src={{shop_lists.logo}} alt="" class="card-img-top">
-                -->
-            </div>
-        </div>
-        <div class="row">
-            <div>
-                <h3 class="">shop_name</h3>
-                <!-- shop_address -->
-                <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> shop_address</h6>
-            </div>
-
-            <!-- {%if shop_lists.webpage %}-->
-            <!-- webpage + url -->
-                <!--<a href={{shop_lists.webpage}} target="_blank">{{shop_lists.webpage}}</a>
-            {% endif %}
-
-            {%if shop_lists.phone_number %}
-                <li>{{shop_list.phone_number}}</li>
-            {% endif %}
-            
-            {%if shop_lists.time %}
-                <li>{{shop_list.time.mon}}</li>
-                <li>{{shop_list.time.tue}}</li>
-                <li>{{shop_list.time.wed}}</li>
-                <li>{{shop_list.time.thur}}</li>
-                <li>{{shop_list.time.fri}}</li>
-                <li>{{shop_list.time.sat}}</li>
-                <li>{{shop_list.time.sun}}</li>
-            {% endif %}
-            {%if shop_lists.identification %}
-            
-                <li>{{shop_lists.identification}}</li>
-            {% endif %}
-            -->
-        
-        </div>
-        <br/>
-    </div>
-
-        <!-- list 2 -->
-    
+<section>
     <div class="container">
         <div class="row">
             <div class col-1>
@@ -114,14 +60,12 @@
             </div>
         </div>
         <br/>
-            {% endfor %}
-            {% else %}
+            {% comment %} {% endfor %}
+            {% else %} {% endcomment %}
                 <div class="col-md-12">
                     <h3>No shop on the list !</h3>
                 </div>
-        {% endif %}    
+        {% comment %} {% endif %}     {% endcomment %}
     </div>
-
 </section>
-
 {% endblock %}
