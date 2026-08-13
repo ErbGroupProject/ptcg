@@ -47,6 +47,7 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     # 'filters.apps.FiltersConfig'
     "pages.apps.PagesConfig",
+    "banners.apps.BannersConfig",
     # "accounts.apps.AccountsConfig",
 ]
 
