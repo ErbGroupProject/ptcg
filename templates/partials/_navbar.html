@@ -25,14 +25,33 @@
             <a class="nav-link" href={% url "shops:search_shops" %}>Search shops</a>
             </li>
         </ul>
+        {% if user.is_authenticated %}
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item mr-3">
+            <li {% if '/accounts/dashboard/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
+
+            <a class="nav-link" href={% url "accounts:dashboard" %}><i class="fas fa-user-plus"></i> Welcome {{user.username}}</a>
+            </li>
+            {% comment %} logout {% endcomment %}
+            <li class="nav-item  mr-3">
+            <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}"><i class="fas fa-sign-in-alt"></i> Logout</a>
+            <form action="{% url 'accounts:logout' %}" method="POST" id="logout">
+                {% csrf_token %}
+                <input type="hidden" />
+            </form> 
+            </li>
+        </ul> 
+        {% else %}
+        <ul class="navbar-nav ml-auto">
+        <li {% if '/accounts/register/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
             <a class="nav-link" href={% url "accounts:register" %}><i class="fas fa-user-plus"></i> Register</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href={% url "accounts:login" %}><i class="fas fa-sign-in-alt"></i> Login</a>
+        <li {% if '/accounts/login/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
+            <a class="nav-link" href={% url "accounts:login" %}><i class="fas fa-sign-in"></i> Login</a>
             </li>
         </ul>
+        {% endif %}
+
         </div>
     </div>
 </nav>
+

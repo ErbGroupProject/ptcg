@@ -9,6 +9,7 @@ def shops(request):
     return render(request, "pages/shops.html")
 
 def index(request):
+    #come form banners
     banner_images = [
         'image/banner_01.jpg',
         'image/banner_02.jpg',

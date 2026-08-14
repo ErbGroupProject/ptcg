@@ -2,6 +2,10 @@
 {% load static %}
 {% block content %}
 
+<<<<<<< HEAD
+=======
+<section id="login" class="auth-shell py-5">
+>>>>>>> origin/johnny
     <div class="container">
         <section id="login" class="auth-shell py-5">
         <div class="row">
@@ -60,7 +64,8 @@
                         <div class="text-center mt-3">
                             <small class="text-muted">
                                 Already have an account? 
-                                <a href="{% url 'accounts:login' %}" class="text-danger">Log in</a>
+                                 <a href={% url "accounts:login" %}><i class="fas fa-sign-in"></i> Login</a>
+
                             </small>
                         </div>
                     </div>
