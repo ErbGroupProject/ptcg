@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('accounts/', include('accounts.urls', namespace='accounts')),
     path('', index, name='home'),
+    path('banners/', include("banners.urls",namespace='banners')),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + debug_toolbar_urls()
