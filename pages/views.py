@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from banners.models import Banner
+#from banners.models import Banner
 # Create your views here.
 
 def shops(request):
