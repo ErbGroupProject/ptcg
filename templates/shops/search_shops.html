@@ -3,7 +3,6 @@
 {% block content %} 
 
 <!-- Showcase -->
-<section id="showcase">
     <div class="container text-center">
     <div class="home-search p-2">
         <div class="search">
@@ -30,8 +29,6 @@
         </div>
     </div>
     </div>
-</section>
-
 <section>
     <div class="container">
         <div class="row">
@@ -46,7 +43,7 @@
                 <h3>shop_name</h3>
             <!-- shop_address -->
                 <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> shop_address</h6>
-            <a href="{{shop_lists.webpage}}" target="_blank">{{shop_lists.webpage}}</a>
+            <a href={% url "shops:shop" %} target="_blank">details:{{shop_lists.webpage}}</a>
             <h6>{{shop_list.phone_number}}</h6>
             <!--<h6>{{shop_list.time.mon}}</h6>
             <h6>{{shop_list.time.tue}}</h6>

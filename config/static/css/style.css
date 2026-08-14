@@ -18,6 +18,7 @@ img {
         background: #e74c3c;
         color: white;
       }
+
 #showcase {
   background: url(../img/showcase.jpg) no-repeat center/cover fixed;
   position: relative;
@@ -88,20 +89,21 @@ img {
   border: none;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background-color: #ffffffa9;
 }
 
 #login .card-header {
-  background-color: #dc3545 !important;
-  color: #ffffff !important;
+  background-color: #358bdc !important;
+  color: #ffffff36 !important;
 }
 
-#login .btn-danger {
-  background: #dc3545;
+#login .btn-primary {
+  background: #3591dc;
   border: none;
 }
-#login .btn-danger:hover {
-  background: #dc3545;
+#login .btn-primary:hover {
+  background: #3578dc;
 }
 
 @media (max-width: 991px) {

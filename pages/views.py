@@ -9,4 +9,13 @@ def shops(request):
     return render(request, "pages/shops.html")
 
 def index(request):
-    return render(request, "pages/index.html")
+    banner_images = [
+        'image/banner_01.jpg',
+        'image/banner_02.jpg',
+        'image/banner_03.png',
+        ]
+    
+    context = {
+        'banner_images': banner_images
+        }
+    return render(request, "pages/index.html", context)
