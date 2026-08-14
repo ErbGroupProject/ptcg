@@ -12,7 +12,7 @@
                     <div class="card-body ">
                         <p class="text-muted">Login</p>
                         
-                        <form action="{% url 'accounts:register' %}" method="POST">
+                        <form action="{% url 'accounts:login' %}" method="POST">
                             {% csrf_token %} 
                             
                             <div class="form-row">
@@ -32,7 +32,7 @@
                             </div>
 
 
-                            <input type="submit" value="Login" class="btn btn-primary btn-block" style="border-radius: 20px;">
+                            <input type="submit" value="Log In" class="btn btn-primary btn-block" style="border-radius: 20px;">
                         </form>
 
 
