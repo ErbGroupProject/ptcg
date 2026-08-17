@@ -49,7 +49,7 @@ LOCAL_APPS = [
     "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",
     "shops.apps.ShopsConfig",
-    #"banners.apps.BannerConfig",
+    "trades.apps.TradesConfig",
 ]
 
 

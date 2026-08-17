@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %} 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-white">
+    <div class="container">
+        <div class="search">
+            <form action={% url 'listings:search' %}>
+            <div class="form-row">
+                <div class="col-2">
+                    <label class="sr-only">Keywords</label>
+                    <input type="text" name="keywords" class="form-control" placeholder="Search card name" value="{{values.keywords}}">
+                </div>
+                <div class="col-2">
+                    <label class="sr-only">District</label>
+                    <select name="district" class="form-control">
+                        <option {% if not values.district %} selected="true" {% endif %} value="">District (All)</option>
+                        {% for key,value in district_choices.items %}
+                        <option value="{{key}}" {% if values.district == key %} selected="true"{% endif %}>{{value}}</option>
+                        {% endfor %}
+                </select>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary btn-block" type="submit">Search Pokemon TCG shops</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Listings -->
+<section>
+    <div class="container">
+        <h3 class="text-center mb-2">Featured</h3>
+        <hr/>
+        <div class="row">
+            <!-- Listing 1 -->
+            {% for img in trade_images %}
+
+            <div class="col-md-3 col-lg-3 mb-3">
+                <div class="card listing-preview">
+                    <img src="{% static img %}" class="card-img-top" alt="card"/>
+                    <div class="card-body">
+                        <div class="listing-heading">
+                            <h5 class="text-primary">card_name</h5>
+                            <h6 class="text-secondary">$:card_price</h6>
+                        </div>
+                    <a href="listing.html" class="btn btn-primary btn-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% comment %} 
+            <!-- Listing 2 -->
+            <div class="col-md-3 col-lg-3 mb-3">
+                <div class="card listing-preview">
+                    <img src="sm_banner_01.jpg" class="card-img-top" alt="card"/>
+                    <div class="card-body">
+                        <div class="listing-heading">
+                            <h5 class="text-primary">card_name</h5>
+                            <h6 class="text-secondary">$:card_price</h6>
+                        </div>
+                        <a href="listing.html" class="btn btn-primary btn-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Listing 3 -->
+            <div class="col-md-3 col-lg-3 mb-3">
+                <div class="card listing-preview">
+                    <img src="sm_banner_01.jpg" class="card-img-top" alt="card"/>
+                    <div class="card-body">
+                        <div class="listing-heading">
+                            <h5 class="text-primary">card_name</h5>
+                            <h6 class="text-secondary">$:card_price</h6>
+                        </div>
+                    <a href="listing.html" class="btn btn-primary btn-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Listing 4 -->
+            <div class="col-md-3 col-lg-3 mb-3">
+                <div class="card listing-preview">
+                    <img src="sm_banner_01.jpg" class="card-img-top" alt="card"/>
+                    <div class="card-body">
+                        <div class="listing-heading">
+                            <h5 class="text-primary">card_name</h5>
+                            <h6 class="text-secondary">$:card_price</h6>
+                        </div>
+                    <a href="listing.html" class="btn btn-primary btn-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Listing 5 -->
+            <div class="col-md-3 col-lg-3 mb-3">
+                    <div class="card listing-preview">
+                    <img src="sm_banner_01.jpg" class="card-img-top" alt="card"/>
+                    <div class="card-body">
+                        <div class="listing-heading">
+                            <h5 class="text-primary">card_name</h5>
+                            <h6 class="text-secondary">$:card_price</h6>
+                        </div>
+                        <a href="listing.html" class="btn btn-primary btn-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Listing 6 -->
+            <div class="col-md-3 col-lg-3 mb-3">
+                    <div class="card listing-preview">
+                    <img src="sm_banner_01.jpg" class="card-img-top" alt="card"/>
+                    <div class="card-body">
+                        <div class="listing-heading">
+                            <h5 class="text-primary">card_name</h5>
+                            <h6 class="text-secondary">$:card_price</h6>
+                        </div>
+                        <a href="listing.html" class="btn btn-primary btn-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Listing 7 -->
+            <div class="col-md-3 col-lg-3 mb-3">
+                    <div class="card listing-preview">
+                    <img src="sm_banner_01.jpg" class="card-img-top" alt="card"/>
+                    <div class="card-body">
+                        <div class="listing-heading">
+                            <h5 class="text-primary">card_name</h5>
+                            <h6 class="text-secondary">$:card_price</h6>
+                        </div>
+                        <a href="listing.html" class="btn btn-primary btn-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Listing 8 -->
+            <div class="col-md-3 col-lg-3 mb-3">
+                    <div class="card listing-preview">
+                    <img src="sm_banner_01.jpg" class="card-img-top" alt="card"/>
+                    <div class="card-body">
+                        <div class="listing-heading">
+                            <h5 class="text-primary">card_name</h5>
+                            <h6 class="text-secondary">$:card_price</h6>
+                        </div>
+                        <a href="listing.html" class="btn btn-primary btn-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endcomment %}
+        </div>  
+    </div>
+</section>
+{% endblock %}

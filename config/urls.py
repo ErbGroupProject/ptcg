@@ -24,6 +24,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 urlpatterns = [
     path('', include("pages.urls",namespace='pages')),
     path('shops/', include("shops.urls",namespace='shops')),
+    path('trades/', include("trades.urls",namespace='trades')),
     path('accounts/', include("accounts.urls",namespace='accounts')),
     path('admin/', admin.site.urls)
     # path('filters/', include("filters.urls")),
