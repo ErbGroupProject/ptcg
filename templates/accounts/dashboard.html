@@ -1,51 +1,223 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-5">
-  
-
     <h2>Welcome {{ user.username }}</h2>
+    <hr>
 
-
-    <div class="row mt-4">
+    <div class="row mt-3">
         <div class="col-12">
-            <a href="#"
-              class="btn btn-outline-secondary d-inline-flex align-items-center justify-content-center me-2 mb-2"
-              style="width:120px;height:120px;">
-                Message
-            </a>
+            <ul class="nav nav-tabs" id="chatTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="buying-tab" data-toggle="tab" href="#buying" role="tab">我正在買的</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="selling-tab" data-toggle="tab" href="#selling" role="tab">我正在賣的</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab">我已完成了</a>
+                </li>
+            </ul>
 
-            
+            <div class="tab-content border border-top-0 p-4 mb-4" id="chatTabContent">
+                <!-- Tab 1：我正在買的 -->
+                <div class="tab-pane fade show active" id="buying" role="tabpanel">
+                    {% for chat in buying_chats %}
+                    <div class="card bg-white mb-3">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5>{{ chat.listing.topic }}</h5>
+                                <p class="mb-0">對方：{{ chat.seller.username }}</p>
+                            </div>
+                            {% if chat.trade_finished %}
+                                <button type="button" class="btn btn-secondary" disabled>交易完成</button>
+                            {% else %}
+                                <button type="button" class="btn btn-primary finish-trade-btn" data-url="{% url 'tradings:submit_review' chat.id %}">交易完成</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% empty %}
+                        <p>暫無正在進行的購買對話</p>
+                    {% endfor %}
 
-            <a href="#"
-              class="btn btn-secondary d-inline-flex align-items-center justify-content-center me-2 mb-2"
-              style="width:120px;height:120px;">
-                Deck
-            </a>
+                    {% if buying_chats.has_other_pages %}
+                    <nav>
+                        <ul class="pagination">
+                            {% if buying_chats.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?buy_page={{buying_chats.previous_page_number}}">上一頁</a></li>
+                            {% endif %}
+                            <li class="page-item disabled"><span class="page-link">{{buying_chats.number}} / {{buying_chats.paginator.num_pages}}</span></li>
+                            {% if buying_chats.has_next %}
+                                <li class="page-item"><a class="page-link" href="?buy_page={{buying_chats.next_page_number}}">下一頁</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
 
-            <a href="#"
-              class="btn btn-secondary d-inline-flex align-items-center justify-content-center me-2 mb-2"
-              style="width:120px;height:120px;">
-                Post
-            </a>
+                <!-- Tab 2：我正在賣的 -->
+                <div class="tab-pane fade" id="selling" role="tabpanel">
+                    {% for chat in selling_chats %}
+                    <div class="card bg-primary text-white mb-3">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5>{{ chat.listing.topic }}</h5>
+                                <p class="mb-0">對方：{{ chat.buyer.username }}</p>
+                            </div>
+                            {% if chat.trade_finished %}
+                                <button type="button" class="btn btn-light text-dark" disabled>交易完成</button>
+                            {% else %}
+                                <button type="button" class="btn btn-light text-dark finish-trade-btn" data-url="{% url 'tradings:submit_review' chat.id %}">交易完成</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% empty %}
+                        <p>暫無正在進行的販賣對話</p>
+                    {% endfor %}
+
+                    {% if selling_chats.has_other_pages %}
+                    <nav>
+                        <ul class="pagination">
+                            {% if selling_chats.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?sell_page={{selling_chats.previous_page_number}}">上一頁</a></li>
+                            {% endif %}
+                            <li class="page-item disabled"><span class="page-link">{{selling_chats.number}} / {{selling_chats.paginator.num_pages}}</span></li>
+                            {% if selling_chats.has_next %}
+                                <li class="page-item"><a class="page-link" href="?sell_page={{selling_chats.next_page_number}}">下一頁</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+
+                <!-- Tab 3：已完成交易 -->
+                <div class="tab-pane fade" id="completed" role="tabpanel">
+                    {% for chat in completed_chats %}
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <h5>{{ chat.listing.topic }}</h5>
+                            <p class="mb-0">對方：{% if chat.buyer == user %}{{ chat.seller.username }}{% else %}{{ chat.buyer.username }}{% endif %}</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                        <p>暫無完成的交易</p>
+                    {% endfor %}
+
+                    {% if completed_chats.has_other_pages %}
+                    <nav>
+                        <ul class="pagination">
+                            {% if completed_chats.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?done_page={{completed_chats.previous_page_number}}">上一頁</a></li>
+                            {% endif %}
+                            <li class="page-item disabled"><span class="page-link">{{completed_chats.number}} / {{completed_chats.paginator.num_pages}}</span></li>
+                            {% if completed_chats.has_next %}
+                                <li class="page-item"><a class="page-link" href="?done_page={{completed_chats.next_page_number}}">下一頁</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-            <a href="#"
-              class="btn btn-secondary d-inline-flex align-items-center justify-content-center me-2 mb-2"
-              style="width:120px;height:120px;">
-                Trade
-            </a>
-            
-          <a href="/accounts/profile/"
-          class="btn btn-secondary d-inline-flex align-items-center justify-content-center me-2 mb-2"
+<!-- ========== 底部一排正方形按鈕（置中） ========== -->
+<div class="row">
+    <div class="col-12 d-flex justify-content-center flex-wrap">
+        <a href="#"
+          class="btn btn-outline-secondary d-inline-flex align-items-center justify-content-center m-2"
+          style="width:120px;height:120px;">
+            Message
+        </a>
+        <a href="#"
+          class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2"
+          style="width:120px;height:120px;">
+            Deck
+        </a>
+
+        <a href="{% url 'listings:my_listings' %}"
+        class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2"
+        style="width:120px;height:120px;">
+            Post
+        </a>
+
+        <a href="{% url 'accounts:profile' %}"
+          class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2"
           style="width:120px;height:120px;">
             Profile
-          </a>
+        </a>
+    </div>
+</div>
 
+</div>
+
+<!-- ========== 彈窗Modal：交易完成、評分+評論 ========== -->
+<div class="modal fade" id="tradeModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">完成交易 & 留下評價</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="reviewForm" method="POST" action="">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>評論內容 (必填)</label>
+                        <textarea class="form-control" id="commentText" name="comment_content" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>評分 (1‑5星，必填)</label>
+                        <div class="star-rating">
+                            <input type="radio" name="star" value="5" id="star5"><label for="star5">★</label>
+                            <input type="radio" name="star" value="4" id="star4"><label for="star4">★</label>
+                            <input type="radio" name="star" value="3" id="star3"><label for="star3">★</label>
+                            <input type="radio" name="star" value="2" id="star2"><label for="star2">★</label>
+                            <input type="radio" name="star" value="1" id="star1"><label for="star1">★</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="submit" id="submitReviewBtn" class="btn btn-primary" disabled>送出評價</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-{% endblock %}
 
-    </div>
-  </div>
-</div>
+<script>
+// 打開彈窗，並把該對話的評價 URL 設進表單
+$('.finish-trade-btn').click(function(){
+    var url = $(this).data('url');
+    $('#reviewForm').attr('action', url);
+    $('#reviewForm')[0].reset();
+    $('#submitReviewBtn').prop('disabled', true);
+    $('#tradeModal').modal('show');
+});
+
+// 兩個欄位都填好才解鎖送出按鈕
+function checkReady(){
+    var comment = $('#commentText').val().trim();
+    var starChecked = $('input[name="star"]:checked').length;
+    if(comment.length > 0 && starChecked > 0){
+        $('#submitReviewBtn').prop('disabled', false);
+    } else {
+        $('#submitReviewBtn').prop('disabled', true);
+    }
+}
+$('#commentText').on('input', checkReady);
+$('input[name="star"]').on('change', checkReady);
+</script>
+
+<style>
+.star-rating { display: flex; flex-direction: row-reverse; justify-content: flex-end; }
+.star-rating input { display: none; }
+.star-rating label { font-size: 30px; color: #ccc; cursor: pointer; padding: 0 2px; }
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label { color: #ffc107; }
+</style>
+{% endblock %}

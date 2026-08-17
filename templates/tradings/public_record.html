@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>交易評價</h1>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <div class="card h-100">
+                <div class="card-header">買家評價</div>
+                <div class="card-body">
+                    <p><strong>評分：</strong>{{ record.buyer_star }} / 5</p>
+                    <p>{{ record.buyer_comment }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="card h-100">
+                <div class="card-header">賣家評價</div>
+                <div class="card-body">
+                    <p><strong>評分：</strong>{{ record.seller_star }} / 5</p>
+                    <p>{{ record.seller_comment }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="{% url 'accounts:dashboard' %}" class="btn btn-secondary">返回儀表板</a>
+</div>
+{% endblock %}

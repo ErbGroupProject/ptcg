@@ -8,6 +8,14 @@ def home(request):
 def shops(request):
     return render(request, "pages/shops.html")
 
+def trade(request):
+    return render(request, "pages/trade.html")
+
+
+def contact(request):
+    return render(request, "pages/contact.html")
+
+
 def index(request):
     #come form banners
     banner_images = [
@@ -20,3 +28,6 @@ def index(request):
         'banner_images': banner_images
         }
     return render(request, "pages/index.html", context)
+
+
+

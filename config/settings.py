@@ -49,6 +49,9 @@ LOCAL_APPS = [
     "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",
     "shops.apps.ShopsConfig",
+    "listings.apps.ListingsConfig",
+    "tradings.apps.TradingsConfig",
+    "contacts.apps.ContactsConfig",
     #"banners.apps.BannerConfig",
 ]
 
