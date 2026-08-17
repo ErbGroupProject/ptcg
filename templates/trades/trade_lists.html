@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-white">
     <div class="container">
         <div class="search">
-            <form action={% url 'listings:search' %}>
+            {% comment %} <form action={% url 'listings:search' %}> {% endcomment %}
             <div class="form-row">
                 <div class="col-2">
                     <label class="sr-only">Keywords</label>
@@ -40,7 +40,7 @@
 
             <div class="col-md-3 col-lg-3 mb-3">
                 <div class="card listing-preview">
-                    <img src="{% static img %}" class="card-img-top" alt="card"/>
+                    <img src="{% static 'image/'|add:img %}" class="card-img-top" alt="img"/>
                     <div class="card-body">
                         <div class="listing-heading">
                             <h5 class="text-primary">card_name</h5>

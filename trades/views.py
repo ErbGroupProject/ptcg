@@ -7,7 +7,7 @@ def trade_lists(request):
     #tradelists = Tradelist.objects.filter(is_sold=False).order_by("-list_date")
     trade_images =[]
     for i in range(1,7):
-        filename = f'{i:02d}.jpg'
+        filename = f'sm_banner{i:02d}.jpg'
         trade_images.append(filename)
 
     context = {
