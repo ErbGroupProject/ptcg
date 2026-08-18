@@ -48,17 +48,13 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     # 'filters.apps.FiltersConfig'
     "pages.apps.PagesConfig",
-<<<<<<< HEAD
     "accounts.apps.AccountsConfig",
     "shops.apps.ShopsConfig",
     "listings.apps.ListingsConfig",
     "tradings.apps.TradingsConfig",
     "contacts.apps.ContactsConfig",
     #"banners.apps.BannerConfig",
-=======
     "cards.apps.CardsConfig",
-    "accounts.apps.AccountsConfig",
->>>>>>> 12103e9
 ]
 
 
