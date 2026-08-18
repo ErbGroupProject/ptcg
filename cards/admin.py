@@ -2,11 +2,11 @@ from django.contrib import admin
 import nested_admin
 
 from .models import (
-    Card_Listing,
+    Card,
     Generation,
     Ability,
     Attack,
-    AttackEnergy,
+    Energy_Cost,
     Weakness,
     Resistance,
     Retreat,
@@ -38,8 +38,8 @@ class AbilityInline(nested_admin.NestedTabularInline):
     extra = 0
 
 
-class AttackEnergyInline(nested_admin.NestedTabularInline):
-    model = AttackEnergy
+class Energy_CostInline(nested_admin.NestedTabularInline):
+    model = Energy_Cost
     extra = 1
 
 
@@ -48,7 +48,7 @@ class AttackInline(nested_admin.NestedStackedInline):
     extra = 0
 
     inlines = [
-        AttackEnergyInline,
+        Energy_CostInline,
     ]
 
 
@@ -71,8 +71,8 @@ class RetreatInline(nested_admin.NestedTabularInline):
 # Card Listing
 # ============================================================
 
-@admin.register(Card_Listing)
-class CardListingAdmin(nested_admin.NestedModelAdmin):
+@admin.register(Card)
+class CardAdmin(nested_admin.NestedModelAdmin):
 
     list_display = (
         'title',
@@ -172,8 +172,8 @@ class AbilityAdmin(admin.ModelAdmin):
 # Attack Energy
 # ============================================================
 
-@admin.register(AttackEnergy)
-class AttackEnergyAdmin(admin.ModelAdmin):
+@admin.register(Energy_Cost)
+class Energy_CostAdmin(admin.ModelAdmin):
 
     list_display = (
         'attack',

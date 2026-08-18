@@ -22,9 +22,9 @@ energy_choices = {
 }
 
 stage_choices = {
+    "Basic": "Basic",
     "Stage 1": "Stage 1",
     "Stage 2": "Stage 2",
-    "Stage 3": "Stage 3",
 }
 
 rarity_choices = {

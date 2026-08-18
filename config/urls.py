@@ -27,7 +27,7 @@ urlpatterns = [
     path("_nested_admin/", include("nested_admin.urls")),
     path("admin/", admin.site.urls),
     path('', include("pages.urls",namespace='pages')),
-    path('card_listings', include("listings.urls",namespace='listings')),
+    path('cards', include("cards.urls",namespace='cards')),
     # path('filters/', include("filters.urls")),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)+debug_toolbar_urls()
 
