@@ -1,27 +1,39 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+{% comment %} 
 <div class="container mt-3">
-    <div id="carouselBanner" class="carousel slide" data-bs-ride="carousel">
+    <!-- Notice: data-bs-ride is removed here for JS control -->
+    <div id="carouselBanner" class="carousel slide">
+        
+        <!-- Indicators Loop -->
         <div class="carousel-indicators">
             {% for item in banners_list %}
-            <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="{{ forloop.counter0 }}"
-                {% if forloop.first %}class="active"{% endif %}></button>
+            <button type="button" 
+                    data-bs-target="#carouselBanner" 
+                    data-bs-slide-to="{{ forloop.counter0 }}"
+                    {% if forloop.first %}class="active" aria-current="true"{% endif %}
+                    aria-label="Slide {{ forloop.counter }}">
+            </button>
             {% endfor %}
         </div>
 
+        <!-- Carousel Slides Loop -->
         <div class="carousel-inner">
             {% for item in banners_list %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
                 <a href="{{ item.url_link }}">
-                    <img src="{{ item.photo_banner.url }}" class="d-block w-100" alt="轮播图">
+                    <img src="{{ item.photo_banner.url }}" class="d-block w-100" alt="{{ item.title|default:'轮播图' }}">
                 </a>
             </div>
             {% empty %}
-            <div class="alert alert-info">请去后台添加轮播图片</div>
+            <!-- Empty state when no banner images exist in database -->
+            <div class="alert alert-info mb-0 text-center">请去后台添加轮播图片</div>
             {% endfor %}
         </div>
 
+        <!-- Prev / Next Controls (Only render if there are banners) -->
+    {% if banners_list %}
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">上一张</span>
@@ -30,6 +42,184 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">下一张</span>
         </button>
+        {% endif %}
+        
     </div>
 </div>
+
+<!-- HTML (remove data-bs-ride / data-bs-interval from HTML) -->
+<div id="carouselBanner" class="carousel slide">
+    <!-- ... inner contents ... -->
+</div>
+
+
+
+
+  <!-- ... javaScrip for loop banner ... -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const carouselElement = document.getElementById('carouselBanner');
+
+    if (carouselElement) {
+        // 1. Initialize Bootstrap Carousel Instance
+        const carousel = new bootstrap.Carousel(carouselElement, {
+            interval: 3000,    // Auto-slide duration (3 seconds)
+            ride: 'carousel',  // Auto-play on load
+            touch: true,       // Enable swiping on mobile
+            wrap: true         // Loop continuously
+        });
+
+        // 2. Left Button Click Handler (Slide Left / Previous)
+        const prevBtn = carouselElement.querySelector('.carousel-control-prev');
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                carousel.prev(); // Trigger Bootstrap slide left
+            });
+        }
+
+        // 3. Right Button Click Handler (Slide Right / Next)
+        const nextBtn = carouselElement.querySelector('.carousel-control-next');
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                carousel.next(); // Trigger Bootstrap slide right
+            });
+        }
+
+        // 4. Keyboard Arrow Keys (Left / Right)
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft') {
+                carousel.prev();
+            } else if (e.key === 'ArrowRight') {
+                carousel.next();
+            }
+        });
+    }
+});
+</script>
+
+{% endblock content %} {% endcomment %}
+
+
+
+
+<div class="container mt-3">
+    <!-- Carousel Main Wrapper -->
+    <div id="carouselBanner" class="carousel slide">
+        
+        <!-- Indicators (Bottom Bullet Points) -->
+        <div class="carousel-indicators">
+            {% for item in banners_list %}
+            <button type="button" 
+                    data-bs-target="#carouselBanner" 
+                    data-bs-slide-to="{{ forloop.counter0 }}"
+                    {% if forloop.first %}class="active" aria-current="true"{% endif %}
+                    aria-label="Slide {{ forloop.counter }}">
+            </button>
+            {% endfor %}
+        </div>
+
+        <!-- Carousel Slides Loop -->
+        <div class="carousel-inner">
+            {% for item in banners_list %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <a href="{{ item.url_link }}">
+                    <img src="{{ item.photo_banner.url }}" class="d-block w-100" alt="{{ item.title|default:'轮播图' }}">
+                </a>
+            </div>
+            {% empty %}
+            <!-- Empty state when no banner images exist -->
+            <div class="alert alert-info mb-0 text-center">请去后台添加轮播图片</div>
+            {% endfor %}
+        </div>
+
+        <!-- Prev / Next Controls -->
+        {% if banners_list %}
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">上一张</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">下一张</span>
+        </button>
+        {% endif %}
+        
+    </div>
+</div>
+
+<!-- Custom CSS for Circular Indicators -->
+<style>
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Converts flat bars to circular dots */
+    margin: 0 5px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    transform: scale(1.25); /* Slightly enlarges the active indicator dot */
+}
+</style>
+
+<!-- JavaScript Carousel Controller -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const carouselElement = document.getElementById('carouselBanner');
+
+    if (carouselElement) {
+        // 1. Initialize Bootstrap Carousel Instance
+        const carousel = new bootstrap.Carousel(carouselElement, {
+            interval: 3000,    // Auto-slide every 3 seconds
+            ride: 'carousel',  // Auto-play on load
+            touch: true,       // Enable mobile swipe
+            wrap: true         // Continuous looping
+        });
+
+        // 2. Click Bottom Bullet Points (Indicators)
+        const indicatorBtns = carouselElement.querySelectorAll('.carousel-indicators button');
+        indicatorBtns.forEach((btn, index) => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                carousel.to(index); // Jump directly to clicked slide index
+            });
+        });
+
+        // 3. Left / Right Controls
+        const prevBtn = carouselElement.querySelector('.carousel-control-prev');
+        const nextBtn = carouselElement.querySelector('.carousel-control-next');
+        if (prevBtn) prevBtn.addEventListener('click', () => carousel.prev());
+        if (nextBtn) nextBtn.addEventListener('click', () => carousel.next());
+
+        // 4. Update Active Bullet Point when Slide Changes
+        carouselElement.addEventListener('slid.bs.carousel', function (e) {
+            indicatorBtns.forEach(btn => {
+                btn.classList.remove('active');
+                btn.removeAttribute('aria-current');
+            });
+            
+            const activeIndex = e.to; // Gets current target slide index
+            if (indicatorBtns[activeIndex]) {
+                indicatorBtns[activeIndex].classList.add('active');
+                indicatorBtns[activeIndex].setAttribute('aria-current', 'true');
+            }
+        });
+
+        // 5. Keyboard Navigation
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft') {
+                carousel.prev();
+            } else if (e.key === 'ArrowRight') {
+                carousel.next();
+            }
+        });
+    }
+});
+</script>
+
 {% endblock content %}
