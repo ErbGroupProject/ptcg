@@ -9,7 +9,12 @@
             <div class="card h-100">
                 <div class="card-header">買家評價</div>
                 <div class="card-body">
-                    <p><strong>評分：</strong>{{ record.buyer_star }} / 5</p>
+                    <p>
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= record.buyer_star %}★{% else %}☆{% endif %}
+                        {% endfor %}
+                        （{{ record.buyer_star }} / 5）
+                    </p>
                     <p>{{ record.buyer_comment }}</p>
                 </div>
             </div>
@@ -18,7 +23,12 @@
             <div class="card h-100">
                 <div class="card-header">賣家評價</div>
                 <div class="card-body">
-                    <p><strong>評分：</strong>{{ record.seller_star }} / 5</p>
+                    <p>
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= record.seller_star %}★{% else %}☆{% endif %}
+                        {% endfor %}
+                        （{{ record.seller_star }} / 5）
+                    </p>
                     <p>{{ record.seller_comment }}</p>
                 </div>
             </div>

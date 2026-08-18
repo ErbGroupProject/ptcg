@@ -47,14 +47,14 @@ DJANGO_APPS = [
 
 LOCAL_APPS = [
     # 'filters.apps.FiltersConfig'
-    "pages.apps.PagesConfig",
+    # "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",
     "shops.apps.ShopsConfig",
     "listings.apps.ListingsConfig",
     "tradings.apps.TradingsConfig",
     "contacts.apps.ContactsConfig",
-    #"banners.apps.BannerConfig",
     "cards.apps.CardsConfig",
+    "banners.apps.BannersConfig",
 ]
 
 
@@ -162,3 +162,4 @@ INTERNAL_IPS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'

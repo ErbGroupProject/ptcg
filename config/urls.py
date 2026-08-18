@@ -23,7 +23,6 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path("_nested_admin/", include("nested_admin.urls")),
-    path("admin/", admin.site.urls),
     path('', include("pages.urls",namespace='pages')),
     path('shops/', include("shops.urls",namespace='shops')),
     path('cards', include("cards.urls",namespace='cards')),
@@ -32,6 +31,9 @@ urlpatterns = [
     path('tradings/', include("tradings.urls",namespace='tradings')),
     path('listings/', include("listings.urls",namespace='listings')),
     path('admin/', admin.site.urls)
+    
+
+
     # path('filters/', include("filters.urls")),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+debug_toolbar_urls()
 
