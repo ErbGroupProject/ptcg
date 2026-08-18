@@ -41,13 +41,14 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    "nested_admin",
 ]
 
 LOCAL_APPS = [
     # 'filters.apps.FiltersConfig'
     "pages.apps.PagesConfig",
-    # "listings.apps.ListingsConfig",
+    "listings.apps.ListingsConfig",
     "accounts.apps.AccountsConfig",
 ]
 

@@ -24,6 +24,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 
 urlpatterns = [
+    path("_nested_admin/", include("nested_admin.urls")),
     path("admin/", admin.site.urls),
     path('', include("pages.urls",namespace='pages')),
     path('card_listings', include("listings.urls",namespace='listings')),

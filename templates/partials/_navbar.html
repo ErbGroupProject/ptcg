@@ -16,8 +16,9 @@
             </li>
             <li {% if "/card_listings" == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
             <a class="nav-link" href={% url "listings:index" %}>Card</a>
+            <i class="fa-brands fa-twitch"></i>
             </li>
-            <li class="nav-item mr-3">
+            <li class="nav-item mr-3" style="color:yellow">
             <a class="nav-link" href="contact.html">Contact</a>
             </li>
         </ul>
