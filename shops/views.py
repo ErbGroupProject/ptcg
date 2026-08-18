@@ -3,14 +3,19 @@ from django.core.paginator import Paginator
 from .models import Shoplist
 from django.db.models import Q
 
-def shop(request,listing_id):
-    listing = get_object_or_404(Listing, pk=listing_id)
-    context = {
-        "listing":listing,
-    }
-    return render(request, "shops/shop.html",context)
+#def shop(request,listing_id):
+    #listing = get_object_or_404(Listing, pk=listing_id)
+    #context = {
+    #    "listing":listing,
+    #}
+    #return render(request, "shops/shop.html",context)
+def shop(request):
+    return render(request, "shops/shop.html")
 
 def search_shops(request):
+    return render(request, "shops/search_shops.html")
+
+#def search_shops(request):
     queryset_list = Shoplist.objects.all
 
     if 'keywords' in request.GET:

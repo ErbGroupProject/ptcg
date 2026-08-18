@@ -28,7 +28,6 @@ urlpatterns = [
     path('contacts/', include("contacts.urls",namespace='contacts')),
     path('tradings/', include("tradings.urls",namespace='tradings')),
     path('listings/', include("listings.urls",namespace='listings')),
-
     path('admin/', admin.site.urls)
     # path('filters/', include("filters.urls")),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+debug_toolbar_urls()
