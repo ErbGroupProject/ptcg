@@ -1,5 +1,5 @@
 #header{
-    height: 50px;
+    height: 100px;
     background: #3c80e7;
     color: white;
 }
@@ -18,14 +18,20 @@ div.breakcrumbs{
 }
 
 .module h2,.module caption,.inline-group h2{
-    background: #59ecec;
+    background: #8292dd;
 }
 
 .button,input[type=submit],input[type=button],.submit-row input,a.button{
-    background: #EC5B59;
+    background: #bba2a1;
     color: white;
 }
 
 .brand{
     margin:15px;
+}
+
+:root {
+		--font-size-base: 100px;
+		--font-size-body: 40px;
+		--font-size-small: 20px;
 }

@@ -21,6 +21,7 @@ class Tradelist(models.Model):
     condition = models.CharField(max_length=50)
     identification_score = models.FloatField(blank=True, null=True)
     series_name = models.CharField(max_length=50, blank=True)
+    series_number = models.CharField(max_length=50, blank=True)
     descriptions = models.TextField(blank=True)
     deal_place = models.CharField(max_length=200, blank=True)
     # deal_shop = models.ManyToManyField(Shoplist, blank=True)  # Shoplist 還沒建好，先註解
