@@ -101,14 +101,32 @@
         </div>
     </div>
 
-    <!-- 底部正方形按鈕 -->
-    <div class="row mt-4">
-        <div class="col-12 d-flex justify-content-center flex-wrap">
-            <a href="{% url 'accounts:dashboard' %}" class="btn btn-outline-secondary d-inline-flex align-items-center justify-content-center m-2" style="width:120px;height:120px;">Message</a>
-            <a href="#" class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2" style="width:120px;height:120px;">Deck</a>
-            <a href="{% url 'listings:my_listings' %}" class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2" style="width:120px;height:120px;">Post</a>
-            <a href="{% url 'accounts:profile' %}" class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2" style="width:120px;height:120px;">Profile</a>
-        </div>
+
+<!-- ========== 底部一排正方形按鈕（置中） ========== -->
+<div class="row">
+    <div class="col-12 d-flex justify-content-center flex-wrap">
+        <a href="#"
+            class="btn btn-outline-secondary d-inline-flex align-items-center justify-content-center m-4"
+            style="width:120px;height:120px;">
+            Message
+        </a>
+        <a href="#"
+            class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-4"
+            style="width:120px;height:120px;">
+            Deck
+        </a>
+
+        <a href="{% url 'listings:my_listings' %}"
+        class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-4"
+        style="width:120px;height:120px;">
+            Post
+        </a>
+
+        <a href="{% url 'accounts:profile' %}"
+            class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-4"
+            style="width:120px;height:120px;">
+            Profile
+        </a>
     </div>
 </div>
 

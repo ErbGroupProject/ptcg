@@ -174,7 +174,5 @@ cython_debug/
 # End of https://www.toptal.com/developers/gitignore/api/django
 .vscode/
 media/
-.DS_Store
-__pycache__/
-*.env
-venv/
+static/
+.DS_Store/

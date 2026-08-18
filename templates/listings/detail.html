@@ -24,9 +24,10 @@
     </div>
 
     {% if user.is_authenticated and user != listing.user_name.user %}
-    <a href="{% url 'contacts:start' listing.id %}" class="btn btn-primary">聯絡賣家</a>
+    <a href="{% url 'contacts:start' listing.id %}" class="btn btn-primary mb-4">聯絡賣家</a>
     {% elif user == listing.user_name.user %}
-    <a href="{% url 'listings:edit' listing.id %}" class="btn btn-outline-secondary">編輯</a>
+    <a href="{% url 'listings:edit' listing.id %}" class="btn btn-outline-secondary mb-4">編輯</a>
     {% endif %}
+
 </div>
 {% endblock %}

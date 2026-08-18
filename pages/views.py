@@ -1,6 +1,4 @@
 from django.shortcuts import render
-# Create your views here.
-
 
 def home(request):
     return render(request, "pages/home.html")
@@ -11,10 +9,8 @@ def shops(request):
 def trade(request):
     return render(request, "pages/trade.html")
 
-
 def contact(request):
     return render(request, "pages/contact.html")
-
 
 def index(request):
     #come form banners

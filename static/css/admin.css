@@ -1,7 +1,8 @@
 #header{
-    height: 50px;
-    background: #EC5B59;
+    height: 100px;
+    background: #3c80e7;
     color: white;
+    font-size: 80px;
 }
 
 #branding h1{
@@ -9,23 +10,29 @@
 }
 
 a:link,a:visited{
-    color: #EC5B59;
+    color: #4664c9;
 }
 
 div.breakcrumbs{
-    background:#EC5B59;
+    background:#5eec59;
     color:white;
 }
 
 .module h2,.module caption,.inline-group h2{
-    background: #EC5B59;
+    background: #8292dd;
 }
 
 .button,input[type=submit],input[type=button],.submit-row input,a.button{
-    background: #EC5B59;
+    background: #bba2a1;
     color: white;
 }
 
 .brand{
     margin:15px;
+}
+
+:root {
+		--font-size-base: 100px;
+		--font-size-body: 40px;
+		--font-size-small: 20px;
 }
