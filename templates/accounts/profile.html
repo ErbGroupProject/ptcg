@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="auth-shell py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 mx-auto">
+                <div class="card" style="border-radius: 20px;">
+                    <div class="card-header text-black-50 py-3">
+                        <h4 class="mb-0"><i class="fas fa-user" style="color: #3392ff;"></i> My Profile </h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="text-muted">View your account details below.</p>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>First Name</label>
+                                <input type="text" value="{{ user.first_name }}" class="form-control" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Last Name</label>
+                                <input type="text" value="{{ user.last_name }}" class="form-control" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" value="{{ user.username }}" class="form-control" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" value="{{ user.email }}" class="form-control" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Bio</label>
+                            <textarea class="form-control" readonly>{{ profile.bio|default:"" }}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" value="{{ profile.phone|default:"" }}" class="form-control" readonly>
+                        </div>
+
+                        <div class="mt-4">
+                            <a href="{% url 'accounts:edit_profile' %}" class="btn btn-primary mr-2" style="border-radius: 20px;">Edit Profile</a>
+                            <a href="{% url 'accounts:dashboard' %}" class="btn btn-outline-secondary" style="border-radius: 20px;">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

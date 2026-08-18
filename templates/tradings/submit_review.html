@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>完成交易 & 留下評價</h1>
+    <p class="text-muted">{{ chat.listing.sell_item_name }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>評論內容 (必填)</label>
+            <textarea class="form-control" name="comment_content" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>評分 (1-5星)</label>
+            <div class="star-rating">
+                <input type="radio" name="star" value="5" id="star5"><label for="star5">★</label>
+                <input type="radio" name="star" value="4" id="star4"><label for="star4">★</label>
+                <input type="radio" name="star" value="3" id="star3"><label for="star3">★</label>
+                <input type="radio" name="star" value="2" id="star2"><label for="star2">★</label>
+                <input type="radio" name="star" value="1" id="star1"><label for="star1">★</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">送出評價</button>
+    </form>
+</div>
+
+<style>
+.star-rating { display: flex; flex-direction: row-reverse; justify-content: flex-end; }
+.star-rating input { display: none; }
+.star-rating label { font-size: 30px; color: #ccc; cursor: pointer; padding: 0 2px; }
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label { color: #ffc107; }
+</style>
+{% endblock %}

@@ -47,6 +47,12 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     # 'filters.apps.FiltersConfig'
     "pages.apps.PagesConfig",
+    "accounts.apps.AccountsConfig",
+    "shops.apps.ShopsConfig",
+    "listings.apps.ListingsConfig",
+    "tradings.apps.TradingsConfig",
+    "contacts.apps.ContactsConfig",
+    #"banners.apps.BannerConfig",
 ]
 
 
@@ -91,7 +97,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
 DATABASES = {
+<<<<<<< HEAD
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME' : 'ptcg',
@@ -99,6 +107,15 @@ DATABASES = {
         'PASSWORD' : '123',
         'HOST' : 'localhost',
         'PORT' : '5432',
+=======
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": 'ptcg_db',
+        "USER": 'ptcg_user',
+        "PASSWORD" : '1234',
+        "HOST" : 'localhost',
+        "PORT" : '5432',
+>>>>>>> origin/Johnny
     }
 }
 
@@ -120,10 +137,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-STATIC_ROOT=os.path.join(BASE_DIR,'static')
-STATIC_URL = 'static/'
-STATICFILES_DIRS=[os.path.join(BASE_DIR,'config/static')]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -141,11 +154,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'config/static')]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'config/static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
+=======
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+>>>>>>> origin/Johnny
