@@ -5,10 +5,14 @@ from django.contrib import messages
 
 def trade_lists(request):
     #tradelists = Tradelist.objects.filter(is_sold=False).order_by("-list_date")
-    trade_images =[]
-    for i in range(1,7):
-        filename = f'sm_banner{i:02d}.jpg'
-        trade_images.append(filename)
+    trade_images = [
+        'image/sm_banner_01.jpg',
+        'image/sm_banner_02.png',
+        'image/sm_banner_03.png',
+        'image/sm_banner_04.jpg',
+        'image/sm_banner_05.png',
+        'image/sm_banner_06.jpg',
+        ]
 
     context = {
         "trade_images":trade_images,
