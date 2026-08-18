@@ -23,10 +23,11 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include("pages.urls",namespace='pages')),
+    path('', include("pages.urls",namespace='pages')),
     path('shops/', include("shops.urls",namespace='shops')),
     path('accounts/', include("accounts.urls",namespace='accounts')),
-    path('',include("banners.urls",namespace='banners')),
+    
+
 
     # path('filters/', include("filters.urls")),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+debug_toolbar_urls()
