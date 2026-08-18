@@ -2,7 +2,6 @@
     height: 100px;
     background: #3c80e7;
     color: white;
-    font-size: 80px;
 }
 
 #branding h1{
@@ -29,10 +28,4 @@ div.breakcrumbs{
 
 .brand{
     margin:15px;
-}
-
-:root {
-		--font-size-base: 100px;
-		--font-size-body: 40px;
-		--font-size-small: 20px;
 }
