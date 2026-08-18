@@ -15,10 +15,16 @@ img {
   margin-right: 0.4rem; }
 
 .badge-cuisine {
+<<<<<<< HEAD
         background: #ad5d54;
         color: white;
       }
 
+=======
+        background: #e74c3c;
+        color: white;
+      }
+>>>>>>> 12103e9
 #showcase {
   background: url(../img/showcase.jpg) no-repeat center/cover fixed;
   position: relative;
@@ -89,6 +95,7 @@ img {
   border: none;
   border-radius: 12px;
   overflow: hidden;
+<<<<<<< HEAD
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   background-color: #ffffffa9;
 }
@@ -104,6 +111,22 @@ img {
 }
 #login .btn-primary:hover {
   background: #3578dc;
+=======
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#login .card-header {
+  background-color: #dc3545 !important;
+  color: #ffffff !important;
+}
+
+#login .btn-danger {
+  background: #dc3545;
+  border: none;
+}
+#login .btn-danger:hover {
+  background: #dc3545;
+>>>>>>> 12103e9
 }
 
 @media (max-width: 991px) {

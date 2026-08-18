@@ -1,8 +1,14 @@
 #header{
+<<<<<<< HEAD
     height: 100px;
     background: #3c80e7;
     color: white;
     font-size: 80px;
+=======
+    height: 50px;
+    background: #EC5B59;
+    color: white;
+>>>>>>> 12103e9
 }
 
 #branding h1{
@@ -10,29 +16,48 @@
 }
 
 a:link,a:visited{
+<<<<<<< HEAD
     color: #4664c9;
 }
 
 div.breakcrumbs{
     background:#5eec59;
+=======
+    color: #EC5B59;
+}
+
+div.breakcrumbs{
+    background:#EC5B59;
+>>>>>>> 12103e9
     color:white;
 }
 
 .module h2,.module caption,.inline-group h2{
+<<<<<<< HEAD
     background: #8292dd;
 }
 
 .button,input[type=submit],input[type=button],.submit-row input,a.button{
     background: #bba2a1;
+=======
+    background: #EC5B59;
+}
+
+.button,input[type=submit],input[type=button],.submit-row input,a.button{
+    background: #EC5B59;
+>>>>>>> 12103e9
     color: white;
 }
 
 .brand{
     margin:15px;
+<<<<<<< HEAD
 }
 
 :root {
 		--font-size-base: 100px;
 		--font-size-body: 40px;
 		--font-size-small: 20px;
+=======
+>>>>>>> 12103e9
 }
