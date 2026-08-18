@@ -97,3 +97,8 @@ def seller_profile(request, user_id):
         "avg_star": avg_star,
         "review_count": len(records),
     })
+
+def card_listings(request):
+    listings = Tradelist.objects.all()  # 依你的實際模型與需求調整
+    context = {"listings": listings}
+    return render(request, "listings/card_listings.html", context)
