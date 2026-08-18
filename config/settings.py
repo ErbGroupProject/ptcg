@@ -99,15 +99,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 DATABASES = {
-<<<<<<< HEAD
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME' : 'ptcg',
-        'USER' : 'postgres',
-        'PASSWORD' : '123',
-        'HOST' : 'localhost',
-        'PORT' : '5432',
-=======
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": 'ptcg_db',
@@ -115,9 +106,8 @@ DATABASES = {
         "PASSWORD" : '1234',
         "HOST" : 'localhost',
         "PORT" : '5432',
->>>>>>> origin/Johnny
+        }
     }
-}
 
 
 # Password validation
@@ -162,12 +152,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'config/static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-<<<<<<< HEAD
-=======
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
->>>>>>> origin/Johnny
