@@ -3,6 +3,8 @@
 {% block content %}
 <div class="container mt-5">
     <h1>{{ listing.sell_item_name }}</h1>
+    <a href="{% url 'listings:seller_profile' listing.user_name.user.id %}" class="btn btn-outline-primary">查看賣家</a>
+
     <p class="text-muted">
         賣家：{{ listing.user_name.user.username }} | 上架時間：{{ listing.list_date|date:"Y-m-d H:i" }}
     </p>

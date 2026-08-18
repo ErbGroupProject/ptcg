@@ -4,6 +4,9 @@ from django.contrib import messages
 from accounts.models import Profile
 from .models import Tradelist
 from .forms import TradelistForm
+from django.contrib.auth.models import User
+from tradings.models import TradingRecord
+
 
 
 def index(request):
@@ -16,10 +19,19 @@ def detail(request, listing_id):
     return render(request, "listings/detail.html", {"listing": listing})
 
 
+
 @login_required
 def my_listings(request):
-    listings = Tradelist.objects.filter(user_name__user=request.user).order_by("-list_date")
-    return render(request, "listings/my_listings.html", {"listings": listings})
+    user = request.user
+    listings = Tradelist.objects.filter(user_name__user=user).order_by("-list_date")
+    completed_listings = Tradelist.objects.filter(
+        user_name__user=user, chat_room__trade_finished=True
+    ).distinct().order_by("-list_date")
+
+    return render(request, "listings/my_listings.html", {
+        "listings": listings,
+        "completed_listings": completed_listings,
+    })
 
 
 @login_required
@@ -67,3 +79,21 @@ def edit(request, listing_id):
         form = TradelistForm(instance=listing)
 
     return render(request, "listings/edit.html", {"form": form, "listing": listing})
+
+def seller_profile(request, user_id):
+    seller = get_object_or_404(User, id=user_id)
+    profile, _ = Profile.objects.get_or_create(user=seller)
+
+    # 買家給賣家的評價
+    records = list(
+        TradingRecord.objects.filter(chat__seller=seller, buyer_star__isnull=False, is_public=True)
+    )
+    avg_star = round(sum(r.buyer_star for r in records) / len(records), 1) if records else 0
+
+    return render(request, "listings/seller_profile.html", {
+        "seller": seller,
+        "profile": profile,
+        "records": records,
+        "avg_star": avg_star,
+        "review_count": len(records),
+    })

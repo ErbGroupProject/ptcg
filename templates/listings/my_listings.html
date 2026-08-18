@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block content %}
 <div class="container mt-5">
     <h1>我的已發佈產品</h1>
@@ -7,18 +6,19 @@
     <div class="row mt-3">
         {% for listing in listings %}
         <div class="col-md-4 mb-4">
-            <div class="card h-100">
+            <div class="card h-100" style="position: relative;">
+                {% for chat in listing.chat_room.all %}
+                    {% if chat.trade_finished %}
+                    <span class="badge badge-success" style="position:absolute; top:8px; left:8px;">交易已完成</span>
+                    {% endif %}
+                {% endfor %}
                 {% if listing.sell_item_main_photo %}
                 <img src="{{ listing.sell_item_main_photo.url }}" class="card-img-top" alt="">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ listing.sell_item_name }}</h5>
                     <p class="font-weight-bold text-success mb-0">${{ listing.price }}</p>
-                    {% if listing.is_sold %}
-                    <span class="badge badge-secondary">已下架</span>
-                    {% endif %}
                 </div>
-
                 <div class="card-footer">
                     <div class="d-flex justify-content-between mb-2">
                         <a href="{% url 'listings:edit' listing.id %}" class="btn btn-sm btn-outline-secondary">編輯</a>
@@ -29,13 +29,9 @@
                         </form>
                         {% endif %}
                     </div>
-
                     {% for chat in listing.chat_room.all %}
                         {% if not chat.trade_finished %}
-                        <a href="{% url 'tradings:submit_review' chat.id %}"
-                           class="btn btn-sm btn-outline-warning btn-block">
-                            交易完成/寫評價（{{ chat.buyer.username }}）
-                        </a>
+                        <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-sm btn-outline-warning btn-block">交易完成/寫評價（{{ chat.buyer.username }}）</a>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -43,6 +39,28 @@
         </div>
         {% empty %}
         <p class="text-muted">你還沒有發佈任何產品。</p>
+        {% endfor %}
+    </div>
+
+    <hr>
+
+    <h2>已完成的交易（過往 Listing）</h2>
+    <div class="row mt-3">
+        {% for listing in completed_listings %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" style="position: relative;">
+                <span class="badge badge-success" style="position:absolute; top:8px; left:8px;">交易已完成</span>
+                {% if listing.sell_item_main_photo %}
+                <img src="{{ listing.sell_item_main_photo.url }}" class="card-img-top" alt="">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ listing.sell_item_name }}</h5>
+                    <p class="font-weight-bold text-success mb-0">${{ listing.price }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">暫無完成的交易。</p>
         {% endfor %}
     </div>
 </div>

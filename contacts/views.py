@@ -38,3 +38,21 @@ def chat_detail(request, chat_id):
         "chat": chat,
         "message_list": message_list,
     })
+
+@login_required
+def chat_detail(request, chat_id):
+    chat = get_object_or_404(Chat, id=chat_id)
+    if request.user not in [chat.buyer, chat.seller]:
+        return redirect("accounts:dashboard")
+
+    if request.method == "POST":
+        content = request.POST.get("message", "").strip()
+        if content:
+            Message.objects.create(chat=chat, sender=request.user, content=content)
+        return redirect("contacts:chat_detail", chat.id)
+
+    # GET：把對方訊息標為已讀
+    Message.objects.filter(chat=chat).exclude(sender=request.user).update(is_read=True)
+
+    message_list = chat.messages.all()
+    return render(request, "contacts/chat_detail.html", {"chat": chat, "message_list": message_list})
