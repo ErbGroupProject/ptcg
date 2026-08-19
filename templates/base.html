@@ -19,8 +19,48 @@
 
 {% include 'partials/_navbar.html' %}
 {% include 'partials/_alerts.html' %}
-{% block content %}{% endblock %}
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'pages:index' %}">首頁</a></li>
+
+        {% if request.resolver_match.url_name == 'index' %}
+            <li class="breadcrumb-item active">Listings</li>
+
+        {% elif request.resolver_match.url_name == 'detail' %}
+            <li class="breadcrumb-item"><a href="{% url 'listings:index' %}">Listings</a></li>
+            <li class="breadcrumb-item active">商品詳情</li>
+
+        {% elif request.resolver_match.url_name == 'card_listings' %}
+            <li class="breadcrumb-item active">Cards</li>
+
+        {% elif request.resolver_match.url_name == 'dashboard' %}
+            <li class="breadcrumb-item active">Dashboard</li>
+
+        {% elif request.resolver_match.url_name == 'profile' %}
+            <li class="breadcrumb-item active">Profile</li>
+
+        {% elif request.resolver_match.url_name == 'my_listings' %}
+            <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active">Post</li>
+
+        {% elif request.resolver_match.url_name == 'chat_detail' %}
+            <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active">對話</li>
+
+        {% else %}
+            <li class="breadcrumb-item active">主頁</li>
+        {% endif %}
+    </ol>
+</nav>
+
+{% endblock %}
 {% include 'partials/_footer.html' %}
+
+<style>
+.breadcrumb-item.active { color: #1e73f3; font-weight: bold; }
+.breadcrumb-item a { color: #0e34db; }
+</style>
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

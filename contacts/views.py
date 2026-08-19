@@ -42,3 +42,20 @@ def chat_detail(request, chat_id):
         "message_list": message_list,
     })
 
+
+@login_required
+def mark_as_spam(request, chat_id):
+    chat = get_object_or_404(Chat, id=chat_id)
+    if request.user == chat.buyer:
+        chat.is_spam = True
+        chat.save()
+    return redirect("accounts:dashboard")
+
+
+@login_required
+def unmark_spam(request, chat_id):
+    chat = get_object_or_404(Chat, id=chat_id)
+    if request.user == chat.buyer:
+        chat.is_spam = False
+        chat.save()
+    return redirect("accounts:dashboard")

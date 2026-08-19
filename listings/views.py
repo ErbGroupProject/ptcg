@@ -3,7 +3,8 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from accounts.models import Profile
-from cards.models import Card
+from cards.models import Card, Generation
+from cards.choices import category_choices, energy_choices, stage_choices, rarity_choices
 from .models import Tradelist
 from .forms import ListingForm
 from django.db.models import Avg
@@ -60,7 +61,7 @@ def index(request):
         .prefetch_related('chat_room')
         .annotate(
             completed_at=Max('chat_room__updated_at',
-                             filter=Q(chat_room__trade_finished=True)),
+                            filter=Q(chat_room__trade_finished=True)),
         )
         .annotate(
             is_completed=Case(
@@ -87,8 +88,55 @@ def index(request):
             Q(user_name__user__username__icontains=q)
         )
 
+    # 篩選（狀態 / 系列 / 交易地點）
+    condition = request.GET.get('condition', '').strip()
+    series = request.GET.get('series', '').strip()
+    place = request.GET.get('place', '').strip()
+
+    if condition:
+        qs = qs.filter(condition=condition)
+    if series:
+        qs = qs.filter(series_name=series)
+    if place:
+        qs = qs.filter(deal_place=place)
+
     page_obj = Paginator(qs, PAGE_SIZE).get_page(request.GET.get('page'))
-    return render(request, 'listings/index.html', {'page_obj': page_obj, 'q': q})
+
+    # 分頁保留所有篩選參數
+    params = request.GET.copy()
+    params.pop('page', None)
+    query_string = params.urlencode()
+
+    # 下拉選項（distinct）
+    conditions = (
+        Tradelist.objects.filter(is_sold=False)
+        .values_list('condition', flat=True)
+        .distinct().order_by('condition')
+    )
+    series_list = (
+        Tradelist.objects.filter(is_sold=False)
+        .exclude(series_name='')
+        .values_list('series_name', flat=True)
+        .distinct().order_by('series_name')
+    )
+    places = (
+        Tradelist.objects.filter(is_sold=False)
+        .exclude(deal_place='')
+        .values_list('deal_place', flat=True)
+        .distinct().order_by('deal_place')
+    )
+
+    return render(request, 'listings/index.html', {
+        'page_obj': page_obj,
+        'q': q,
+        'condition': condition,
+        'series': series,
+        'place': place,
+        'query_string': query_string,
+        'conditions': conditions,
+        'series_list': series_list,
+        'places': places,
+    })
 
 
 def card_listings(request):
@@ -99,6 +147,7 @@ def card_listings(request):
         .order_by('generation', 'card_number')
     )
 
+    # 搜尋
     q = request.GET.get('q', '').strip()
     if q:
         qs = qs.filter(
@@ -109,8 +158,62 @@ def card_listings(request):
             Q(energy_type__icontains=q)
         )
 
+    # 篩選
+    category = request.GET.get('category', '').strip()
+    energy = request.GET.get('energy', '').strip()
+    stage = request.GET.get('stage', '').strip()
+    rarity = request.GET.get('rarity', '').strip()
+    gen = request.GET.get('gen', '').strip()
+
+    if category:
+        qs = qs.filter(category=category)
+    if energy:
+        qs = qs.filter(energy_type=energy)
+    if stage:
+        qs = qs.filter(stage=stage)
+    if rarity:
+        qs = qs.filter(rarity=rarity)
+    if gen:
+        qs = qs.filter(generation_id=gen)
+
     page_obj = Paginator(qs, PAGE_SIZE).get_page(request.GET.get('page'))
-    return render(request, 'listings/card_listing.html', {'page_obj': page_obj, 'q': q})
+
+    # 分頁保留所有篩選參數
+    params = request.GET.copy()
+    params.pop('page', None)
+    query_string = params.urlencode()
+
+    context = {
+        'page_obj': page_obj,
+        'q': q,
+        'category': category,
+        'energy': energy,
+        'stage': stage,
+        'rarity': rarity,
+        'gen': gen,
+        'query_string': query_string,
+        'category_choices': category_choices,
+        'energy_choices': energy_choices,
+        'stage_choices': stage_choices,
+        'rarity_choices': rarity_choices,
+        'generations': Generation.objects.all().order_by('name'),
+    }
+    return render(request, 'listings/card_listings.html', context)
+
+
+def card_detail(request, card_id):
+    """卡片詳情"""
+    card = get_object_or_404(
+        Card.objects.select_related('generation').prefetch_related(
+            'abilities',
+            'attacks__energy_costs',
+            'weaknesses',
+            'resistances',
+            'retreats',
+        ),
+        id=card_id,
+    )
+    return render(request, 'listings/card_listing.html', {'card': card})
 
 
 def detail(request, listing_id):

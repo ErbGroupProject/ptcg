@@ -10,6 +10,8 @@ class Chat(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     trade_finished = models.BooleanField(default=False, verbose_name="交易是否標記完成")
+    is_spam = models.BooleanField(default=False, verbose_name="垃圾信息")
+
 
     class Meta:
         unique_together = ["listing", "buyer", "seller"]

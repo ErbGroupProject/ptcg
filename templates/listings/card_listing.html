@@ -1,58 +1,115 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<section>
+
+<div class="container mt-4">
     <div class="row">
-        <div class="container col-lg-9">
-            <h3 class="text-center m-5">Featured</h3>
-            <hr/>
-            <form method="get" class="mb-3">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
-                        <input type="text" name="q" value="{{ q }}" class="form-control"
-                               placeholder="搜尋卡片名稱 / 分類 / 階段 / 稀有度..." />
-                    </div>
-                    <div class="col-lg-4 col-md-3">
-                        <button type="submit" class="btn btn-primary btn-block">搜尋 / Filter</button>
-                    </div>
-                </div>
-                {% if q %}
-                <div class="mt-2"><a href="{% url 'listings:card_listings' %}" class="btn btn-link">清除搜尋</a></div>
-                {% endif %}
-            </form>
-            <div class="row">
-            {% for card in page_obj %}
-                <div class="col-md-4 mb-4">
-                    <a href="#" class="text-decoration-none text-dark">
-                        <div class="card h-100" style="font-size:0.8em">
-                            {% if card.photo_main %}
-                            <img src="{{ card.photo_main.url }}" class="card-img-top" alt="{{ card.title }}">
-                            {% endif %}
-                            <div class="card-body">
-                                <div>
-                                    <span class="badge badge-primary">{{ card.get_category_display }}</span>
-                                    {% if card.stage %}<span class="badge badge-secondary">{{ card.get_stage_display }}</span>{% endif %}
-                                </div>
-                                <h5 class="card-title mt-2">{{ card.title }}</h5>
-                                <div class="text-muted">{% if card.hp %}HP {{ card.hp }} · {% endif %}{{ card.get_energy_type_display }}</div>
-                                <div class="text-muted small">{{ card.card_number_display }}</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            {% empty %}
-                <div class="col-12"><p class="text-muted">目前沒有符合條件的卡片。</p></div>
-            {% endfor %}
-            </div>
-            {% include 'listings/_pagination.html' with page_obj=page_obj q=q %}
+        <!-- 圖片 -->
+        <div class="col-md-4 mb-4">
+            {% if card.photo_main %}
+            <img src="{{ card.photo_main.url }}" class="img-fluid rounded" alt="{{ card.title }}">
+            {% else %}
+            <img src="https://picsum.photos/500/500" class="img-fluid rounded" alt="no_photo">
+            {% endif %}
         </div>
-        <div class="container col-lg-3 bg-secondary">
-            <div class="row">
-                <div class="col-4 p-1"><img src="https://picsum.photos/60/50" class="img-fluid" alt="bookmark"/></div>
-                <div class="col-4 p-1"><img src="https://picsum.photos/60/50" class="img-fluid" alt="bookmark"/></div>
-                <div class="col-4 p-1"><img src="https://picsum.photos/60/50" class="img-fluid" alt="bookmark"/></div>
+
+        <!-- 基本資料 -->
+        <div class="col-md-8">
+            <h2>{{ card.title }}</h2>
+            <p class="text-muted">{{ card.card_number_display }} · {{ card.generation.name }}</p>
+
+            <table class="table table-sm w-75">
+                <tbody>
+                    <tr>
+                        <th>類別</th><td>{{ card.category }}</td>
+                        <th>進化階段</th><td>{{ card.stage }}</td>
+                    </tr>
+                    <tr>
+                        <th>稀有度</th><td>{{ card.rarity }}</td>
+                        <th>能量屬性</th><td>{{ card.energy_type }}</td>
+                    </tr>
+                    <tr>
+                        <th>HP</th><td>{{ card.hp }}</td>
+                        <th>交易量</th><td>{{ card.transaction }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 特性 -->
+    {% if card.abilities.all %}
+    <div class="card mb-3">
+        <div class="card-header">特性 (Ability)</div>
+        <div class="card-body">
+            {% for ability in card.abilities.all %}
+            <p class="mb-2"><strong>{{ ability.title }}</strong></p>
+            <p class="text-muted">{{ ability.description }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- 招式 -->
+    {% if card.attacks.all %}
+    <div class="card mb-3">
+        <div class="card-header">招式 (Attacks)</div>
+        <div class="card-body">
+            {% for attack in card.attacks.all %}
+            <div class="mb-3">
+                <p class="mb-1">
+                    <strong>{{ attack.title }}</strong>
+                    {% if attack.damage_value is not None %}
+                    <span class="badge badge-danger">{{ attack.damage_value }}{{ attack.damage_modifier }}</span>
+                    {% endif %}
+                    {% for cost in attack.energy_costs.all %}
+                    <span class="badge badge-light border">{{ cost.energy_type }}{% if cost.quantity > 1 %} ×{{ cost.quantity }}{% endif %}</span>
+                    {% endfor %}
+                </p>
+                {% if attack.description %}
+                <p class="text-muted">{{ attack.description }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- 弱點 / 抗性 / 撤退 -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-header">弱點 (Weakness)</div>
+                <div class="card-body">
+                    {% for w in card.weaknesses.all %}
+                    <p>{{ w.energy_type }} {% if w.weakness_value is not None %}{{ w.weakness_value }}{{ w.weakness_modifier }}{% endif %}</p>
+                    {% empty %}<p class="text-muted">—</p>{% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-header">抗性 (Resistance)</div>
+                <div class="card-body">
+                    {% for r in card.resistances.all %}
+                    <p>{{ r.energy_type }} {% if r.resistance_value is not None %}{{ r.resistance_modifier }}{{ r.resistance_value }}{% endif %}</p>
+                    {% empty %}<p class="text-muted">—</p>{% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-header">撤退 (Retreat)</div>
+                <div class="card-body">
+                    {% for rt in card.retreats.all %}
+                    <p>{{ rt.energy_type }} ×{{ rt.quantity }}</p>
+                    {% empty %}<p class="text-muted">—</p>{% endfor %}
+                </div>
             </div>
         </div>
     </div>
-</section>
+
+    <a href="{% url 'listings:card_listings' %}" class="btn btn-outline-secondary mb-4">返回卡牌列表</a>
+</div>
+
 {% endblock %}
