@@ -139,3 +139,13 @@ img {
     font-size: 30px; }
   #showcase-inner h1 {
     font-size: 40px; } }
+
+.my-container {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .my-container {
+    display: block;
+  }
+}
