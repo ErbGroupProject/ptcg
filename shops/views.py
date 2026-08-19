@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-from django.shortcuts import render
-=======
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Shoplist
 from django.db.models import Q
->>>>>>> ki2
 
 #def shop(request,listing_id):
     #listing = get_object_or_404(Listing, pk=listing_id)

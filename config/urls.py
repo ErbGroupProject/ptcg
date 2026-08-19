@@ -25,11 +25,7 @@ urlpatterns = [
     path("_nested_admin/", include("nested_admin.urls")),
     path('', include("pages.urls",namespace='pages')),
     path('shops/', include("shops.urls",namespace='shops')),
-<<<<<<< HEAD
-    path('trades/', include("trades.urls",namespace='trades')),
-=======
     path('cards', include("cards.urls",namespace='cards')),
->>>>>>> ki2
     path('accounts/', include("accounts.urls",namespace='accounts')),
     path('contacts/', include("contacts.urls",namespace='contacts')),
     path('tradings/', include("tradings.urls",namespace='tradings')),

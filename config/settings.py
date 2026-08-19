@@ -47,18 +47,14 @@ DJANGO_APPS = [
 
 LOCAL_APPS = [
     # 'filters.apps.FiltersConfig'
-    # "pages.apps.PagesConfig",
+    "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",
     "shops.apps.ShopsConfig",
-<<<<<<< HEAD
-    "trades.apps.TradesConfig",
-=======
     "listings.apps.ListingsConfig",
     "tradings.apps.TradingsConfig",
     "contacts.apps.ContactsConfig",
     "cards.apps.CardsConfig",
     "banners.apps.BannersConfig",
->>>>>>> ki2
 ]
 
 
