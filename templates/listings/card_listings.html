@@ -1,0 +1,393 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Listings -->
+<section>
+    <div class="row">
+        
+    <div class="container col-lg-9">
+        
+        <h3 class="text-center m-5">Featured</h3>
+        <hr/>
+        <!-- [search bar, filter button], sort button  -->
+        <div class="row mb-3">
+            <div class="col-lg-8 col-md-6">
+                <label class="sr-only">Keywords</label>
+                <input type="text" name="keywords" class="form-control" placeholder="keyword" />
+            </div>
+            <div class="col-lg-4 col-md-3 dropdown text-right">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort</button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Action</a>
+                    <a href="#" class="dropdown-item">another</a>
+                    <a href="#" class="dropdown-item">and another</a>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <button class="btn btn-primary btn-block">filter</button>
+            </div>
+        </div>
+        
+        <!-- card_listings -->
+            <!-- <div class="card listing-preview">
+                <img src="https://picsum.photos/60/50" class="card-img-top" alt="card"/>
+                        
+                <div class="card-body">
+                <div class="listing-heading text-center">
+                <h4 class="text-primary">New</h4>
+                <a href="listing.html" class="btn btn-primary btn-block mt-3">View Details</a>
+                </div>
+                </div>
+            </div> -->
+        <div class="card-deck">
+
+        <!-- listing 1 -->
+            <div class="card listing-preview">
+                <a href="#"><img src="https://picsum.photos/60/50" class="card-img-top" alt="card"></a>
+                <div class="card-body">
+                    <h5 class="card-title">hello</h5>
+                    <h6 class="card-subtitle">hello</h6>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div><i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>Equal widthfdsfsd</div>
+                            <div><i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>Equal width</div>
+                            <div><i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>Equal width</div>
+                            <div><i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>Equal width</div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div><i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>Equal width</div>
+                            <div><i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>Equal width</div>
+                            <div><i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>Equal width</div>
+                            <div><i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>Equal width</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- listing 2 -->
+            <div class="card listing-preview" style="font-size:0.8em">
+                <div class="card-body">
+                    category_choices
+                    <div class="row">
+                        <div class="col-lg-3" style="border:1px solid">
+                            stage
+                        </div>
+                        <div class="col-lg-5" style="border:1px solid">
+                            name
+                        </div>
+                        <div class="col-lg-4" style="border:1px solid">
+                            hp
+                            energy type
+                        </div>
+                    </div>
+                </div>
+                <a href="#"><img src="https://picsum.photos/60/50" class="card-img-top" alt="card"></a>             
+                <div class="card-body px-2">
+                    <h5 class="card-title">hello</h5>
+                    <h6 class="card-subtitle">hello</h6>                    
+                    
+                    <div class="row gx-3">
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. fjhdskahfjkh
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- special ability -->
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    icon
+                                </div>
+                                <div class="col-9 d-flex flex-wrap">
+                                    <a href="/url/1" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        df
+                                    </a>
+                                    <a href="/url/2" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        1
+                                    </a>
+                                    <a href="/url/3" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        A Longer Name
+                                    </a>
+                                    <a href="/url/4" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        Name Four
+                                    </a>
+                                    <a href="/url/5" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        Name Five
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        <!-- listing 3 -->
+            <div class="card listing-preview" style="font-size:0.8em">
+                <div class="card-body">
+                    category_choices
+                    <div class="row">
+                        <div class="col-lg-3" style="border:1px solid">
+                            stage
+                        </div>
+                        <div class="col-lg-5" style="border:1px solid">
+                            name
+                        </div>
+                        <div class="col-lg-4" style="border:1px solid">
+                            hp
+                            energy type
+                        </div>
+                    </div>
+                </div>
+                <a href="#"><img src="https://picsum.photos/60/50" class="card-img-top" alt="card"></a>             
+                <div class="card-body px-2">
+                    <h5 class="card-title">hello</h5>
+                    <h6 class="card-subtitle">hello</h6>                    
+                    
+                    <div class="row gx-3">
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- special ability -->
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    icon
+                                </div>
+                                <div class="col-9 d-flex flex-wrap">
+                                    <a href="/url/1" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        df
+                                    </a>
+                                    <a href="/url/2" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        1
+                                    </a>
+                                    <a href="/url/3" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        A Longer Name
+                                    </a>
+                                    <a href="/url/4" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        Name Four
+                                    </a>
+                                    <a href="/url/5" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        Name Five
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        <!-- listing 4 -->
+            <div class="card listing-preview" style="font-size:0.8em">
+                <div class="card-body">
+                    category_choices
+                    <div class="row">
+                        <div class="col-lg-3" style="border:1px solid">
+                            stage
+                        </div>
+                        <div class="col-lg-5" style="border:1px solid">
+                            name
+                        </div>
+                        <div class="col-lg-4" style="border:1px solid">
+                            hp
+                            energy type
+                        </div>
+                    </div>
+                </div>
+                <a href="#"><img src="https://picsum.photos/60/50" class="card-img-top" alt="card"></a>             
+                <div class="card-body px-2">
+                    <h5 class="card-title">hello</h5>
+                    <h6 class="card-subtitle">hello</h6>                    
+                    
+                    <div class="row gx-3">
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- special ability -->
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    icon
+                                </div>
+                                <div class="col-9 d-flex flex-wrap">
+                                    <a href="/url/1" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        df
+                                    </a>
+                                    <a href="/url/2" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        1
+                                    </a>
+                                    <a href="/url/3" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        A Longer Name
+                                    </a>
+                                    <a href="/url/4" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        Name Four
+                                    </a>
+                                    <a href="/url/5" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        Name Five
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>  
+    </div>
+
+    
+    <!-- user_bookmark -->
+    <div class="container col-lg-3 bg-secondary">
+        <div class="card-deck">
+            
+            <div class="card listing-preview col-lg-4 bg-secondary mx-1" style="border:1px">
+                <img src="https://picsum.photos/60/50" class="card-img-top" alt="card"/>
+            </div>
+            <div class="card listing-preview col-lg-4 bg-secondary mx-1" style="border:1px">
+                <img src="https://picsum.photos/60/50" class="card-img-top" alt="card"/>
+            </div>
+            <div class="card listing-preview col-lg-4 bg-secondary mx-1" style="border:1px">
+                <img src="https://picsum.photos/60/50" class="card-img-top" alt="card"/>
+            </div>
+
+    </div>
+    
+    </div>
+</section>
+
+{% endblock %}
+

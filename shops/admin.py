@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Shoplist
 
+<<<<<<< HEAD
 #class Shoplist(models.Model):
 #    shopname = models.CharField(max_length=200)
 #    address = models.CharField(max_length=200)
@@ -19,3 +20,12 @@ from .models import Shoplist
 
 #    def __str__(self):
 #        return f"{self.shopname} - {self.address}"
+=======
+class ShoplistAdmin(admin.ModelAdmin):
+    list_display = ('shopname','address')
+    list_display_links =('shopname','address')
+    search_fields = 'shopname','address',
+    list_per_page = 25
+
+admin.site.register(Shoplist,ShoplistAdmin)
+>>>>>>> ki2

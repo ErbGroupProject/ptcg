@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>編輯商品</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary mb-4">儲存</button>
+        <a href="{% url 'listings:detail' listing.id %}" class="btn btn-secondary mb-4">取消</a>
+    </form>
+</div>
+{% endblock %}

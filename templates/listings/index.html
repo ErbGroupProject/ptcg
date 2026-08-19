@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>決定左係你喇！</h1>
+        <a href="{% url 'listings:create' %}" class="btn btn-primary">上架商品</a>
+    </div>
+
+    <div class="row">
+    {% for listing in listings %}
+    <div class="col-md-4 mb-4">
+        <a href="{% url 'listings:detail' listing.id %}" class="text-decoration-none text-dark">
+            <div class="card h-100">
+                {% if listing.sell_item_main_photo %}
+                <img src="{{ listing.sell_item_main_photo.url }}" class="card-img-top" alt="">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ listing.sell_item_name }}</h5>
+                    <p class="text-muted mb-1">賣家：{{ listing.user_name.user.username }}</p>
+                    <p class="font-weight-bold text-success mb-0">${{ listing.price }}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% empty %}
+    <p class="text-muted">目前沒有上架中的商品。</p>
+    {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
+

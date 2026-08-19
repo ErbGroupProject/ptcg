@@ -41,15 +41,24 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    "nested_admin",
 ]
 
 LOCAL_APPS = [
     # 'filters.apps.FiltersConfig'
-    "pages.apps.PagesConfig",
+    # "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",
     "shops.apps.ShopsConfig",
+<<<<<<< HEAD
     "trades.apps.TradesConfig",
+=======
+    "listings.apps.ListingsConfig",
+    "tradings.apps.TradingsConfig",
+    "contacts.apps.ContactsConfig",
+    "cards.apps.CardsConfig",
+    "banners.apps.BannersConfig",
+>>>>>>> ki2
 ]
 
 
@@ -83,6 +92,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "accounts.context_processors.unread_count", 
             ],
         },
     },
@@ -103,8 +113,9 @@ DATABASES = {
         "PASSWORD" : '1234',
         "HOST" : 'localhost',
         "PORT" : '5432',
+        }
     }
-}
+
 
 
 # Password validation
@@ -155,3 +166,4 @@ INTERNAL_IPS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'

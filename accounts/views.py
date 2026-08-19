@@ -2,84 +2,192 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.core.paginator import Paginator
+from django.db.models import Q
+from contacts.models import Chat
+from tradings.models import TradingRecord
+from contacts.models import Chat, Message   # Message 記得 import
+
+
+
 from .forms import ProfileForm
+from .models import Profile
+from contacts.models import Chat   # ← 確認你的 Chat 模型路徑正確
 
 
 
 @login_required
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+    user = request.user
 
-# 新增
+    buying_qs = Chat.objects.filter(buyer=user, trade_finished=False)
+    buy_page = request.GET.get("buy_page", 1)
+    buying_chats = Paginator(buying_qs, 7).get_page(buy_page)
+
+    selling_qs = Chat.objects.filter(seller=user, trade_finished=False)
+    sell_page = request.GET.get("sell_page", 1)
+    selling_chats = Paginator(selling_qs, 7).get_page(sell_page)
+
+    completed_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), trade_finished=True)
+    done_page = request.GET.get("done_page", 1)
+    completed_chats = Paginator(completed_qs, 7).get_page(done_page)
+
+    return render(request, "accounts/dashboard.html", {
+        "buying_chats": buying_chats,
+        "selling_chats": selling_chats,
+        "completed_chats": completed_chats,
+    })
+
 @login_required
 def profile(request):
-    return render(request, "accounts/profile.html")
-@login_required
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, "accounts/profile.html", {"profile": profile})
+
 
 @login_required
 def edit_profile(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
+    user = request.user
+
     if request.method == "POST":
+        username = request.POST.get("username", "").strip()
+
+        # 檢查 username 是否被別人使用（避免 IntegrityError 500）
+        if User.objects.filter(username=username).exclude(pk=user.pk).exists():
+            messages.error(request, "這個用戶名稱已被使用")
+            return redirect("accounts:edit_profile")
+
+        user.first_name = request.POST.get("first_name", "")
+        user.last_name = request.POST.get("last_name", "")
+        user.username = username
+        user.email = request.POST.get("email", "")
+        user.save()
+
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            return redirect("profile")
+            messages.success(request, "Profile updated successfully")
+            return redirect("accounts:profile")
     else:
         form = ProfileForm(instance=profile)
+
     return render(request, "accounts/edit_profile.html", {"form": form})
 
+
 def register(request):
-    if request.method == 'POST':
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        password2 = request.POST['password2']
+    if request.method == "POST":
+        first_name = request.POST["first_name"]
+        last_name = request.POST["last_name"]
+        username = request.POST["username"]
+        email = request.POST["email"]
+        password = request.POST["password"]
+        password2 = request.POST["password2"]
 
         if password == password2:
             if User.objects.filter(username=username).exists():
-                messages.error(request, 'That username is taken')
-                return redirect('accounts:register')
+                messages.error(request, "That username is taken")
+                return redirect("accounts:register")
+            elif User.objects.filter(email=email.lower()).exists():
+                messages.error(request, "That email is being used")
+                return redirect("accounts:register")
             else:
-                if User.objects.filter(email=email.lower()).exists():
-                    messages.error(request, 'That email is being used')
-                    return redirect('accounts:register')
-                else:
-                    User.objects.create_user(
-                        username=username,
-                        email=email.lower(),
-                        password=password,
-                        first_name=first_name,
-                        last_name=last_name
-                    )
-                    messages.success(request, 'You are now registered and can log in')
-                    return redirect('accounts:login')
+                new_user = User.objects.create_user(
+                    username=username,
+                    email=email.lower(),
+                    password=password,
+                    first_name=first_name,
+                    last_name=last_name,
+                )
+                Profile.objects.create(user=new_user)
+                messages.success(request, "You are now registered and can log in")
+                return redirect("accounts:login")
         else:
-            messages.error(request, 'Passwords do not match')
-            return redirect('accounts:register')
-    else:
-        return render(request, 'accounts/register.html')
+            messages.error(request, "Passwords do not match")
+            return redirect("accounts:register")
+
+    return render(request, "accounts/register.html")
 
 
 def login(request):
     if request.method == "POST":
         username = request.POST["username"]
-        password = request.POST['password']
+        password = request.POST["password"]
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            messages.success(request, 'You are now logged in')
-            return redirect('accounts:dashboard')
+            messages.success(request, "You are now logged in")
+            return redirect("accounts:dashboard")
         else:
-            messages.error(request, 'User name or password does not right! Plesae try again!')
-            return redirect('accounts:login')
-    return render(request, 'accounts/login.html')
+            messages.error(request, "User name or password does not right! Please try again!")
+            return redirect("accounts:login")
+    return render(request, "accounts/login.html")
 
 
 def logout(request):
     if request.method == "POST":
         auth.logout(request)
-        return redirect('pages:index')
-    return redirect('pages:index')
+    return redirect("pages:index")
+
+
+@login_required
+def change_password(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, "Your password was successfully updated!")
+            return redirect("accounts:profile")
+    else:
+        form = PasswordChangeForm(request.user)
+
+    return render(request, "accounts/change_password.html", {"form": form})
+def _review_state(chat, user):
+    if chat.trade_finished:
+        return "done"          # 灰色：已完成
+    record = TradingRecord.objects.filter(chat=chat).first()
+    if record is None:
+        return "none"          # 白色：都還沒評
+    if user == chat.buyer:
+        return "waiting" if record.seller_star is not None else "none"   # 藍色：等買家確認
+    else:
+        return "waiting" if record.buyer_star is not None else "none"    # 藍色：等賣家確認
+
+
+@login_required
+def dashboard(request):
+    user = request.user
+
+    all_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user)).order_by("-updated_at")
+    all_chats = Paginator(all_qs, 7).get_page(request.GET.get("all_page", 1))
+
+    buying_qs = Chat.objects.filter(buyer=user, trade_finished=False)
+    buying_chats = Paginator(buying_qs, 7).get_page(request.GET.get("buy_page", 1))
+
+    selling_qs = Chat.objects.filter(seller=user, trade_finished=False)
+    selling_chats = Paginator(selling_qs, 7).get_page(request.GET.get("sell_page", 1))
+
+    completed_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), trade_finished=True)
+    completed_chats = Paginator(completed_qs, 7).get_page(request.GET.get("done_page", 1))
+
+    for chat in all_chats:
+        chat.review_state = _review_state(chat, user)
+    for chat in buying_chats:
+        chat.review_state = _review_state(chat, user)
+    for chat in selling_chats:
+        chat.review_state = _review_state(chat, user)
+    for chat in completed_chats:
+        chat.review_state = "done"
+
+    return render(request, "accounts/dashboard.html", {
+        "all_chats": all_chats,
+        "buying_chats": buying_chats,
+        "selling_chats": selling_chats,
+        "completed_chats": completed_chats,
+    })
+
+
+
+
