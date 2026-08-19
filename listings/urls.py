@@ -12,5 +12,4 @@ urlpatterns = [
     path("<int:listing_id>/edit/", views.edit, name="edit"),
     path("<int:listing_id>/delist/", views.delist, name="delist"),
     path("seller/<int:user_id>/", views.seller_profile, name="seller_profile"),
-
 ]

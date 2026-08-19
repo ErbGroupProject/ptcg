@@ -7,27 +7,55 @@
         <a href="{% url 'listings:create' %}" class="btn btn-primary">上架商品</a>
     </div>
 
-    <div class="row">
-    {% for listing in listings %}
-    <div class="col-md-4 mb-4">
-        <a href="{% url 'listings:detail' listing.id %}" class="text-decoration-none text-dark">
-            <div class="card h-100">
-                {% if listing.sell_item_main_photo %}
-                <img src="{{ listing.sell_item_main_photo.url }}" class="card-img-top" alt="">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ listing.sell_item_name }}</h5>
-                    <p class="text-muted mb-1">賣家：{{ listing.user_name.user.username }}</p>
-                    <p class="font-weight-bold text-success mb-0">${{ listing.price }}</p>
-                </div>
+    <!-- 搜尋列 -->
+    <form method="get" class="mb-3">
+        <div class="row">
+            <div class="col-lg-8 col-md-6">
+                <input type="text" name="q" value="{{ q }}" class="form-control"
+                       placeholder="搜尋商品名稱 / 系列 / 編號 / 狀態 / 賣家..." />
             </div>
-        </a>
-    </div>
+            <div class="col-lg-4 col-md-3">
+                <button type="submit" class="btn btn-primary btn-block">搜尋</button>
+            </div>
+        </div>
+        {% if q %}
+        <div class="mt-2">
+            <a href="{% url 'listings:index' %}" class="btn btn-link">清除搜尋</a>
+        </div>
+        {% endif %}
+    </form>
+
+    <p class="text-muted">共 {{ page_obj.paginator.count }} 筆商品</p>
+
+    <div class="row">
+    {% for listing in page_obj %}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'listings:detail' listing.id %}" class="text-decoration-none text-dark">
+                <div class="card h-100">
+                    {% if listing.sell_item_main_photo %}
+                    <img src="{{ listing.sell_item_main_photo.url }}" class="card-img-top" alt="">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ listing.sell_item_name }}</h5>
+                        {% for chat in listing.chat_room.all %}
+                        {% if chat.trade_finished %}
+                            <span class="badge badge-success">交易已完成</span>
+                        {% endif %}
+                        {% endfor %}
+                        <p class="font-weight-bold text-success mb-0">${{ listing.price }}</p>
+                        <p class="text-muted mb-0">{{ listing.condition }}</p>
+                        {% if listing.series_name %}
+                        <p class="text-muted small mb-0">{{ listing.series_name }} #{{ listing.series_number }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+        </div>
     {% empty %}
-    <p class="text-muted">目前沒有上架中的商品。</p>
+        <div class="col-12"><p class="text-muted">目前沒有符合條件的商品。</p></div>
     {% endfor %}
     </div>
 
+    {% include 'listings/_pagination.html' with page_obj=page_obj q=q %}
 </div>
 {% endblock %}
-

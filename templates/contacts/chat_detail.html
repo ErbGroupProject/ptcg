@@ -1,38 +1,41 @@
 {% extends "base.html" %}
-
 {% block content %}
-<div class="container mt-5">
-    <h1>{{ chat.listing.sell_item_name }}</h1>
-    <p class="text-muted">買家：{{ chat.buyer.username }} | 賣家：{{ chat.seller.username }}</p>
-
-    <div class="card mb-4">
-        <div class="card-body" style="max-height:400px; overflow-y:auto;">
-            {% for m in message_list %}
-            <div class="mb-2">
-                <strong>{{ m.sender.username }}</strong>
-                <span class="text-muted small">{{ m.created_at|date:"H:i" }}</span>
-                <div>{{ m.content|linebreaksbr }}</div>
-            </div>
+<div class="container mt-4" style="max-width: 50%;">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                {% if request.user == chat.buyer %}{{ chat.seller.username }}{% else %}{{ chat.buyer.username }}{% endif %}
+            </h5>
+            <a href="{% url 'listings:detail' chat.listing.id %}" class="text-muted small">查看商品</a>
+        </div>
+        <div class="card-body" style="height: 420px; overflow-y: auto;">
+            {% for message in message_list %}
+                {% if message.sender == request.user %}
+                <div class="d-flex justify-content-end mb-2">
+                    <div class="bg-primary text-white rounded px-3 py-2" style="max-width: 70%;">
+                        <div>{{ message.content }}</div>
+                        <div class="small text-white-50 text-right">{{ message.created_at|date:"H:i" }}</div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="d-flex justify-content-start mb-2">
+                    <div class="bg-light rounded px-3 py-2" style="max-width: 70%;">
+                        <div>{{ message.content }}</div>
+                        <div class="small text-muted">{{ message.created_at|date:"H:i" }}</div>
+                    </div>
+                </div>
+                {% endif %}
             {% empty %}
-            <p class="text-muted">還沒有訊息。</p>
+                <p class="text-muted text-center">還沒有訊息，快來打第一句招呼吧。</p>
             {% endfor %}
         </div>
-    </div>
-
-    <form method="post" class="mb-3">
-        {% csrf_token %}
-        <div class="input-group">
-            <input type="text" name="message" class="form-control" placeholder="輸入訊息..." required>
-            <div class="input-group-append">
+        <div class="card-footer">
+            <form method="post" class="d-flex">
+                {% csrf_token %}
+                <input type="text" name="message" class="form-control mr-2" placeholder="輸入訊息..." autocomplete="off" autofocus />
                 <button type="submit" class="btn btn-primary">送出</button>
-            </div>
+            </form>
         </div>
-    </form>
-
-    {% if not chat.trade_finished %}
-    <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-warning">完成交易 & 評價</a>
-    {% else %}
-    <p class="text-success">此交易已完成。</p>
-    {% endif %}
+    </div>
 </div>
 {% endblock %}

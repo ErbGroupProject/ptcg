@@ -57,8 +57,17 @@
                 </li>
             </ul>
             {% endif %}
+
         </div>
+
     </div>
+
 </nav>
 
 
+                    <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{% url 'pages:index' %}">首頁</a></li>
+             <li class="breadcrumb-item active" aria-current="page">{% block breadcrumb %}主頁{% endblock %}</li>
+            </ol>
+            </nav>

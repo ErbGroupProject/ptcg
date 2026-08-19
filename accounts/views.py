@@ -6,9 +6,11 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.core.paginator import Paginator
 from django.db.models import Q
+
 from contacts.models import Chat
 from tradings.models import TradingRecord
-from contacts.models import Chat, Message   # Message 記得 import
+from .forms import ProfileForm
+from .models import Profile
 
 
 
@@ -144,16 +146,21 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
 
     return render(request, "accounts/change_password.html", {"form": form})
+
+
 def _review_state(chat, user):
     if chat.trade_finished:
-        return "done"          # 灰色：已完成
+        return "done"           # 灰色：雙方都評完
     record = TradingRecord.objects.filter(chat=chat).first()
     if record is None:
-        return "none"          # 白色：都還沒評
-    if user == chat.buyer:
-        return "waiting" if record.seller_star is not None else "none"   # 藍色：等買家確認
-    else:
-        return "waiting" if record.buyer_star is not None else "none"    # 藍色：等賣家確認
+        return "none"           # 白色：都還沒評
+    my_star = record.buyer_star if user == chat.buyer else record.seller_star
+    other_star = record.seller_star if user == chat.buyer else record.buyer_star
+    if my_star is not None:
+        return "waiting_other"  # 我已評，等對方 → 灰「等待對方評價」
+    elif other_star is not None:
+        return "waiting_me"     # 對方已評，等我 → 藍「等待評價」
+    return "none"
 
 
 @login_required

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1>我的已發佈產品</h1>
+    <div class="row mt-3">
+        {% for listing in listings %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if listing.sell_item_main_photo %}
+                <img src="{{ listing.sell_item_main_photo.url }}" class="card-img-top" alt="">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ listing.sell_item_name }}</h5>
+                    <p class="font-weight-bold text-success mb-0">${{ listing.price }}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between mb-2">
+                        <a href="{% url 'listings:edit' listing.id %}" class="btn btn-sm btn-outline-secondary">編輯</a>
+                        {% if not listing.is_sold %}
+                        <form method="post" action="{% url 'listings:delist' listing.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-outline-danger">下架</button>
+                        </form>
+                        {% endif %}
+                    </div>
+
+                    {% for chat in listing.chat_room.all %}
+                        {% with record=chat.review_record %}
+                            {% if chat.trade_finished %}
+                            <div class="d-flex mb-1">
+                                <a href="{% url 'tradings:public_record' record.id %}" class="btn btn-sm btn-outline-secondary mr-1">看評論</a>
+                                <a href="{% url 'contacts:chat_detail' chat.id %}" class="btn btn-sm btn-outline-primary">看對話</a>
+                            </div>
+                            {% else %}
+                            <a href="{% url 'contacts:chat_detail' chat.id %}" class="btn btn-sm btn-outline-primary btn-block mb-1">💬 進入對話（{{ chat.buyer.username }}）</a>
+                            {% if record and record.seller_star is not None %}
+                                <span class="btn btn-sm btn-secondary btn-block">等待對方評價</span>
+                            {% elif record and record.buyer_star is not None %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-sm btn-primary btn-block">等待評價</a>
+                            {% else %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-sm btn-outline-warning btn-block">交易完成/寫評價</a>
+                            {% endif %}
+                            {% endif %}
+                        {% endwith %}
+                    {% empty %}
+                        <p class="text-muted small mb-0">尚無買家聯絡。</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">你還沒有發佈任何產品。</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

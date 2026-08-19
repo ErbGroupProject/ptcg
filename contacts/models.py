@@ -13,6 +13,10 @@ class Chat(models.Model):
 
     class Meta:
         unique_together = ["listing", "buyer", "seller"]
+    @property
+    def review_record(self):
+        from tradings.models import TradingRecord
+        return TradingRecord.objects.filter(chat=self).first()
 
     def __str__(self):
         return f"Chat-{self.listing.sell_item_name} | {self.buyer.username}-{self.seller.username}"   # ← topic 改 sell_item_name

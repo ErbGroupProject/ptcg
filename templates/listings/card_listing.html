@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section>
+    <div class="row">
+        <div class="container col-lg-9">
+            <h3 class="text-center m-5">Featured</h3>
+            <hr/>
+            <form method="get" class="mb-3">
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <input type="text" name="q" value="{{ q }}" class="form-control"
+                               placeholder="搜尋卡片名稱 / 分類 / 階段 / 稀有度..." />
+                    </div>
+                    <div class="col-lg-4 col-md-3">
+                        <button type="submit" class="btn btn-primary btn-block">搜尋 / Filter</button>
+                    </div>
+                </div>
+                {% if q %}
+                <div class="mt-2"><a href="{% url 'listings:card_listings' %}" class="btn btn-link">清除搜尋</a></div>
+                {% endif %}
+            </form>
+            <div class="row">
+            {% for card in page_obj %}
+                <div class="col-md-4 mb-4">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card h-100" style="font-size:0.8em">
+                            {% if card.photo_main %}
+                            <img src="{{ card.photo_main.url }}" class="card-img-top" alt="{{ card.title }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <div>
+                                    <span class="badge badge-primary">{{ card.get_category_display }}</span>
+                                    {% if card.stage %}<span class="badge badge-secondary">{{ card.get_stage_display }}</span>{% endif %}
+                                </div>
+                                <h5 class="card-title mt-2">{{ card.title }}</h5>
+                                <div class="text-muted">{% if card.hp %}HP {{ card.hp }} · {% endif %}{{ card.get_energy_type_display }}</div>
+                                <div class="text-muted small">{{ card.card_number_display }}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+                <div class="col-12"><p class="text-muted">目前沒有符合條件的卡片。</p></div>
+            {% endfor %}
+            </div>
+            {% include 'listings/_pagination.html' with page_obj=page_obj q=q %}
+        </div>
+        <div class="container col-lg-3 bg-secondary">
+            <div class="row">
+                <div class="col-4 p-1"><img src="https://picsum.photos/60/50" class="img-fluid" alt="bookmark"/></div>
+                <div class="col-4 p-1"><img src="https://picsum.photos/60/50" class="img-fluid" alt="bookmark"/></div>
+                <div class="col-4 p-1"><img src="https://picsum.photos/60/50" class="img-fluid" alt="bookmark"/></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
