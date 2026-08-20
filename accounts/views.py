@@ -125,14 +125,17 @@ def change_password(request):
 
 
 def _review_state(chat, user):
-    if chat.trade_finished:
-        return "done"           # 灰色：雙方都評完
+    # 注意：不再用 trade_finished 短路。
+    # 交易完成（確認交易）與評價（雙方互評）是兩個獨立維度，
+    # 即使交易已完成，雙方仍應能評價。
     record = TradingRecord.objects.filter(chat=chat).first()
     if record is None:
         return "none"           # 白色：都還沒評
     my_star = record.buyer_star if user == chat.buyer else record.seller_star
     other_star = record.seller_star if user == chat.buyer else record.buyer_star
-    if my_star is not None:
+    if my_star is not None and other_star is not None:
+        return "done"           # 灰色：雙方都評完
+    elif my_star is not None:
         return "waiting_other"  # 我已評，等對方 → 灰「等待對方評價」
     elif other_star is not None:
         return "waiting_me"     # 對方已評，等我 → 藍「等待評價」
@@ -165,7 +168,7 @@ def dashboard(request):
     for chat in selling_chats:
         chat.review_state = _review_state(chat, user)
     for chat in completed_chats:
-        chat.review_state = "done"
+        chat.review_state = _review_state(chat, user)
 
     return render(request, "accounts/dashboard.html", {
         "all_chats": all_chats,

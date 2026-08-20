@@ -8,7 +8,7 @@ class Generation(models.Model):
         return self.name
     
 class Card(models.Model):
-    category = models.CharField(max_length=50, choices=category_choices.items(),default='pokemon') #寵，#SUPPORTER,ITEM,STADIUM,POKEMON TOOL，能量
+    category = models.CharField(max_length=50, choices=category_choices.items(), default='Pokemon')  # 寵物 / 能量 / 道具 / 支援者 / 場地 / 道具
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     stage = models.CharField(max_length=50, choices=stage_choices.items(),default='', blank=True) #進化階段
     rarity = models.CharField(max_length=20, choices=rarity_choices.items(),default='') #稀有度

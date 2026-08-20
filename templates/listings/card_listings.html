@@ -17,32 +17,32 @@
                 <div class="col-6 col-md-2 mb-2">
                     <select name="category" class="form-control" onchange="this.form.submit()">
                         <option value="">Category</option>
-                        {% for key, value in category_choices.items %}
-                        <option value="{{ key }}" {% if category == key %}selected{% endif %}>{{ value }}</option>
+                        {% for c in categories %}
+                        <option value="{{ c }}" {% if category == c %}selected{% endif %}>{{ c }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-6 col-md-2 mb-2">
                     <select name="energy" class="form-control" onchange="this.form.submit()">
                         <option value="">Energy</option>
-                        {% for key, value in energy_choices.items %}
-                        <option value="{{ key }}" {% if energy == key %}selected{% endif %}>{{ value }}</option>
+                        {% for e in energies %}
+                        <option value="{{ e }}" {% if energy == e %}selected{% endif %}>{{ e }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-6 col-md-2 mb-2">
                     <select name="stage" class="form-control" onchange="this.form.submit()">
                         <option value="">Stage</option>
-                        {% for key, value in stage_choices.items %}
-                        <option value="{{ key }}" {% if stage == key %}selected{% endif %}>{{ value }}</option>
+                        {% for s in stages %}
+                        <option value="{{ s }}" {% if stage == s %}selected{% endif %}>{{ s }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-6 col-md-2 mb-2">
                     <select name="rarity" class="form-control" onchange="this.form.submit()">
                         <option value="">Rarity</option>
-                        {% for key, value in rarity_choices.items %}
-                        <option value="{{ key }}" {% if rarity == key %}selected{% endif %}>{{ value }}</option>
+                        {% for r in rarities %}
+                        <option value="{{ r }}" {% if rarity == r %}selected{% endif %}>{{ r }}</option>
                         {% endfor %}
                     </select>
                 </div>

@@ -59,3 +59,15 @@ def unmark_spam(request, chat_id):
         chat.is_spam = False
         chat.save()
     return redirect("accounts:dashboard")
+
+
+@login_required
+def confirm_trade(request, chat_id):
+    """確認交易完成（買家或賣家任一方在對話中確認）"""
+    chat = get_object_or_404(Chat, id=chat_id)
+    if request.user not in [chat.buyer, chat.seller]:
+        return redirect("accounts:dashboard")
+    if request.method == "POST":
+        chat.trade_finished = True
+        chat.save()
+    return redirect("contacts:chat_detail", chat.id)

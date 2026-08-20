@@ -4,7 +4,6 @@ from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from accounts.models import Profile
 from cards.models import Card, Generation
-from cards.choices import category_choices, energy_choices, stage_choices, rarity_choices
 from .models import Tradelist
 from .forms import ListingForm
 from django.db.models import Avg
@@ -110,6 +109,7 @@ def index(request):
     # 下拉選項（distinct）
     conditions = (
         Tradelist.objects.filter(is_sold=False)
+        .exclude(condition='')
         .values_list('condition', flat=True)
         .distinct().order_by('condition')
     )
@@ -192,10 +192,10 @@ def card_listings(request):
         'rarity': rarity,
         'gen': gen,
         'query_string': query_string,
-        'category_choices': category_choices,
-        'energy_choices': energy_choices,
-        'stage_choices': stage_choices,
-        'rarity_choices': rarity_choices,
+        'categories': Card.objects.values_list('category', flat=True).exclude(category='').distinct().order_by('category'),
+        'energies': Card.objects.values_list('energy_type', flat=True).exclude(energy_type='').distinct().order_by('energy_type'),
+        'stages': Card.objects.values_list('stage', flat=True).exclude(stage='').distinct().order_by('stage'),
+        'rarities': Card.objects.values_list('rarity', flat=True).exclude(rarity='').distinct().order_by('rarity'),
         'generations': Generation.objects.all().order_by('name'),
     }
     return render(request, 'listings/card_listings.html', context)

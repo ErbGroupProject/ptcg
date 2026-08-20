@@ -30,13 +30,13 @@
                                 <button class="btn btn-secondary mr-2" disabled>產品已售</button>
                                 <a href="{% url 'contacts:mark_as_spam' chat.id %}" class="btn btn-outline-danger">列為垃圾信息</a>
                             {% elif chat.review_state == "done" %}
-                                <button class="btn btn-secondary" disabled>交易完成</button>
+                                <button class="btn btn-secondary" disabled>已評價</button>
                             {% elif chat.review_state == "waiting_other" %}
                                 <span class="btn btn-secondary">等待對方評價</span>
                             {% elif chat.review_state == "waiting_me" %}
                                 <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-primary">等待評價</a>
                             {% else %}
-                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">交易完成/寫評價</a>
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">寫評價</a>
                             {% endif %}
                         </div>
                     </div>
@@ -63,13 +63,13 @@
                         <div class="d-flex">
                             <a href="{% url 'contacts:chat_detail' chat.id %}" class="btn btn-outline-primary mr-2">進入對話</a>
                             {% if chat.review_state == "done" %}
-                                <button class="btn btn-secondary" disabled>交易完成</button>
+                                <button class="btn btn-secondary" disabled>已評價</button>
                             {% elif chat.review_state == "waiting_other" %}
                                 <span class="btn btn-secondary">等待對方評價</span>
                             {% elif chat.review_state == "waiting_me" %}
                                 <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-primary">等待評價</a>
                             {% else %}
-                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">交易完成/寫評價</a>
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">寫評價</a>
                             {% endif %}
                         </div>
                     </div>
@@ -93,7 +93,18 @@
                             <h5>{{ chat.listing.sell_item_name }}</h5>
                             <p class="mb-0">對方：{% if chat.buyer == user %}{{ chat.seller.username }}{% else %}{{ chat.buyer.username }}{% endif %}</p>
                         </div>
-                        <a href="{% url 'contacts:chat_detail' chat.id %}" class="btn btn-outline-secondary">查看對話</a>
+                        <div class="d-flex">
+                            <a href="{% url 'contacts:chat_detail' chat.id %}" class="btn btn-outline-secondary mr-2">查看對話</a>
+                            {% if chat.review_state == "done" %}
+                                <button class="btn btn-secondary" disabled>已評價</button>
+                            {% elif chat.review_state == "waiting_other" %}
+                                <span class="btn btn-secondary">等待對方評價</span>
+                            {% elif chat.review_state == "waiting_me" %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-primary">等待評價</a>
+                            {% else %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">寫評價</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 {% empty %}<p>暫無完成的交易</p>{% endfor %}
@@ -121,13 +132,13 @@
                                 <button class="btn btn-secondary mr-2" disabled>產品已售</button>
                                 <a href="{% url 'contacts:mark_as_spam' chat.id %}" class="btn btn-outline-danger">列為垃圾信息</a>
                             {% elif chat.review_state == "done" %}
-                                <button class="btn btn-secondary" disabled>交易完成</button>
+                                <button class="btn btn-secondary" disabled>已評價</button>
                             {% elif chat.review_state == "waiting_other" %}
                                 <span class="btn btn-secondary">等待對方評價</span>
                             {% elif chat.review_state == "waiting_me" %}
                                 <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-primary">等待評價</a>
                             {% else %}
-                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">交易完成/寫評價</a>
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">寫評價</a>
                             {% endif %}
                         </div>
                     </div>

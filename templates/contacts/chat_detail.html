@@ -10,6 +10,18 @@
             </h5>
             <a href="{% url 'listings:detail' chat.listing.id %}" class="text-muted small">查看商品</a>
         </div>
+        <div class="px-3 py-2 bg-light border-bottom d-flex justify-content-between align-items-center">
+            {% if chat.trade_finished %}
+            <span class="badge badge-success">已交易完成</span>
+            <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-sm btn-outline-primary">寫評價</a>
+            {% else %}
+            <span class="badge badge-warning text-dark">交易進行中</span>
+            <form method="post" action="{% url 'contacts:confirm_trade' chat.id %}" class="d-inline m-0">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-success">確認交易完成</button>
+            </form>
+            {% endif %}
+        </div>
         <div class="card-body" style="height: 420px; overflow-y: auto;">
             {% for message in message_list %}
                 {% if message.sender == request.user %}
