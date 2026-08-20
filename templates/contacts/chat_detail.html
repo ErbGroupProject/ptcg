@@ -43,7 +43,6 @@
                 <p class="text-muted text-center">還沒有訊息，快來打第一句招呼吧。</p>
             {% endfor %}
         </div>
-<<<<<<< HEAD
         <div class="card-footer">
             <form method="post" class="d-flex">
                 {% csrf_token %}
@@ -52,24 +51,5 @@
             </form>
         </div>
     </div>
-=======
-    </div>
-
-    <form method="post" class="mb-3">
-        {% csrf_token %}
-        <div class="input-group align-items-end">
-            <textarea name="message" class="form-control" placeholder="輸入訊息..." rows="4" required></textarea>
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-primary ml-4">送出</button>
-            </div>
-        </div>
-    </form>
-
-    {% if not chat.trade_finished %}
-    <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-warning mb-4">完成交易 & 評價</a>
-    {% else %}
-    <p class="text-success mb-4">此交易已完成。</p>
-    {% endif %}
->>>>>>> tuv
 </div>
 {% endblock %}

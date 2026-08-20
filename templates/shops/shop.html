@@ -6,8 +6,12 @@
     <div class="container">
         <br/>
         <div class="row">
-            <div class col-1>
-                <img src={{slist.shop_logo.url}} alt="" class="card-img-top">
+            <div class="col-1">
+                {% if slist.shop_logo %}
+                <img src="{{ slist.shop_logo.url }}" alt="" class="card-img-top">
+                {% else %}
+                <img src="https://picsum.photos/id/12/200/200" alt="" class="card-img-top">
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -23,28 +27,28 @@
             <h6>Phone:{{slist.phone_number}}</h6>
             {% endif %}
             {% if slist.monday %}
-            <h6>{{shop_list.time.mon}}</h6>
+            <h6>{{slist.monday}}</h6>
             {% endif %}
             {% if slist.tuesday %}
-            <h6>{{shop_list.time.tue}}</h6>
+            <h6>{{slist.tuesday}}</h6>
             {% endif %}
             {% if slist.wednesday %}
-            <h6>{{shop_list.time.wed}}</h6>
+            <h6>{{slist.wednesday}}</h6>
             {% endif %}
             {% if slist.thursday %}
-            <h6>{{shop_list.time.thur}}</h6>
+            <h6>{{slist.thursday}}</h6>
             {% endif %}
             {% if slist.friday %}
-            <h6>{{shop_list.time.fri}}</h6>
+            <h6>{{slist.friday}}</h6>
             {% endif %}
             {% if slist.saturday %}
-            <h6>{{shop_list.time.sat}}</h6>
+            <h6>{{slist.saturday}}</h6>
             {% endif %}
             {% if slist.sunday %}
-            <h6>{{shop_list.time.sun}}</h6>
+            <h6>{{slist.sunday}}</h6>
             {% endif %}
             {% if slist.card_identification %}
-            <h6>{{slists.card_identification}}</h6>
+            <h6>提供卡片鑑定服務</h6>
             {% endif %}
         </div>
         <br/>

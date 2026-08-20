@@ -15,19 +15,11 @@
                 <li class="nav-item mr-3 {% if request.path == '/listings/' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'listings:index' %}">Market</a>
                 </li>
-<<<<<<< HEAD
                 <li class="nav-item mr-3 {% if request.path == '/listings/cards/' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'listings:card_listings' %}">Card</a>
                 </li>
                 <li class="nav-item mr-3 {% if '/shops/' in request.path %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'shops:search_shops' %}">Search shops</a>
-=======
-                <li class="nav-item mr-3">
-                <a class="nav-link" href="{% url 'cards:card_lists' %}">Card</a>
-                </li>
-                <li class="nav-item mr-3">
                     <a class="nav-link" href="{% url 'shops:shop_list' %}">Search shops</a>
->>>>>>> tuv
                 </li>
             </ul>
 
@@ -69,9 +61,6 @@
     </div>
 </nav>
 
-
-</nav>
-
 <div class="container">
     <nav aria-label="breadcrumb" class="mt-2">
         <ol class="breadcrumb mb-0">
@@ -101,7 +90,10 @@
                     <li class="breadcrumb-item active">Login</li>
                 {% elif request.path == '/shops/search_shops/' %}
                     <li class="breadcrumb-item active">Search shops</li>
-                {% elif request.path == '/shops/shop' %}
+                {% elif request.path == '/shops/shop_list/' %}
+                    <li class="breadcrumb-item active">Shops</li>
+                {% elif '/shops/shop/' in request.path %}
+                    <li class="breadcrumb-item"><a href="{% url 'shops:shop_list' %}">Shops</a></li>
                     <li class="breadcrumb-item active">Shop</li>
                 {% elif '/listings/' in request.path %}
                     <li class="breadcrumb-item"><a href="{% url 'listings:index' %}">Market</a></li>

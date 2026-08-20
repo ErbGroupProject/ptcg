@@ -1,68 +1,86 @@
 {% extends "base.html" %}
 {% load static %}
-{% block content %} 
+{% block content %}
 
-<!-- Showcase -->
-    <div class="container text-center">
+<!-- Showcase / 搜尋表單 -->
+<div class="container text-center">
     <div class="home-search p-2">
         <div class="search">
-            {% comment %} <form action={% url 'listings:search' %}> {% endcomment %}
-            <div class="form-row">
-                <div class="col mb-2">
-                    <label class="sr-only">Keywords</label>
-                    <input type="text" name="keywords" class="form-control" placeholder="Search shop name" value="{{values.keywords}}">
-                </div>
-                <div class="col mb-2">
-                    <label class="sr-only">District</label>
-                    <select name="district" class="form-control">
-                        <option {% if not values.district %} selected="true" {% endif %} value="">District (All)</option>
-                        {% for key,value in district_choices.items %}
-                        <option value="{{key}}" {% if values.district == key %} selected="true"{% endif %}>{{value}}</option>
-                        {% endfor %}
-                </select>
-                </div>
-                <div class="col-12">
-                    <button class="btn btn-primary btn-block" type="submit">Search Pokemon TCG shops</button>
+            <form action="{% url 'shops:search_shops' %}">
+                <div class="form-row">
+                    <div class="col mb-2">
+                        <label class="sr-only">Keywords</label>
+                        <input type="text" name="keywords" class="form-control" placeholder="Search shop name" value="{{ values.keywords }}">
+                    </div>
+                    <div class="col mb-2">
+                        <label class="sr-only">District</label>
+                        <select name="district" class="form-control">
+                            <option value="" {% if not values.district %}selected{% endif %}>District (All)</option>
+                            {% for key, value in district_choices.items %}
+                            <option value="{{ key }}" {% if values.district == key %}selected{% endif %}>{{ value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary btn-block" type="submit">Search Pokemon TCG shops</button>
+                    </div>
                 </div>
             </form>
-            </div>
         </div>
     </div>
-    </div>
+</div>
+
+<!-- 搜尋結果列表 -->
 <section>
     <div class="container">
-        <div class="row">
-            <div class col-1>
-                <img src="https://picsum.photos/id/12/50/50" alt="" class="card-img-top">
-                <!-- <img src={{shop_lists.logo}} alt="" class="card-img-top">
-                -->
-            </div>
-        </div>
-        <div class="row">
-            <div>
-                <h3>shop_name</h3>
-            <!-- shop_address -->
-                <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> shop_address</h6>
-            <a href={% url "shops:shop" %} target="_blank">details:{{shop_lists.webpage}}</a>
-            <h6>{{shop_list.phone_number}}</h6>
-            <!--<h6>{{shop_list.time.mon}}</h6>
-            <h6>{{shop_list.time.tue}}</h6>
-            <h6>{{shop_list.time.wed}}</h6>
-            <h6>{{shop_list.time.thur}}</h6>
-            <h6>{{shop_list.time.fri}}</h6>
-            <h6>{{shop_list.time.sat}}</h6>
-            <h6>{{shop_list.time.sun}}</h6>
-            <h6>{{shop_lists.identification}}</h6>
-            -->
-            </div>
-        </div>
-        <br/>
-            {% comment %} {% endfor %}
-            {% else %} {% endcomment %}
-                <div class="col-md-12">
-                    <h3>No shop on the list !</h3>
+        {% if shoplist %}
+            {% for slist in shoplist %}
+            <div class="row mb-3">
+                <div class="col-3">
+                    <a href="{% url 'shops:shop' slist.id %}">
+                        {% if slist.shop_logo %}
+                        <img src="{{ slist.shop_logo.url }}" alt="" class="card-img-top">
+                        {% else %}
+                        <img src="https://picsum.photos/id/12/200/200" alt="" class="card-img-top">
+                        {% endif %}
+                    </a>
                 </div>
-        {% comment %} {% endif %}     {% endcomment %}
+                <div class="col">
+                    <h3>{{ slist.shopname }}</h3>
+                    <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> {{ slist.address }}</h6>
+                    {% if slist.website %}
+                    <span>Website:</span>
+                    <a href="{{ slist.website }}" target="_blank">{{ slist.website }}</a>
+                    {% endif %}
+                    {% if slist.phone_number %}
+                    <h6>Phone: {{ slist.phone_number }}</h6>
+                    {% endif %}
+                    {% if slist.card_identification %}
+                    <h6>提供卡片鑑定服務</h6>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- 分頁 -->
+            {% if shoplist.has_other_pages %}
+            <nav>
+                <ul class="pagination">
+                    {% if shoplist.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?keywords={{ values.keywords }}&district={{ values.district }}&page={{ shoplist.previous_page_number }}">上一頁</a></li>
+                    {% endif %}
+                    <li class="page-item disabled"><span class="page-link">{{ shoplist.number }} / {{ shoplist.paginator.num_pages }}</span></li>
+                    {% if shoplist.has_next %}
+                    <li class="page-item"><a class="page-link" href="?keywords={{ values.keywords }}&district={{ values.district }}&page={{ shoplist.next_page_number }}">下一頁</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        {% else %}
+            <div class="col-md-12">
+                <h3>No shop on the list !</h3>
+            </div>
+        {% endif %}
     </div>
 </section>
 {% endblock %}
