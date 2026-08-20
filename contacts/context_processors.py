@@ -7,6 +7,7 @@ def unread_messages(request):
         return {'unread_count': 0}
     count = Message.objects.filter(
         Q(chat__buyer=request.user) | Q(chat__seller=request.user),
+        chat__is_spam=False,
         is_read=False,
     ).exclude(sender=request.user).count()
     return {'unread_count': count}

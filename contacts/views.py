@@ -49,6 +49,8 @@ def mark_as_spam(request, chat_id):
     if request.user == chat.buyer:
         chat.is_spam = True
         chat.save()
+        # 把該對話的未讀訊息一併標記已讀，避免導航欄未讀數字殘留
+        Message.objects.filter(chat=chat, is_read=False).update(is_read=True)
     return redirect("accounts:dashboard")
 
 
