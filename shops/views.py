@@ -3,20 +3,13 @@ from django.core.paginator import Paginator
 from .models import Shoplist
 from django.db.models import Q
 
-#def shop(request,listing_id):
-    #listing = get_object_or_404(Listing, pk=listing_id)
-    #context = {
-    #    "listing":listing,
-    #}
-    #return render(request, "shops/shop.html",context)
-def shop(request):
-    return render(request, "shops/shop.html")
+def shop(request,slist_id):
+    slist = get_object_or_404(Shoplist, pk=slist_id)
+    context = {"slist":slist}
+    return render(request, "shops/shop.html",context)
 
 def search_shops(request):
-    return render(request, "shops/search_shops.html")
-
-#def search_shops(request):
-    queryset_list = Shoplist.objects.all
+    queryset_list = Shoplist.objects.all()
 
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
@@ -27,7 +20,7 @@ def search_shops(request):
             if district:
                 queryset_list = queryset_list.filter(Q(district__iexact=district))
     paginator = Paginator(queryset_list, 25)
-    page_number = request.GET.get('page)')
+    page_number = request.GET.get('page')
     paged_listings = paginator.get_page(page_number)
     get_params = request.GET.copy()
     get_params.pop('page',None)
@@ -38,4 +31,12 @@ def search_shops(request):
     }
 
     return render(request, "shops/search_shops.html",context)
+
+def shop_list(request):
+    shoplist = Shoplist.objects.all()
+    paginator = Paginator(shoplist, 25)
+    page_number = request.GET.get('page')
+    paged_listings = paginator.get_page(page_number)
+    context = {"shoplist" : paged_listings,}
+    return render(request,"shops/shop_list.html",context)
 

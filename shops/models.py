@@ -1,9 +1,10 @@
 from django.db import models
+from .choices import district_choices
 
 class Shoplist(models.Model):
     shopname = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
-    #district = models.CharField(max_length=50, choices=district_choices.items(),default="")
+    district = models.CharField(max_length=50, choices=district_choices.items(),default="")
     website = models.TextField(blank=True)
     monday = models.CharField(max_length=20,blank=True)
     tuesday = models.CharField(max_length=20,blank=True)

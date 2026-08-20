@@ -7,28 +7,45 @@
         <br/>
         <div class="row">
             <div class col-1>
-                <img src="https://picsum.photos/id/12/200/200" alt="" class="card-img-top">
-                <!-- <img src={{shop_lists.logo}} alt="" class="card-img-top">
-                -->
+                <img src={{slist.shop_logo.url}} alt="" class="card-img-top">
             </div>
         </div>
         <div class="row">
             <div>
-                <h3>shop_name</h3>
+                <h3>{{slist.shopname}}</h3>
             <!-- shop_address -->
-                <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> shop_address</h6>
-            <a href="{{shop_lists.webpage}}" target="_blank">{{shop_lists.webpage}}</a>
-            <h6>phone number: {{shop_list.phone_number}}</h6>
-            <h6>Time:</h6>
-            <h6>Mon :{{shop_list.time.mon}}</h6>
-            <h6>Tue :{{shop_list.time.tue}}</h6>
-            <h6>Wed :{{shop_list.time.wed}}</h6>
-            <h6>Thur:{{shop_list.time.thur}}</h6>
-            <h6>Fri :{{shop_list.time.fri}}</h6>
-            <h6>Sat :{{shop_list.time.sat}}</h6>
-            <h6>Sun :{{shop_list.time.sun}}</h6>
-            <h6>Card Identification:{{shop_lists.identification}}</h6>
-            </div>
+                <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> {{slist.address}}</h6>
+            {% if slist.website %}
+            <span>Website:</span>
+            <a href="{{ slist.website }}" target="_blank">{{slist.website}}</a>
+            {% endif %}
+            {% if slist.phone_number %}
+            <h6>Phone:{{slist.phone_number}}</h6>
+            {% endif %}
+            {% if slist.monday %}
+            <h6>{{shop_list.time.mon}}</h6>
+            {% endif %}
+            {% if slist.tuesday %}
+            <h6>{{shop_list.time.tue}}</h6>
+            {% endif %}
+            {% if slist.wednesday %}
+            <h6>{{shop_list.time.wed}}</h6>
+            {% endif %}
+            {% if slist.thursday %}
+            <h6>{{shop_list.time.thur}}</h6>
+            {% endif %}
+            {% if slist.friday %}
+            <h6>{{shop_list.time.fri}}</h6>
+            {% endif %}
+            {% if slist.saturday %}
+            <h6>{{shop_list.time.sat}}</h6>
+            {% endif %}
+            {% if slist.sunday %}
+            <h6>{{shop_list.time.sun}}</h6>
+            {% endif %}
+            {% if slist.card_identification %}
+            <h6>{{slists.card_identification}}</h6>
+            {% endif %}
         </div>
         <br/>
     </div>
