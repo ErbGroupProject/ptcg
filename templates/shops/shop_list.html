@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %} 
+
+<!-- Showcase -->
+    <div class="container text-center">
+    <div class="home-search p-2">
+        <div class="search">
+            <form action={% url 'shops:search_shops' %}>
+            <div class="form-row">
+                <div class="col mb-2">
+                    <label class="sr-only">Keywords</label>
+                    <input type="text" name="keywords" class="form-control" placeholder="Search shop name" value="{{values.keywords}}">
+                </div>
+                <div class="col mb-2">
+                    <label class="sr-only">District</label>
+                    <select name="district" class="form-control">
+                        <option {% if not values.district %} selected="true" {% endif %} value="">District (All)</option>
+                        {% for key,value in district_choices.items %}
+                        <option value="{{key}}" {% if values.district == key %} selected="true"{% endif %}>{{value}}</option>
+                        {% endfor %}
+                </select>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary btn-block" type="submit">Search Pokemon TCG shops</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    </div>
+<section>
+    <div class="container">
+        {% if shoplist %}
+            {% for slist in shoplist %}
+        <div class="row">
+            <div class="col-3">
+                {% comment %} url is refer to urls.py, slist.id is refer to slist(number) {% endcomment %}
+                <a href={% url "shops:shop" slist.id %}>
+                <img src={{slist.shop_logo.url}} alt="" class="card-img-top">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <h3>{{slist.shopname}}</h3>
+            <!-- shop_address -->
+                <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> {{slist.address}}</h6>
+            {% if slist.website %}
+            <span>Website:</span>
+            <a href="{{ slist.website }}" target="_blank">{{slist.website}}</a>
+            {% endif %}
+            {% if slist.phone_number %}
+            <h6>Phone:{{slist.phone_number}}</h6>
+            {% endif %}
+            {% if slist.monday %}
+            <h6>{{shop_list.time.mon}}</h6>
+            {% endif %}
+            {% if slist.tuesday %}
+            <h6>{{shop_list.time.tue}}</h6>
+            {% endif %}
+            {% if slist.wednesday %}
+            <h6>{{shop_list.time.wed}}</h6>
+            {% endif %}
+            {% if slist.thursday %}
+            <h6>{{shop_list.time.thur}}</h6>
+            {% endif %}
+            {% if slist.friday %}
+            <h6>{{shop_list.time.fri}}</h6>
+            {% endif %}
+            {% if slist.saturday %}
+            <h6>{{shop_list.time.sat}}</h6>
+            {% endif %}
+            {% if slist.sunday %}
+            <h6>{{shop_list.time.sun}}</h6>
+            {% endif %}
+            {% if slist.card_identification %}
+            <h6>{{slists.card_identification}}</h6>
+            {% endif %}
+            </div>
+        </div>
+        <br/>
+            {% endfor %}
+            {% else %}
+                <div class="col-md-12">
+                    <h3>No shop on the list !</h3>
+                </div>
+        {% endif %}    
+    </div>
+</section>
+{% endblock %}

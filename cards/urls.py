@@ -3,6 +3,6 @@ from . import views
 
 app_name = "cards"
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.card_lists, name="card_lists"),
 
 ]
