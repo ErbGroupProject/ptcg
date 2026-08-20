@@ -125,96 +125,9 @@
         </div>
     </div>
     
-    {% comment %} decks {% endcomment %}
-<div class="container mt-4">
-
-    <!-- Deck box -->
-    <div class="border p-4 mb-4">
-
-        <!-- Deck selector -->
-        <div class="mb-4">
-
-            <label for="deckSelect" class="form-label">
-                Deck
-            </label>
-
-            <select id="deckSelect"
-                    class="form-select"
-                    onchange="switchDeck(this.value)">
-
-                {% for deck in decks %}
-                    <option value="{{ deck.id }}">
-                        {{ deck.name }}
-                    </option>
-                {% endfor %}
-
-            </select>
-
-        </div>
-
-
-        <!-- Deck cards -->
-        <div class="row">
-            {% for deck_card in deck_cards %}
-                {% for i in "1234" %}
-                    {% if forloop.counter <= deck_card.quantity %}
-                        <div class="deck-card"
-                             data-deck="{{ deck_card.deck.id }}"
-                             style="flex: 0 0 10%; max-width: 10%;">
-                            <img src="{{ deck_card.card.photo_main.url }}"
-                                 class="img-fluid"
-                                 alt="">
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            {% endfor %}
-        </div>
-    </div>
-</div>
-
-
-<script>
-    function switchDeck(deckId) {
-
-        const cards = document.querySelectorAll(".deck-card");
-
-        cards.forEach(function(card) {
-
-            if (card.dataset.deck === deckId) {
-                card.style.display = "";
-            } else {
-                card.style.display = "none";
-            }
-
-        });
-    }
-
-    // Show the first deck when the page loads
-    document.addEventListener("DOMContentLoaded", function() {
-
-        const select = document.getElementById("deckSelect");
-
-        if (select.value) {
-            switchDeck(select.value);
-        }
-
-    });
-</script>
-
     <!-- ========== 底部一排正方形按鈕（置中） ========== -->
     <div class="row">
         <div class="col-10 d-flex justify-content-end">
-            <a href="#"
-                class="btn btn-outline-secondary d-inline-flex align-items-center justify-content-center m-4"
-                style="width:100px;height:30px; border-radius: 30px; color: #f8f8f8; border-width:0px;background: #1e73f3; font-size:1rem;">
-                Message
-            </a>
-            <a href="#"
-                class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-4 custom-square-btn"
-                style="width:100px;height:30px; border-radius: 30px; color: #f8f8f8; border-width:0px;background: #1e73f3; font-size:1rem;">
-                Deck
-            </a>
-
             <a href="{% url 'listings:my_listings' %}"
                 class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-4"
                 style="width:100px;height:30px; border-radius: 30px; color: #f8f8f8; border-width:0px;background: #1e73f3; font-size:1rem;">
