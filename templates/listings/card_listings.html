@@ -46,15 +46,15 @@
                         {% endfor %}
                     </select>
                 </div>
-                <div class="col-12 col-md-3 mb-2 d-flex">
+                <div class="col-12 col-md-3 mb-2 d-flex align-items-center">
                     <select name="gen" class="form-control" onchange="this.form.submit()">
                         <option value="">Generation</option>
                         {% for g in generations %}
                         <option value="{{ g.id }}" {% if gen == g.id|stringformat:"s" %}selected{% endif %}>{{ g.name }}</option>
                         {% endfor %}
                     </select>
-                    <button type="submit" class="btn btn-primary ml-2">搜尋</button>
-                    <a href="{% url 'listings:card_listings' %}" class="btn btn-outline-secondary ml-1">清除</a>
+                    <button type="submit" class="btn btn-primary btn-sm ml-2">搜尋</button>
+                    <a href="{% url 'listings:card_listings' %}" class="btn btn-outline-secondary btn-sm ml-1">清除</a>
                 </div>
             </div>
         </form>
@@ -62,33 +62,72 @@
         <p class="text-muted">共 {{ page_obj.paginator.count }} 張卡牌</p>
 
         <div class="row">
-            {% for card in page_obj %}
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                <a href="{% url 'listings:card_detail' card.id %}" class="text-decoration-none text-dark">
-                    <div class="card h-100">
-                        {% if card.photo_main %}
-                        <img src="{{ card.photo_main.url }}" class="card-img-top" alt="{{ card.title }}">
-                        {% else %}
-                        <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
-                        {% endif %}
-                        <div class="card-body">
-                            <h6 class="card-title mb-1">{{ card.title }}</h6>
-                            <p class="text-muted small mb-1">{{ card.card_number_display }}</p>
-                            <div>
-                                {% if card.category %}<span class="badge badge-secondary">{{ card.category }}</span>{% endif %}
-                                {% if card.rarity %}<span class="badge badge-info">{{ card.rarity }}</span>{% endif %}
-                                {% if card.hp %}<span class="badge badge-danger">HP {{ card.hp }}</span>{% endif %}
+            <!-- 左：卡片列表 -->
+            <div class="col-md-9">
+                <div class="row">
+                    {% for card in page_obj %}
+                    <div class="col-sm-6 col-md-4 mb-4">
+                        <a href="{% url 'listings:card_detail' card.id %}" class="text-decoration-none text-dark">
+                            <div class="card h-100">
+                                {% if card.photo_main %}
+                                <img src="{{ card.photo_main.url }}" class="card-img-top" alt="{{ card.title }}">
+                                {% else %}
+                                <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h6 class="card-title mb-1">{{ card.title }}</h6>
+                                    <p class="text-muted small mb-1">{{ card.card_number_display }}</p>
+                                    <div>
+                                        {% if card.category %}<span class="badge badge-secondary">{{ card.category }}</span>{% endif %}
+                                        {% if card.rarity %}<span class="badge badge-info">{{ card.rarity }}</span>{% endif %}
+                                        {% if card.hp %}<span class="badge badge-danger">HP {{ card.hp }}</span>{% endif %}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-            {% empty %}
-            <div class="col-12"><p class="text-muted">目前沒有符合條件的卡牌。</p></div>
-            {% endfor %}
-        </div>
+                    {% empty %}
+                    <div class="col-12"><p class="text-muted">目前沒有符合條件的卡牌。</p></div>
+                    {% endfor %}
+                </div>
 
-        {% include 'listings/_pagination.html' with page_obj=page_obj query_string=query_string %}
+                {% include 'listings/_pagination.html' with page_obj=page_obj query_string=query_string %}
+            </div>
+
+            <!-- 右：我的牌組 Deck（會員專屬） -->
+            <div class="col-md-3">
+                {% if user.is_authenticated %}
+                <div class="card mb-4">
+                    <div class="card-header font-weight-bold">我的牌組</div>
+                    <div class="card-body">
+                        {% for deck in decks %}
+                        <div class="mb-2">
+                            <span class="font-weight-bold d-block mb-1">{{ deck.name }}</span>
+                            <form method="post" action="{% url 'decks:rename_deck' deck.id %}" class="form-inline m-0">
+                                {% csrf_token %}
+                                <input type="text" name="name" value="{{ deck.name }}" class="form-control form-control-sm mr-1" style="width:110px;" />
+                                <button type="submit" class="btn btn-sm btn-outline-secondary">改名</button>
+                            </form>
+                        </div>
+                        <hr>
+                        {% empty %}
+                        <p class="text-muted">還沒有牌組</p>
+                        {% endfor %}
+
+                        <form method="post" action="{% url 'decks:create_deck' %}">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="text" name="name" class="form-control form-control-sm" placeholder="新牌組名稱（Deck1...）" />
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-sm btn-primary">建立</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </section>
 

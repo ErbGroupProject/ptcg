@@ -34,6 +34,32 @@
                     </tr>
                 </tbody>
             </table>
+
+            {% if user.is_authenticated %}
+            <div class="card mb-3">
+                <div class="card-header">加入牌組</div>
+                <div class="card-body">
+                    {% if my_decks %}
+                    <form method="post" action="{% url 'decks:add_card' card.id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <select name="deck_id" class="form-control">
+                                {% for deck in my_decks %}
+                                <option value="{{ deck.id }}">{{ deck.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">＋加入</button>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="text-muted small mt-2 mb-0">同一張卡最多加入 4 次</p>
+                    {% else %}
+                    <p class="text-muted mb-0">你還沒有牌組，先到<a href="{% url 'listings:card_listings' %}">卡牌列表</a>建立牌組吧！</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 

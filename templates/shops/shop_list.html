@@ -16,9 +16,9 @@
                 <div class="col mb-2">
                     <label class="sr-only">District</label>
                     <select name="district" class="form-control" onchange="this.form.submit()">
-                        <option value="All" {% if not selected_district or selected_district == 'All' %} selected="true" {% endif %}>District (All)</option>
+                        <option value="All" {% if not values.district or values.district == 'All' %} selected="true" {% endif %}>District (All)</option>
                         {% for dist in district_choices %}
-                        <option value="{{ dist }}" {% if selected_district == dist %} selected="true"{% endif %}>{{ dist }}</option>
+                        <option value="{{ dist }}" {% if values.district == dist %} selected="true"{% endif %}>{{ dist }}</option>
                         {% endfor %}
                 </select>
                 </div>

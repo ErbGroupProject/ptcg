@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from accounts.models import Profile
 from cards.models import Card, Generation
+from decks.models import Deck, DeckCard
 from .models import Tradelist
 from .forms import ListingForm
 from django.db.models import Avg
@@ -198,6 +199,13 @@ def card_listings(request):
         'rarities': Card.objects.values_list('rarity', flat=True).exclude(rarity='').distinct().order_by('rarity'),
         'generations': Generation.objects.all().order_by('name'),
     }
+
+    # Deck（會員專屬）：登入才查詢使用者的牌組
+    if request.user.is_authenticated:
+        context['decks'] = Deck.objects.filter(user=request.user)
+    else:
+        context['decks'] = []
+
     return render(request, 'listings/card_listings.html', context)
 
 
@@ -213,7 +221,12 @@ def card_detail(request, card_id):
         ),
         id=card_id,
     )
-    return render(request, 'listings/card_listing.html', {'card': card})
+    context = {'card': card}
+    if request.user.is_authenticated:
+        context['my_decks'] = Deck.objects.filter(user=request.user)
+    else:
+        context['my_decks'] = []
+    return render(request, 'listings/card_listing.html', context)
 
 
 def detail(request, listing_id):
