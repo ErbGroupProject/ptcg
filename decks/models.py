@@ -1,17 +1,6 @@
-from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
-
-quantity = models.PositiveIntegerField(
-    default=1,
-    validators=[
-        MinValueValidator(1),
-        MaxValueValidator(4),
-    ]
-)
-# Create your models here.
-
 from django.conf import settings
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Deck(models.Model):
@@ -23,6 +12,7 @@ class Deck(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class DeckCard(models.Model):
     deck = models.ForeignKey(
