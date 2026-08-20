@@ -9,14 +9,62 @@ from django.db.models import Q
 
 from contacts.models import Chat
 from tradings.models import TradingRecord
+<<<<<<< HEAD
+=======
+from contacts.models import Chat, Message   # Message 記得 import
+from cards.models import Card
+from decks.models import Deck, DeckCard
+
+
+>>>>>>> ki2
 from .forms import ProfileForm
 from .models import Profile
 
 
 
 
+<<<<<<< HEAD
 
 
+=======
+    buying_qs = Chat.objects.filter(
+        buyer=user,
+        trade_finished=False
+    )
+    buying_chats = Paginator(
+        buying_qs, 7
+    ).get_page(request.GET.get("buy_page", 1))
+
+    selling_qs = Chat.objects.filter(
+        seller=user,
+        trade_finished=False
+    )
+    selling_chats = Paginator(
+        selling_qs, 7
+    ).get_page(request.GET.get("sell_page", 1))
+
+    completed_qs = Chat.objects.filter(
+        Q(buyer=user) | Q(seller=user),
+        trade_finished=True
+    )
+    completed_chats = Paginator(
+        completed_qs, 7
+    ).get_page(request.GET.get("done_page", 1))
+
+    decks = Deck.objects.filter(user=request.user)
+    deck_cards = DeckCard.objects.filter(deck__user=request.user).select_related("card")
+
+    print("DECKS:", decks.count())
+    print("DECK CARDS:", deck_cards.count())
+
+    return render(request, "accounts/dashboard.html", {
+        "buying_chats": buying_chats,
+        "selling_chats": selling_chats,
+        "completed_chats": completed_chats,
+        "decks": decks,
+        "deck_cards": deck_cards,
+    })
+>>>>>>> ki2
 
 @login_required
 def profile(request):
@@ -142,10 +190,11 @@ def _review_state(chat, user):
     return "none"
 
 
-@login_required
-def dashboard(request):
-    user = request.user
+# @login_required
+# def dashboard(request):
+#     user = request.user
 
+<<<<<<< HEAD
     all_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), is_spam=False).order_by("-updated_at")
     all_chats = Paginator(all_qs, 7).get_page(request.GET.get("all_page", 1))
 
@@ -177,6 +226,35 @@ def dashboard(request):
         "completed_chats": completed_chats,
         "spam_chats": spam_chats,
     })
+=======
+#     all_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user)).order_by("-updated_at")
+#     all_chats = Paginator(all_qs, 7).get_page(request.GET.get("all_page", 1))
+
+#     buying_qs = Chat.objects.filter(buyer=user, trade_finished=False)
+#     buying_chats = Paginator(buying_qs, 7).get_page(request.GET.get("buy_page", 1))
+
+#     selling_qs = Chat.objects.filter(seller=user, trade_finished=False)
+#     selling_chats = Paginator(selling_qs, 7).get_page(request.GET.get("sell_page", 1))
+
+#     completed_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), trade_finished=True)
+#     completed_chats = Paginator(completed_qs, 7).get_page(request.GET.get("done_page", 1))
+
+#     for chat in all_chats:
+#         chat.review_state = _review_state(chat, user)
+#     for chat in buying_chats:
+#         chat.review_state = _review_state(chat, user)
+#     for chat in selling_chats:
+#         chat.review_state = _review_state(chat, user)
+#     for chat in completed_chats:
+#         chat.review_state = "done"
+
+#     return render(request, "accounts/dashboard.html", {
+#         "all_chats": all_chats,
+#         "buying_chats": buying_chats,
+#         "selling_chats": selling_chats,
+#         "completed_chats": completed_chats,
+#     })
+>>>>>>> ki2
 
 
 

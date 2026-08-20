@@ -4,6 +4,7 @@
 
 <!-- Card Listings -->
 <section>
+<<<<<<< HEAD
     <div class="container mt-4">
 
         <!-- 搜尋 + 篩選（連資料庫） -->
@@ -82,13 +83,278 @@
                         </div>
                     </div>
                 </a>
+=======
+    <div class="row">
+        
+    <div class="container col-9">
+        <hr/>
+        <!-- [search bar, filter button], sort button  -->
+        <div class="row mb-3">
+            <div class="col-2">
+                <label class="sr-only">Keywords</label>
+                <input type="text" name="keywords" class="form-control" placeholder="keyword" />
+            </div>
+            <div class="col-2">
+                <label class="sr-only">Keywords</label>
+                <input type="text" name="keywords" class="form-control" placeholder="keyword" />
+            </div>
+            <!--sort buttons-->
+            <div class="d-flex w-60">
+                <div class="flex-fill dropdown mx-1">
+                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="color:white; border-width:0px; background-color: #5da0df">category</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">another</a>
+                        <a href="#" class="dropdown-item">and another</a>
+                    </div>
+                </div>
+                <div class="flex-fill dropdown mx-1">
+                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="color:white; border-width:0px; background-color: #5da0df">Energy</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">another</a>
+                        <a href="#" class="dropdown-item">and another</a>
+                    </div>
+                </div>
+                <div class="flex-fill dropdown mx-1">
+                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="color:white; border-width:0px; background-color: #5da0df">Stage</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">another</a>
+                        <a href="#" class="dropdown-item">and another</a>
+                    </div>
+                </div>
+                <div class="flex-fill dropdown mx-1">
+                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="color:white; border-width:0px; background-color: #5da0df">Rarity</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">another</a>
+                        <a href="#" class="dropdown-item">and another</a>
+                    </div>
+                </div>
+                <div class="flex-fill dropdown mx-1">
+                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="color:white; border-width:0px; background-color: #5da0df">Gen</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Action</a>
+                        <a href="#" class="dropdown-item">another</a>
+                        <a href="#" class="dropdown-item">and another</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 mb-3 text-right">
+                <button class="btn btn-primary btn-block">filter</button>
+>>>>>>> ki2
             </div>
             {% empty %}
             <div class="col-12"><p class="text-muted">目前沒有符合條件的卡牌。</p></div>
             {% endfor %}
         </div>
+<<<<<<< HEAD
 
         {% include 'listings/_pagination.html' with page_obj=page_obj query_string=query_string %}
+=======
+        
+        <div class="container">
+            {% comment %} card_list_loop {% endcomment %}
+            <div class="row justify-content-center">
+            {% comment %} {% for card in cards_data %} {% endcomment %}
+                
+                <!--card 1-->
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                    {% comment %} <a href="{% url 'listings:detail' listing.id %}" class="text-decoration-none text-dark"> {% endcomment %}
+                        {% comment %} {% if listing.sell_item_main_photo %} {% endcomment %}
+                        <a href="#">
+                        <img src="https://picsum.photos/500/500" class="img-fluid rounded" alt="no_photo">
+                        </a>
+                        {% comment %} {% endif %} {% endcomment %}
+                    </a>
+                </div>
+                {% comment %} {% empty %} {% endcomment %}
+
+                <!--card sample,delete when loop success-->
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <a href="#">
+                        <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
+                        </a>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <a href="#">
+                        <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
+                        </a>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <a href="#">
+                        <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
+                        </a>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <a href="#">
+                        <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
+                        </a>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <a href="#">
+                        <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
+                        </a>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <a href="#">
+                        <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
+                        </a>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                        <a href="#">
+                        <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
+                        </a>
+                    </a>
+                </div>
+                
+            <!--no card msg-->
+            <p class="text-muted">目前沒有卡牌的資料。</p>
+            {% comment %} {% endfor %} {% endcomment %}
+            </div>
+        </div>
+        
+        <!-- listing 2 -->
+            {% comment %} 
+            <div class="card listing-preview" style="font-size:0.8em">
+                <div class="card-body">
+                    category_choices
+                    <div class="row">
+                        <div class="col-lg-3" style="border:1px solid">
+                            stage
+                        </div>
+                        <div class="col-lg-5" style="border:1px solid">
+                            name
+                        </div>
+                        <div class="col-lg-4" style="border:1px solid">
+                            hp
+                            energy type
+                        </div>
+                    </div>
+                </div>
+                <a href="#"><img src="https://picsum.photos/60/50" class="card-img-top" alt="card"></a>             
+                <div class="card-body px-2">
+                    <h5 class="card-title">hello</h5>
+                    <h6 class="card-subtitle">hello</h6>                    
+                    
+                    <div class="row gx-3">
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. fjhdskahfjkh
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    <i class="fa-brands fa-twitch" style="color: rgb(255, 212, 59);"></i>
+                                </div>
+                                
+                                <div class="col-9 text-break">
+                                    Description goes here. 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- special ability -->
+                        <div class="col-md-6 mb-4">
+                            <div class="row no-gutters align-items-start">
+                                <div class="col-3 text-center">
+                                    icon
+                                </div>
+                                <div class="col-9 d-flex flex-wrap">
+                                    <a href="/url/1" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        df
+                                    </a>
+                                    <a href="/url/2" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        1
+                                    </a>
+                                    <a href="/url/3" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        A Longer Name
+                                    </a>
+                                    <a href="/url/4" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        Name Four
+                                    </a>
+                                    <a href="/url/5" class="badge badge-pill badge-primary mr-2 mb-2">
+                                        Name Five
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                 {% endcomment %}
+    </div>
+
+    
+    <!-- user_bookmark -->
+    <div class="my-container d-none d-xl-block bg-secondary col-3" style="position: relative; width:25%; float:right; box-sizing:border-box; padding:15px">
+        <div class="dropdown" style="width:95%; margin:20px 0; text-align:center;">
+            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="color:white; border:none; width: 100%;background-color: #5da0df">Change Decks</button>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Deck 1</a>
+                <a href="#" class="dropdown-item">Deck 2</a>
+                <a href="#" class="dropdown-item">Deck 3</a>
+            </div>
+        </div>
+        {% comment %} <button class="btn m-4 col-10" type="button" style="color:white; border-width:0px; background-color: #5da0df">deck 1</button> {% endcomment %}
+            </br>
+        <div class="card-deck">
+            <div class="card listing-preview col-lg-4 bg-secondary mx-1" style="border:1px">
+                <img src="https://picsum.photos/60/50" class="card-img-top" alt="card"/>
+            </div>
+            <div class="card listing-preview col-lg-4 bg-secondary mx-1" style="border:1px">
+                <img src="https://picsum.photos/60/50" class="card-img-top" alt="card"/>
+            </div>
+            <div class="card listing-preview col-lg-4 bg-secondary mx-1" style="border:1px">
+                <img src="https://picsum.photos/60/50" class="card-img-top" alt="card"/>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center" style="position:absolute; bottom:20px;left: 50%; transform: translateX(-50%);">
+            <button class="btn mx-auto" type="button" style="color:white; border-width:0px; background-color: #5da0df">save deck</button>
+        </div>
+    </div>
+    
+>>>>>>> ki2
     </div>
 </section>
 

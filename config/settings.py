@@ -55,6 +55,7 @@ LOCAL_APPS = [
     "contacts.apps.ContactsConfig",
     "cards.apps.CardsConfig",
     "banners.apps.BannersConfig",
+    "decks.apps.DecksConfig",
 ]
 
 
@@ -113,7 +114,6 @@ DATABASES = {
         "PORT" : '5432',
         }
     }
-
 
 
 # Password validation
