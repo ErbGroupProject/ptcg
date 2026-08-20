@@ -2,16 +2,16 @@
 {% load static %}
 {% block content %} 
 
-<section class="my-4">
+<section id="shop" class="my-4">
     <div class="container">
         <br/>
         <div class="row">
-            <div class="col-12 col-xl-2">
+            <div class="col-12 col-xl-8">
                 <div class="row">
-                <div class="col-sm-6 col-md-5 col-lg-4">
+                <div class="col-sm-6 col-md-5 col-lg-3">
                     <img src={{slist.shop_logo.url}} alt="" class="card-img-top">
                 </div>
-                <div class="col-sm-6 col-md-5 col-lg-4">
+                <div class="col-sm-6 col-md-5 col-lg-6">
                     <h3 class="mt-2">{{slist.shopname}}</h3>
                     <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> {{slist.address}}</h6>
                     {% if slist.website %}
@@ -48,17 +48,17 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-10 d-none d-xl-block" style="box-sizing:border-box">
-            <div style="width: 100%; height: 450px;">
+        <div class="col-xl-4 d-none d-xl-block" style="box-sizing:border-box">
+            <div style="width: 450px; height: 450px;">
                 <iframe 
-                    id="django-google-map"
                     width="100%" 
                     height="100%" 
                     frameborder="0" 
                     scrolling="no" 
                     marginheight="0" 
                     marginwidth="0" 
-                    src="">
+                    src="https://maps.google.com/maps?q={{ slist.latitude }},{{ slist.longitude}}&amp;output=embed&z=18">
+
                 </iframe>
 
             </div>
@@ -66,21 +66,6 @@
     </div>
 </section>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-
-        var rawAddress = "{{ slist.address|escapejs }}"; 
-        
-        var encodedAddress = encodeURIComponent(rawAddress);
-        
-        var finalMapUrl = "https://google.com.hk" + encodedAddress + "&output=embed";
-
-        var mapIframe = document.getElementById("django-google-map");
-        if (mapIframe) {
-            mapIframe.src = finalMapUrl;
-        }
-    });
-</script>
 
 
 {% endblock %}
