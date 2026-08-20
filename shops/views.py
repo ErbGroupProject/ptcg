@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Shoplist
 from django.db.models import Q
+from .choices import district_choices
 import urllib
 
 def shop(request,slist_id):
@@ -14,15 +15,16 @@ def shop(request,slist_id):
 
 def search_shops(request):
     queryset_list = Shoplist.objects.all()
+    distinct_districts = Shoplist.objects.filter(district__isnull=False).exclude(district='').values_list('district', flat=True).distinct().order_by('district')
 
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
         if keywords:
             queryset_list = queryset_list.filter(Q(description__icontains=keywords) | Q(title__icontains=keywords))
-    if 'district' in request.GET:
-            district = request.GET['district']
-            if district:
-                queryset_list = queryset_list.filter(Q(district__iexact=district))
+    selected_district = request.GET.get('district', '')
+    if selected_district and selected_district != 'All':
+        queryset_list = queryset_list.filter(district__iexact=selected_district)
+
     paginator = Paginator(queryset_list, 25)
     page_number = request.GET.get('page')
     paged_listings = paginator.get_page(page_number)
@@ -32,6 +34,7 @@ def search_shops(request):
     context = {
         "listings" : paged_listings,
         "clean_query" : clean_query,
+        "district_choices":district_choices,
     }
 
     return render(request, "shops/search_shops.html",context)
@@ -41,6 +44,8 @@ def shop_list(request):
     paginator = Paginator(shoplist, 25)
     page_number = request.GET.get('page')
     paged_listings = paginator.get_page(page_number)
-    context = {"shoplist" : paged_listings,}
+    context = {"shoplist" : paged_listings,
+        "district_choices":district_choices,
+        }
     return render(request,"shops/shop_list.html",context)
 

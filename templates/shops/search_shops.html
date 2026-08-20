@@ -3,6 +3,7 @@
 {% block content %} 
 
 <!-- Showcase -->
+<section id="shop"></section>
     <div class="container text-center">
     <div class="home-search p-2">
         <div class="search">
@@ -14,11 +15,12 @@
                 </div>
                 <div class="col mb-2">
                     <label class="sr-only">District</label>
-                    <select name="district" class="form-control">
-                        <option {% if not values.district %} selected="true" {% endif %} value="">District (All)</option>
-                        {% for key,value in district_choices.items %}
-                        <option value="{{key}}" {% if values.district == key %} selected="true"{% endif %}>{{value}}</option>
+                    <select name="district" class="form-control" onchange="this.form.submit()">
+                        <option value="All" {% if not selected_district or selected_district == 'All' %} selected="true" {% endif %}>District (All)</option>
+                        {% for dist in district_choices %}
+                        <option value="{{ dist }}" {% if selected_district == dist %} selected="true"{% endif %}>{{ dist }}</option>
                         {% endfor %}
+                </select>
                 </select>
                 </div>
                 <div class="col-12">
@@ -34,15 +36,13 @@
         {% if shoplist %}
             {% for slist in shoplist %}
         <div class="row">
-            <div class="col-3">
+            <div class="col-sm-6 col-md-5 col-lg-3">
                 {% comment %} url is refer to urls.py, slist.id is refer to slist(number) {% endcomment %}
                 <a href={% url "shops:shop" slist.id %}>
                 <img src={{slist.shop_logo.url}} alt="" class="card-img-top">
                 </a>
             </div>
-        </div>
-        <div class="row">
-            <div>
+            <div class="col-sm-6 col-md-5 col-lg-3">
                 <h3>{{slist.shopname}}</h3>
             <!-- shop_address -->
                 <h6 class="text-black"><i class="fas fa-map-marker-alt" style="color:blue"></i> {{slist.address}}</h6>

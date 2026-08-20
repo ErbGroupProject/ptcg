@@ -98,13 +98,17 @@ img {
 }
 
 #shop {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
   background: linear-gradient(rgba(230, 228, 228, 0.842), rgba(0, 0, 0, 0.247)), url('../img/pokemon_gym_logo.png');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 #login .card {
@@ -162,4 +166,14 @@ img {
   .my-container {
     display: block;
   }
+}
+
+#main-footer {
+  width: 100%
+}
+
+.shop-page-wrapper {
+  min-height: calc(100vh -60px);
+  display: block;
+  width: 100%
 }

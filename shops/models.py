@@ -5,7 +5,7 @@ from geopy.geocoders import ArcGIS
 class Shoplist(models.Model):
     shopname = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
-    district = models.CharField(max_length=50, choices=district_choices.items(),default="")
+    district = models.CharField(max_length=50, default='Unknown', verbose_name='分區')
     website = models.TextField(blank=True)
     monday = models.CharField(max_length=20,blank=True)
     tuesday = models.CharField(max_length=20,blank=True)
@@ -22,6 +22,16 @@ class Shoplist(models.Model):
 
     def save(self, *args, **kwargs):
         if self.address:
+            matched = False
+            for key, dist_value in district_choices.items():
+                if key in self.address:
+                    self.district = dist_value
+                    matched = True
+                    print(f'🎯 區域匹配成功！{key} 已自動填入為 {dist_value}')
+                    break
+
+            if not matched:
+                self.district = 'Unknown'
             try:
                 geolocator = ArcGIS()
                 location = geolocator.geocode(query=self.address)
