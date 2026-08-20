@@ -15,12 +15,12 @@
                 </div>
                 <div class="col mb-2">
                     <label class="sr-only">District</label>
-                    <select name="district" class="form-control" onchange="this.form.submit()">
-                        <option value="All" {% if not selected_district or selected_district == 'All' %} selected="true" {% endif %}>District (All)</option>
-                        {% for dist in district_choices %}
-                        <option value="{{ dist }}" {% if selected_district == dist %} selected="true"{% endif %}>{{ dist }}</option>
+                    <select name="district" class="form-control">
+                        <option value="" {% if not selected_district or selected_district == '' %} selected="true" {% endif %}>District (All)</option>
+                        {% for item in district_choices %}
+                        <option value="{{ item.0 }}" {% if selected_district == item.1 %} selected="true"{% endif %}>{{ item.1 }} ({{ item.0 }})</option>
                         {% endfor %}
-                </select>
+                    </select>
                 </div>
                 <div class="col-12">
                     <button class="btn btn-primary btn-block" type="submit">Search Pokemon TCG shops</button>

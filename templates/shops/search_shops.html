@@ -7,7 +7,7 @@
     <div class="container text-center">
     <div class="home-search p-2">
         <div class="search">
-            {% comment %} <form action={% url 'listings:search' %}> {% endcomment %}
+            <form action={% url 'shops:search_shops' %}>
             <div class="form-row">
                 <div class="col mb-2">
                     <label class="sr-only">Keywords</label>
@@ -15,13 +15,13 @@
                 </div>
                 <div class="col mb-2">
                     <label class="sr-only">District</label>
-                    <select name="district" class="form-control" onchange="this.form.submit()">
-                        <option value="All" {% if not selected_district or selected_district == 'All' %} selected="true" {% endif %}>District (All)</option>
-                        {% for dist in district_choices %}
-                        <option value="{{ dist }}" {% if selected_district == dist %} selected="true"{% endif %}>{{ dist }}</option>
+                    <select name="district" class="form-control">
+                        <option value="" {% if not selected_district or selected_district == '' %} selected="true" {% endif %}>District (All)</option>
+                        {% for item in district_choices %}
+                        <option value="{{ forloop.counter0 }}" {% if selected_district == forloop.counter0|stringformat:"s" %} selected="true" {% endif %}>
+                        {{ item.1 }} ({{ item.0 }})</option>
                         {% endfor %}
-                </select>
-                </select>
+                    </select>
                 </div>
                 <div class="col-12">
                     <button class="btn btn-primary btn-block" type="submit">Search Pokemon TCG shops</button>
@@ -33,8 +33,8 @@
     </div>
 <section>
     <div class="container">
-        {% if shoplist %}
-            {% for slist in shoplist %}
+        {% if searched_shoplists %}
+            {% for slist in searched_shoplists %}
         <div class="row">
             <div class="col-sm-6 col-md-5 col-lg-3">
                 {% comment %} url is refer to urls.py, slist.id is refer to slist(number) {% endcomment %}
