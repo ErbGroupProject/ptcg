@@ -3,33 +3,42 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from .models import Shoplist
 from .choices import district_choices
+import urllib
 
 
 def shop(request, slist_id):
     """店鋪詳情"""
     slist = get_object_or_404(Shoplist, pk=slist_id)
-    return render(request, "shops/shop.html", {"slist": slist})
-
+    encoded_address = urllib.parse.quote(slist.address)
+    map_url = f'https://google.com{encoded_address}&output=embed'
+    context = {'slist':slist,
+        'map_url':map_url,}
+    return render(request, "shops/shop.html",context)
 
 def search_shops(request):
     """搜尋店鋪"""
     queryset_list = Shoplist.objects.all()
+    distinct_districts = Shoplist.objects.filter(district__isnull=False).exclude(district='').values_list('district', flat=True).distinct().order_by('district')
 
-    keywords = request.GET.get('keywords', '')
-    district = request.GET.get('district', '')
-
-    if keywords:
-        queryset_list = queryset_list.filter(
-            Q(shopname__icontains=keywords) |
-            Q(address__icontains=keywords) |
-            Q(website__icontains=keywords)
-        )
-    if district:
-        queryset_list = queryset_list.filter(district__iexact=district)
+    if 'keywords' in request.GET:
+        keywords = request.GET['keywords']
+        if keywords:
+            queryset_list = queryset_list.filter(Q(description__icontains=keywords) | Q(title__icontains=keywords))
+    selected_district = request.GET.get('district', '')
+    if selected_district and selected_district != 'All':
+        queryset_list = queryset_list.filter(district__iexact=selected_district)
 
     paginator = Paginator(queryset_list, 25)
     page_number = request.GET.get('page')
     paged_listings = paginator.get_page(page_number)
+    get_params = request.GET.copy()
+    get_params.pop('page',None)
+    clean_query = get_params.urlencode()
+    context = {
+        "listings" : paged_listings,
+        "clean_query" : clean_query,
+        "district_choices":district_choices,
+    }
 
     context = {
         "shoplist": paged_listings,
@@ -58,6 +67,10 @@ def shop_list(request):
     paginator = Paginator(queryset_list, 25)
     page_number = request.GET.get('page')
     paged_listings = paginator.get_page(page_number)
+    context = {"shoplist" : paged_listings,
+        "district_choices":district_choices,
+        }
+    return render(request,"shops/shop_list.html",context)
 
     context = {
         "shoplist": paged_listings,
