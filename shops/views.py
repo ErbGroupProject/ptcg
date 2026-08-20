@@ -2,10 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Shoplist
 from django.db.models import Q
+import urllib
 
 def shop(request,slist_id):
     slist = get_object_or_404(Shoplist, pk=slist_id)
-    context = {"slist":slist}
+    encoded_address = urllib.parse.quote(slist.address)
+    map_url = f'https://google.com{encoded_address}&output=embed'
+    context = {'slist':slist,
+        'map_url':map_url,}
     return render(request, "shops/shop.html",context)
 
 def search_shops(request):
