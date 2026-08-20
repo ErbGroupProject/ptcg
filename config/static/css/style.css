@@ -97,7 +97,7 @@ img {
   background-position: center;
 }
 
-#shop.auth-shell {
+#shop {
   min-height: 100vh;
   display: flex;
   align-items: center;
