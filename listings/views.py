@@ -200,14 +200,41 @@ def card_listings(request):
         'generations': Generation.objects.all().order_by('name'),
     }
 
-    # Deck（會員專屬）：登入才查詢使用者的牌組
+    # Deck
     if request.user.is_authenticated:
-        context['decks'] = Deck.objects.filter(user=request.user)
+        decks = Deck.objects.filter(
+            user=request.user
+        ).order_by("id")
+
+        selected_deck_id = request.session.get(
+            "selected_deck_id"
+        )
+
+        selected_deck = decks.filter(
+            id=selected_deck_id
+        ).first()
+
+        if selected_deck is None:
+            selected_deck = decks.first()
+
+        if selected_deck:
+            request.session["selected_deck_id"] = selected_deck.id
+
+        context["decks"] = decks
+        context["selected_deck"] = selected_deck
+        
     else:
-        context['decks'] = []
+        context["decks"] = []
+        context["selected_deck"] = None
+        context["available_cards"] = []
 
-    return render(request, 'listings/card_listings.html', context)
 
+    # THIS MUST BE AT THE END OF card_listings()
+    return render(
+        request,
+        "listings/card_listings.html",
+        context
+    )
 
 def card_detail(request, card_id):
     """卡片詳情"""

@@ -1,56 +1,95 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
-<!-- Card Listings -->
 <section>
     <div class="container mt-4">
-
-        <!-- 搜尋 + 篩選（連資料庫） -->
+        <!-- ================================================= -->
+        <!-- SEARCH + FILTER -->
+        <!-- ================================================= -->
         <form method="get" class="mb-3">
             <div class="row align-items-end">
                 <div class="col-12 col-md-3 mb-2">
-                    <label class="sr-only">Keywords</label>
-                    <input type="text" name="q" value="{{ q }}" class="form-control"
+                    <label class="sr-only">
+                        Keywords
+                    </label>
+                    <input type="text"
+                           name="q"
+                           value="{{ q }}"
+                           class="form-control"
                            placeholder="搜尋卡牌名稱..." />
                 </div>
                 <div class="col-6 col-md-2 mb-2">
-                    <select name="category" class="form-control" onchange="this.form.submit()">
-                        <option value="">Category</option>
+                    <select name="category"
+                            class="form-control"
+                            onchange="this.form.submit()">
+                        <option value="">
+                            Category
+                        </option>
                         {% for c in categories %}
-                        <option value="{{ c }}" {% if category == c %}selected{% endif %}>{{ c }}</option>
+                            <option value="{{ c }}"
+                                    {% if category == c %}selected{% endif %}>
+                                {{ c }}
+                            </option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-6 col-md-2 mb-2">
-                    <select name="energy" class="form-control" onchange="this.form.submit()">
-                        <option value="">Energy</option>
+                    <select name="energy"
+                            class="form-control"
+                            onchange="this.form.submit()">
+                        <option value="">
+                            Energy
+                        </option>
                         {% for e in energies %}
-                        <option value="{{ e }}" {% if energy == e %}selected{% endif %}>{{ e }}</option>
+                            <option value="{{ e }}"
+                                    {% if energy == e %}selected{% endif %}>
+                                {{ e }}
+                            </option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-6 col-md-2 mb-2">
-                    <select name="stage" class="form-control" onchange="this.form.submit()">
-                        <option value="">Stage</option>
+                    <select name="stage"
+                            class="form-control"
+                            onchange="this.form.submit()">
+                        <option value="">
+                            Stage
+                        </option>
                         {% for s in stages %}
-                        <option value="{{ s }}" {% if stage == s %}selected{% endif %}>{{ s }}</option>
+                            <option value="{{ s }}"
+                                    {% if stage == s %}selected{% endif %}>
+                                {{ s }}
+                            </option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-6 col-md-2 mb-2">
-                    <select name="rarity" class="form-control" onchange="this.form.submit()">
-                        <option value="">Rarity</option>
+                    <select name="rarity"
+                            class="form-control"
+                            onchange="this.form.submit()">
+                        <option value="">
+                            Rarity
+                        </option>
                         {% for r in rarities %}
-                        <option value="{{ r }}" {% if rarity == r %}selected{% endif %}>{{ r }}</option>
+                            <option value="{{ r }}"
+                                    {% if rarity == r %}selected{% endif %}>
+                                {{ r }}
+                            </option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-12 col-md-3 mb-2 d-flex align-items-center">
-                    <select name="gen" class="form-control" onchange="this.form.submit()">
-                        <option value="">Generation</option>
+                    <select name="gen"
+                            class="form-control"
+                            onchange="this.form.submit()">
+                        <option value="">
+                            Generation
+                        </option>
                         {% for g in generations %}
-                        <option value="{{ g.id }}" {% if gen == g.id|stringformat:"s" %}selected{% endif %}>{{ g.name }}</option>
+                            <option value="{{ g.id }}"
+                                    {% if gen == g.id|stringformat:"s" %}selected{% endif %}>
+                                {{ g.name }}
+                            </option>
                         {% endfor %}
                     </select>
                     <button type="submit" class="btn btn-primary ml-2" style="height:38px; display:inline-flex; align-items:center;">Go</button>
@@ -58,77 +97,323 @@
                 </div>
             </div>
         </form>
-
-        <p class="text-muted">共 {{ page_obj.paginator.count }} 張卡牌</p>
-
+        <p class="text-muted">
+            共 {{ page_obj.paginator.count }} 張卡牌
+        </p>
+        <!-- ================================================= -->
+        <!-- MAIN TWO-COLUMN AREA -->
+        <!-- ================================================= -->
         <div class="row">
-            <!-- 左：卡片列表 -->
+            <!-- ================================================= -->
+            <!-- LEFT: ALL CARDS -->
+            <!-- ================================================= -->
             <div class="col-md-9">
-                <div class="row">
-                    {% for card in page_obj %}
-                    <div class="col-sm-6 col-md-4 mb-4">
-                        <a href="{% url 'listings:card_detail' card.id %}" class="text-decoration-none text-dark">
-                            <div class="card h-100">
-                                {% if card.photo_main %}
-                                <img src="{{ card.photo_main.url }}" class="card-img-top" alt="{{ card.title }}">
-                                {% else %}
-                                <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
-                                {% endif %}
-                                <div class="card-body">
-                                    <h6 class="card-title mb-1">{{ card.title }}</h6>
-                                    <p class="text-muted small mb-1">{{ card.card_number_display }}</p>
-                                    <div>
-                                        {% if card.category %}<span class="badge badge-secondary">{{ card.category }}</span>{% endif %}
-                                        {% if card.rarity %}<span class="badge badge-info">{{ card.rarity }}</span>{% endif %}
-                                        {% if card.hp %}<span class="badge badge-danger">HP {{ card.hp }}</span>{% endif %}
+                {% if user.is_authenticated and selected_deck %}
+                    <form method="post"
+                          action="{% url 'decks:modify_cards' %}">
+                        {% csrf_token %}
+                        <input type="hidden"
+                               name="deck_id"
+                               value="{{ selected_deck.id }}">
+                        <input type="hidden"
+                               name="action"
+                               value="add">
+                        <!-- Add selected cards -->
+                        <button type="submit"
+                                class="btn btn-primary mb-3">
+                            Add Selected Cards
+                        </button>
+                        <!-- Selectable cards -->
+                        <div class="btn-group-toggle"
+                             data-toggle="buttons">
+                            <div class="row">
+                                {% for card in page_obj %}
+                                    <div class="col-sm-6 col-md-4 mb-4">
+                                        <label class="btn
+                                                    btn-light
+                                                    btn-block
+                                                    p-1
+                                                    border-0
+                                                    shadow-none">
+                                            <input type="checkbox"
+                                                   name="card_ids"
+                                                   value="{{ card.id }}"
+                                                   autocomplete="off"
+                                                   class="sr-only">
+                                            {% if card.photo_main %}
+                                                <img src="{{ card.photo_main.url }}"
+                                                     class="img-fluid w-100"
+                                                     alt="{{ card.title }}">
+                                            {% endif %}
+                                        </label>
                                     </div>
-                                </div>
+                                {% empty %}
+                                    <div class="col-12">
+                                        <p class="text-muted">
+                                            目前沒有符合條件的卡牌。
+                                        </p>
+                                    </div>
+                                {% endfor %}
                             </div>
-                        </a>
+                        </div>
+                    </form>
+                {% else %}
+                    <!-- Not logged in / no selected deck -->
+                    <div class="row">
+                        {% for card in page_obj %}
+                            <div class="col-sm-6 col-md-4 mb-4">
+                                <a href="{% url 'listings:card_detail' card.id %}">
+                                    {% if card.photo_main %}
+                                        <img src="{{ card.photo_main.url }}"
+                                             class="img-fluid w-100"
+                                             alt="{{ card.title }}">
+                                    {% endif %}
+                                </a>
+                            </div>
+                        {% empty %}
+                            <div class="col-12">
+                                <p class="text-muted">
+                                    目前沒有符合條件的卡牌。
+                                </p>
+                            </div>
+                        {% endfor %}
                     </div>
-                    {% empty %}
-                    <div class="col-12"><p class="text-muted">目前沒有符合條件的卡牌。</p></div>
-                    {% endfor %}
-                </div>
-
+                {% endif %}
+                <!-- Pagination -->
                 {% include 'listings/_pagination.html' with page_obj=page_obj query_string=query_string %}
             </div>
 
-            <!-- 右：我的牌組 Deck（會員專屬） -->
-            <div class="col-md-3">
+            <div class="my-container
+                        d-none
+                        d-xl-block
+                        col-xl-3
+                        bg-secondary"
+                 style="position:relative;
+                        box-sizing:border-box;
+                        padding:15px;
+                        min-height:600px;">
                 {% if user.is_authenticated %}
-                <div class="card mb-4">
-                    <div class="card-header font-weight-bold">我的牌組</div>
-                    <div class="card-body">
-                        {% for deck in decks %}
-                        <div class="mb-2">
-                            <span class="font-weight-bold d-block mb-1">{{ deck.name }}</span>
-                            <form method="post" action="{% url 'decks:rename_deck' deck.id %}" class="form-inline m-0">
-                                {% csrf_token %}
-                                <input type="text" name="name" value="{{ deck.name }}" class="form-control form-control-sm mr-1" style="width:110px;" />
-                                <button type="submit" class="btn btn-sm btn-outline-secondary">改名</button>
-                            </form>
-                        </div>
-                        <hr>
-                        {% empty %}
-                        <p class="text-muted">還沒有牌組</p>
-                        {% endfor %}
 
-                        <form method="post" action="{% url 'decks:create_deck' %}">
+                    <div class="d-flex mb-3">
+                        <!-- CREATE -->
+                        <button type="button"
+                                class="btn btn-sm flex-fill mr-1"
+                                data-toggle="modal"
+                                data-target="#createDeckModal"
+                                style="color:white;
+                                       border:none;
+                                       background-color:#5da0df;">
+                            Create
+                        </button>
+                        <!-- RENAME -->
+                        {% if selected_deck %}
+                            <button type="button"
+                                    class="btn btn-sm flex-fill ml-1"
+                                    data-toggle="modal"
+                                    data-target="#renameDeckModal"
+                                    style="color:white;
+                                           border:none;
+                                           background-color:#5da0df;">
+                                Rename
+                            </button>
+                        {% else %}
+                            <button type="button"
+                                    class="btn btn-sm flex-fill ml-1"
+                                    disabled>
+                                Rename
+                            </button>
+                        {% endif %}
+                    </div>
+
+                    {% if selected_deck %}
+                        <form method="post"
+                              action="{% url 'decks:modify_cards' %}"
+                              class="mb-3">
                             {% csrf_token %}
-                            <div class="input-group">
-                                <input type="text" name="name" class="form-control form-control-sm" placeholder="新牌組名稱（Deck1...）" />
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-sm btn-primary">建立</button>
+                            <input type="hidden"
+                                   name="deck_id"
+                                   value="{{ selected_deck.id }}">
+                            <input type="hidden"
+                                   name="action"
+                                   value="remove">
+                            <button type="submit"
+                                    class="btn btn-sm btn-block mb-2"
+                                    style="color:white;
+                                           border:none;
+                                           background-color:#5da0df;">
+                                Remove Cards
+                            </button>
+
+                    <div class="dropdown mt-3">
+                        <button class="btn dropdown-toggle"
+                                type="button"
+                                id="deckDropdown"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                style="color:white;
+                                       border:none;
+                                       width:100%;
+                                       background-color:#5da0df;">
+                            {% if selected_deck %}
+                                {{ selected_deck.name }}
+                            {% else %}
+                                Change Decks
+                            {% endif %}
+                        </button>
+                        <div class="dropdown-menu w-100"
+                             aria-labelledby="deckDropdown">
+                            {% for deck in decks %}
+                                <a class="dropdown-item"
+                                   href="{% url 'decks:select_deck' deck.id %}">
+                                    {{ deck.name }}
+                                </a>
+                            {% empty %}
+                                <span class="dropdown-item-text text-muted">
+                                    No decks yet
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                            <!-- Deck card selection -->
+                            <div class="btn-group-toggle"
+                                 data-toggle="buttons">
+                                <div class="row mx-0">
+                                    {% for deck_card in selected_deck.deck_cards.all %}
+                                        <div class="col-6 col-lg-3 px-1 mb-2">
+                                            <label class="btn btn-secondary
+                                                          btn-block
+                                                          p-1
+                                                          border-0">
+                                                <input type="checkbox"
+                                                       name="card_ids"
+                                                       value="{{ deck_card.card.id }}"
+                                                       autocomplete="off"
+                                                       class="sr-only">
+                                                {% if deck_card.card.photo_main %}
+                                                    <img src="{{ deck_card.card.photo_main.url }}"
+                                                         class="img-fluid w-100"
+                                                         alt="{{ deck_card.card.title }}">
+                                                {% endif %}
+                                                <small class="d-block text-white">
+                                                    ×{{ deck_card.quantity }}
+                                                </small>
+                                            </label>
+                                        </div>
+                                    {% empty %}
+                                        <div class="col-12 text-center text-white">
+                                            <p class="mb-0">
+                                                This deck is empty.
+                                            </p>
+                                        </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </form>
-                    </div>
-                </div>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
     </div>
 </section>
 
+<div class="modal fade"
+     id="createDeckModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="createDeckModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    id="createDeckModalLabel">
+                    Create Deck
+                </h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">
+                        &times;
+                    </span>
+                </button>
+            </div>
+            <form method="post"
+                  action="{% url 'decks:create_deck' %}">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <input type="text"
+                           name="name"
+                           class="form-control"
+                           placeholder="Deck name"
+                           required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Create
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if selected_deck %}
+    <div class="modal fade"
+         id="renameDeckModal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="renameDeckModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog"
+             role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"
+                        id="renameDeckModalLabel">
+                        Rename Deck
+                    </h5>
+                    <button type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                </div>
+                <form method="post"
+                      action="{% url 'decks:rename_deck' selected_deck.id %}">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <input type="text"
+                               name="name"
+                               value="{{ selected_deck.name }}"
+                               class="form-control"
+                               required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"
+                                class="btn btn-secondary"
+                                data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                                class="btn btn-primary">
+                            Rename
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endif %}
 {% endblock %}
