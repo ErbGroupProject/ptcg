@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from listings.models import Tradelist
 from .models import Chat, Message
@@ -51,15 +52,24 @@ def mark_as_spam(request, chat_id):
         chat.save()
         # 把該對話的未讀訊息一併標記已讀，避免導航欄未讀數字殘留
         Message.objects.filter(chat=chat, is_read=False).update(is_read=True)
+        return redirect(f"{reverse('accounts:dashboard')}?tab=spam")
     return redirect("accounts:dashboard")
 
 
 @login_required
 def unmark_spam(request, chat_id):
     chat = get_object_or_404(Chat, id=chat_id)
-    if request.user == chat.buyer:
+    if request.user in [chat.buyer, chat.seller]:
         chat.is_spam = False
         chat.save()
+        # 還原後跳回該對話原本所屬的標籤頁
+        if chat.trade_finished:
+            tab = "completed"
+        elif request.user == chat.buyer:
+            tab = "buying"
+        else:
+            tab = "selling"
+        return redirect(f"{reverse('accounts:dashboard')}?tab={tab}")
     return redirect("accounts:dashboard")
 
 

@@ -7,16 +7,16 @@
         <hr>
 
         <ul class="nav nav-tabs" id="chatTab" role="tablist">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#buying" role="tab">我正在買的</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#selling" role="tab">我正在賣的</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#completed" role="tab">我已完成了</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#all" role="tab">所有對話</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#spam" role="tab">垃圾信息</a></li>
+            <li class="nav-item"><a class="nav-link {% if active_tab == 'buying' %}active{% endif %}" data-toggle="tab" href="#buying" role="tab">我正在買的</a></li>
+            <li class="nav-item"><a class="nav-link {% if active_tab == 'selling' %}active{% endif %}" data-toggle="tab" href="#selling" role="tab">我正在賣的</a></li>
+            <li class="nav-item"><a class="nav-link {% if active_tab == 'completed' %}active{% endif %}" data-toggle="tab" href="#completed" role="tab">我已完成了</a></li>
+            <li class="nav-item"><a class="nav-link {% if active_tab == 'all' %}active{% endif %}" data-toggle="tab" href="#all" role="tab">所有對話</a></li>
+            <li class="nav-item"><a class="nav-link {% if active_tab == 'spam' %}active{% endif %}" data-toggle="tab" href="#spam" role="tab">垃圾信息</a></li>
         </ul>
 
         <div class="tab-content border border-top-0 p-4 mb-4">
             <!-- Tab 1：我正在買的 -->
-            <div class="tab-pane fade show active" id="buying" role="tabpanel">
+            <div class="tab-pane fade {% if active_tab == 'buying' %}show active{% endif %}" id="buying" role="tabpanel">
                 {% for chat in buying_chats %}
                 <div class="card bg-white mb-3">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -52,7 +52,7 @@
             </div>
 
             <!-- Tab 2：我正在賣的 -->
-            <div class="tab-pane fade" id="selling" role="tabpanel">
+            <div class="tab-pane fade {% if active_tab == 'selling' %}show active{% endif %}" id="selling" role="tabpanel">
                 {% for chat in selling_chats %}
                 <div class="card bg-white mb-3">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -85,7 +85,7 @@
             </div>
 
             <!-- Tab 3：已完成交易 -->
-            <div class="tab-pane fade" id="completed" role="tabpanel">
+            <div class="tab-pane fade {% if active_tab == 'completed' %}show active{% endif %}" id="completed" role="tabpanel">
                 {% for chat in completed_chats %}
                 <div class="card bg-white mb-3">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -118,7 +118,7 @@
             </div>
 
             <!-- Tab 4：所有對話 -->
-            <div class="tab-pane fade" id="all" role="tabpanel">
+            <div class="tab-pane fade {% if active_tab == 'all' %}show active{% endif %}" id="all" role="tabpanel">
                 {% for chat in all_chats %}
                 <div class="card bg-white mb-3">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -155,7 +155,7 @@
             </div>
 
             <!-- Tab 5：垃圾信息 -->
-            <div class="tab-pane fade" id="spam" role="tabpanel">
+            <div class="tab-pane fade {% if active_tab == 'spam' %}show active{% endif %}" id="spam" role="tabpanel">
                 {% for chat in spam_chats %}
                 <div class="card bg-white mb-3">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -184,7 +184,7 @@
         </div>
     </div>
     
-    {% comment %} decks {% endcomment %}
+        {% comment %} decks {% endcomment %}
 <div class="container mt-4">
 
     <!-- Deck box -->
@@ -260,29 +260,13 @@
     });
 </script>
 
-    <!-- ========== 底部一排正方形按鈕（置中） ========== -->
-    <div class="row">
-        <div class="col-10 d-flex justify-content-end">
-            <a href="#"
-                class="btn btn-outline-secondary d-inline-flex align-items-center justify-content-center m-4"
-                style="width:100px;height:30px; border-radius: 30px; color: #f8f8f8; border-width:0px;background: #1e73f3; font-size:1rem;">
-                Message
-            </a>
-            <a href="#"
-                class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-4 custom-square-btn"
-                style="width:100px;height:30px; border-radius: 30px; color: #f8f8f8; border-width:0px;background: #1e73f3; font-size:1rem;">
-                Deck
-            </a>
-
-        <!-- 底部按鈕：只留 Post 和 Profile -->
-        <div class="d-flex justify-content-end">
-            <a href="{% url 'listings:my_listings' %}" class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2"
-               style="width:100px;height:30px; border-radius:30px; color:#fff; background:#1e73f3; font-size:1rem;">Post</a>
-            <a href="{% url 'accounts:profile' %}" class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2"
-               style="width:100px;height:30px; border-radius:30px; color:#fff; background:#1e73f3; font-size:1rem;">Profile</a>
-        </div>
+    
+    <!-- 底部按鈕：只留 Post 和 Profile -->
+    <div class="d-flex justify-content-center">
+        <a href="{% url 'listings:my_listings' %}" class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2"
+           style="width:100px;height:30px; border-radius:30px; color:#fff; background:#1e73f3; font-size:1rem;">Post</a>
+        <a href="{% url 'accounts:profile' %}" class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2"
+           style="width:100px;height:30px; border-radius:30px; color:#fff; background:#1e73f3; font-size:1rem;">Profile</a>
     </div>
 </section>
 {% endblock %}
-
-..

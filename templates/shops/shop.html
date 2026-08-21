@@ -53,7 +53,18 @@
             {% if slist.card_identification %}
             <h6>提供卡片鑑定服務</h6>
             {% endif %}
+            </div>
         </div>
+
+        {% if map_url %}
+        <div class="row my-4">
+            <div class="col-12">
+                <iframe width="100%" height="400" frameborder="0" scrolling="no"
+                        marginheight="0" marginwidth="0"
+                        src="{{ map_url }}"></iframe>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </section>
 </div>

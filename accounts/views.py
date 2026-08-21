@@ -12,6 +12,7 @@ from tradings.models import TradingRecord
 from cards.models import Card
 from decks.models import Deck, DeckCard
 
+
 from .forms import ProfileForm
 from .models import Profile
 
@@ -143,6 +144,7 @@ def _review_state(chat, user):
 @login_required
 def dashboard(request):
     user = request.user
+    active_tab = request.GET.get('tab', 'buying')
 
     all_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), is_spam=False).order_by("-updated_at")
     all_chats = Paginator(all_qs, 7).get_page(request.GET.get("all_page", 1))
@@ -158,7 +160,8 @@ def dashboard(request):
 
     spam_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), is_spam=True).order_by("-updated_at")
     spam_chats = Paginator(spam_qs, 7).get_page(request.GET.get("spam_page", 1))
-
+    
+    
     # Deck 優化：查詢使用者的牌組與牌組卡片
     decks = Deck.objects.filter(user=request.user)
     deck_cards = DeckCard.objects.filter(deck__user=request.user).select_related("card")
@@ -178,6 +181,7 @@ def dashboard(request):
         "selling_chats": selling_chats,
         "completed_chats": completed_chats,
         "spam_chats": spam_chats,
+        "active_tab": active_tab,
         "decks": decks,
-        "deck_cards": deck_cards,
+        "deck_cards": deck_cards,        
     })

@@ -79,9 +79,8 @@ def add_card_to_deck(deck, card, quantity=1):
     # Maximum 4 copies of a card
     if new_quantity > MAX_CARD_QUANTITY:
         raise ValidationError(
-            f"You cannot have more than "
-            f"{MAX_CARD_QUANTITY} copies of "
-            f"{card.title}."
+            f"「{card.title}」最多只能有 "
+            f"{MAX_CARD_QUANTITY} 張。"
         )
 
     # Calculate current deck size
@@ -98,8 +97,8 @@ def add_card_to_deck(deck, card, quantity=1):
     # Check maximum 60 cards
     if current_total + new_quantity > MAX_DECK_SIZE:
         raise ValidationError(
-            f"A deck cannot contain more than "
-            f"{MAX_DECK_SIZE} cards."
+            f"牌組最多只能有 "
+            f"{MAX_DECK_SIZE} 張卡。"
         )
 
     deck_card.quantity = new_quantity
