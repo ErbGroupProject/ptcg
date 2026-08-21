@@ -29,4 +29,9 @@ urlpatterns = [
         views.rename_deck,
         name="rename_deck",
     ),
+    path(
+        "remove-deck/<int:deck_id>/",
+        views.remove_deck,
+        name="remove_deck",
+    ),
 ]
