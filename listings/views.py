@@ -100,7 +100,7 @@ def index(request):
     if place:
         qs = qs.filter(deal_place=place)
 
-    page_obj = Paginator(qs, PAGE_SIZE).get_page(request.GET.get('page'))
+    page_obj = Paginator(qs, 12).get_page(request.GET.get('page'))  # 4 個一行 × 3 行
 
     # 分頁保留所有篩選參數
     params = request.GET.copy()

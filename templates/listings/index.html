@@ -1,85 +1,88 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>決定左係你喇！</h1>
-        <a href="{% url 'listings:create' %}" class="btn btn-primary">上架商品</a>
-    </div>
+<section>
+    <div class="container mt-4">
 
-    <!-- 搜尋列 + 篩選 -->
-    <form method="get" class="mb-3">
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <input type="text" name="q" value="{{ q }}" class="form-control"
-                       placeholder="搜尋商品名稱 / 系列 / 編號 / 賣家..." />
-            </div>
-            <div class="col-4 col-md-2">
-                <select name="condition" class="form-control" onchange="this.form.submit()">
-                    <option value="">狀態</option>
-                    {% for c in conditions %}
-                    <option value="{{ c }}" {% if condition == c %}selected{% endif %}>{{ c }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="col-4 col-md-2">
-                <select name="series" class="form-control" onchange="this.form.submit()">
-                    <option value="">系列</option>
-                    {% for s in series_list %}
-                    <option value="{{ s }}" {% if series == s %}selected{% endif %}>{{ s }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="col-4 col-md-2">
-                <select name="place" class="form-control" onchange="this.form.submit()">
-                    <option value="">地點</option>
-                    {% for p in places %}
-                    <option value="{{ p }}" {% if place == p %}selected{% endif %}>{{ p }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="col-lg-2 col-md-2">
-                <button type="submit" class="btn btn-primary btn-block">搜尋</button>
-            </div>
+        <!-- 標題 + 上架商品 -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-0">決定左係你喇！</h2>
+            <a href="{% url 'listings:create' %}" class="btn btn-primary">上架商品</a>
         </div>
-        {% if q or condition or series or place %}
-        <div class="mt-2">
-            <a href="{% url 'listings:index' %}" class="btn btn-link">清除搜尋</a>
-        </div>
-        {% endif %}
-    </form>
 
-    <p class="text-muted">共 {{ page_obj.paginator.count }} 筆商品</p>
-
-    <div class="row">
-    {% for listing in page_obj %}
-        <div class="col-md-4 mb-4">
-            <a href="{% url 'listings:detail' listing.id %}" class="text-decoration-none text-dark">
-                <div class="card h-100">
-                    {% if listing.sell_item_main_photo %}
-                    <img src="{{ listing.sell_item_main_photo.url }}" class="card-img-top" alt="">
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ listing.sell_item_name }}</h5>
-                        {% for chat in listing.chat_room.all %}
-                        {% if chat.trade_finished %}
-                            <span class="badge badge-success">交易已完成</span>
-                        {% endif %}
-                        {% endfor %}
-                        <p class="font-weight-bold text-success mb-0">${{ listing.price }}</p>
-                        <p class="text-muted mb-0">{{ listing.condition }}</p>
-                        {% if listing.series_name %}
-                        <p class="text-muted small mb-0">{{ listing.series_name }} #{{ listing.series_number }}</p>
-                        {% endif %}
-                    </div>
+        <!-- 搜尋 + 篩選（連資料庫） -->
+        <form method="get" class="mb-3">
+            <div class="row align-items-end">
+                <div class="col-12 col-md-3 mb-2">
+                    <label class="sr-only">Keywords</label>
+                    <input type="text" name="q" value="{{ q }}" class="form-control"
+                           placeholder="搜尋商品名稱 / 系列 / 編號 / 賣家..." />
                 </div>
-            </a>
-        </div>
-    {% empty %}
-        <div class="col-12"><p class="text-muted">目前沒有符合條件的商品。</p></div>
-    {% endfor %}
-    </div>
+                <div class="col-6 col-md-2 mb-2">
+                    <select name="condition" class="form-control" onchange="this.form.submit()">
+                        <option value="">狀態</option>
+                        {% for c in conditions %}
+                        <option value="{{ c }}" {% if condition == c %}selected{% endif %}>{{ c }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-6 col-md-2 mb-2">
+                    <select name="series" class="form-control" onchange="this.form.submit()">
+                        <option value="">系列</option>
+                        {% for s in series_list %}
+                        <option value="{{ s }}" {% if series == s %}selected{% endif %}>{{ s }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-6 col-md-2 mb-2">
+                    <select name="place" class="form-control" onchange="this.form.submit()">
+                        <option value="">地點</option>
+                        {% for p in places %}
+                        <option value="{{ p }}" {% if place == p %}selected{% endif %}>{{ p }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-12 col-md-3 mb-2 d-flex align-items-center">
+                    <button type="submit" class="btn btn-primary" style="height:38px; display:inline-flex; align-items:center;">搜尋</button>
+                    <a href="{% url 'listings:index' %}" class="btn btn-outline-secondary ml-1" style="height:38px; display:inline-flex; align-items:center;">清除</a>
+                </div>
+            </div>
+        </form>
 
-    {% include 'listings/_pagination.html' with page_obj=page_obj query_string=query_string %}
-</div>
+        <p class="text-muted">共 {{ page_obj.paginator.count }} 筆商品</p>
+
+        <div class="row">
+        {% for listing in page_obj %}
+            <div class="col-sm-6 col-md-3 mb-4">
+                <a href="{% url 'listings:detail' listing.id %}" class="text-decoration-none text-dark">
+                    <div class="card h-100">
+                        {% if listing.sell_item_main_photo %}
+                        <img src="{{ listing.sell_item_main_photo.url }}" class="card-img-top" alt="">
+                        {% else %}
+                        <img src="https://picsum.photos/500/500" class="card-img-top" alt="no_photo">
+                        {% endif %}
+                        <div class="card-body">
+                            <h6 class="card-title mb-1">{{ listing.sell_item_name }}</h6>
+                            {% for chat in listing.chat_room.all %}
+                            {% if chat.trade_finished %}
+                                <span class="badge badge-success">交易已完成</span>
+                            {% endif %}
+                            {% endfor %}
+                            <p class="font-weight-bold text-success mb-1">${{ listing.price }}</p>
+                            <div>
+                                {% if listing.condition %}<span class="badge badge-secondary">{{ listing.condition }}</span>{% endif %}
+                                {% if listing.series_name %}<span class="badge badge-info">{{ listing.series_name }}</span>{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% empty %}
+            <div class="col-12"><p class="text-muted">目前沒有符合條件的商品。</p></div>
+        {% endfor %}
+        </div>
+
+        {% include 'listings/_pagination.html' with page_obj=page_obj query_string=query_string %}
+    </div>
+</section>
 {% endblock %}
