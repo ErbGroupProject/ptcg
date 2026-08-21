@@ -7,11 +7,9 @@
             <div class="col-md-7 mx-auto">
                 <div class="card" style="border-radius: 20px;">
                     <div class="card-header text-black-50 py-3">
-                        <h4 class="mb-0"><i class="fas fa-user" style="color: #3392ff;"></i> Come on Trainer!  </h4>
+                        <h4 class="mb-0" style="color: #ebe2e2be"><i class="fas fa-user" style="color: #88b0df;"></i> Come on Trainer!  </h4>
                     </div>
                     <div class="card-body ">
-                        <p class="text-muted">Login</p>
-                        
                         <form action="{% url 'accounts:login' %}" method="POST">
                             {% csrf_token %} 
                             

@@ -8,11 +8,11 @@
         <div class="row">
             <div class="col-md-7 mx-auto">
                 <div class="card" style="border-radius: 20px;">
-                    <div class="card-header text-black-50 py-3">
-                        <h4 class="mb-0"><i class="fas fa-user-plus" style="color: #3392ff;"></i> Join </h4>
+                    <div class="card-header py-3">
+                        <h4 class="mb-0" style="color: #ebe2e2be"><i class="fas fa-user-plus" style="color: #92b3da;"></i> Join </h4>
                     </div>
                     <div class="card-body p-4">
-                        <p class="text-muted">Create an account to save favorite restaurants, book tables, and get tailored recommendations.</p>
+                        <p class="text-muted"></p>
                         
                         <form action="{% url 'accounts:register' %}" method="POST">
                             {% csrf_token %} 
@@ -59,9 +59,9 @@
                         </form>
 
                         <div class="text-center mt-3">
-                            <small class="text-muted">
+                            <small class="text-white">
                                 Already have an account? 
-                                <a href={% url "accounts:login" %}><i class="fas fa-sign-in"></i> Login</a>
+                                <a href={% url "accounts:login" %} style="color: #2330e4bb"><i class="fas fa-sign-in"></i> Login</a>
 
                             </small>
                         </div>

@@ -169,11 +169,17 @@ img {
 }
 
 #main-footer {
-  width: 100%
+  width: 100%;
+  position: relative;
+  bottom: 0;
 }
 
 .shop-page-wrapper {
-  min-height: calc(100vh -60px);
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 60px;
   display: block;
-  width: 100%
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
