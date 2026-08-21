@@ -50,3 +50,79 @@ def rename_deck(request, deck_id):
             deck.save()
             messages.success(request, f"已改名為「{name}」")
     return redirect("listings:card_listings")
+
+
+@login_required
+def select_deck(request, deck_id):
+    deck = get_object_or_404(
+        Deck,
+        id=deck_id,
+        user=request.user,
+    )
+
+    request.session["selected_deck_id"] = deck.id
+
+    return redirect("listings:card_listings")
+
+@login_required
+def modify_cards(request):
+    if request.method != "POST":
+        return redirect("listings:card_listings")
+    deck = get_object_or_404(
+        Deck,
+        id=request.POST.get("deck_id"),
+        user=request.user,
+    )
+    action = request.POST.get("action")
+    card_ids = request.POST.getlist("card_ids")
+    if not card_ids:
+        messages.warning(
+            request,
+            "Please select at least one card.",
+        )
+        return redirect("listings:card_listings")
+    if action not in ("add", "remove"):
+        messages.error(
+            request,
+            "Invalid action.",
+        )
+        return redirect("listings:card_listings")
+    success_count = 0
+    for card_id in card_ids:
+        card = get_object_or_404(
+            Card,
+            id=card_id,
+        )
+        try:
+            if action == "add":
+                services.add_card_to_deck(
+                    deck,
+                    card,
+                    quantity=1,
+                )
+            else:
+                services.remove_card_from_deck(
+                    deck,
+                    card,
+                    quantity=1,
+                )
+            success_count += 1
+        except ValidationError as exc:
+            msg = (
+                exc.messages[0]
+                if exc.messages
+                else str(exc)
+            )
+            messages.error(request, msg)
+    if success_count:
+        if action == "add":
+            messages.success(
+                request,
+                f"{success_count} card(s) added to {deck.name}.",
+            )
+        else:
+            messages.success(
+                request,
+                f"{success_count} card(s) removed from {deck.name}.",
+            )
+    return redirect("listings:card_listings")
