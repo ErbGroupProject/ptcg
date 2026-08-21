@@ -20,7 +20,7 @@
                                 <option value="" {% if not selected_district or selected_district == '' %} selected="true" {% endif %}>District (All)</option>
                                 {% for item in district_choices %}
                                 <option value="{{ forloop.counter0 }}" {% if selected_district == forloop.counter0|stringformat:"s" %} selected="true" {% endif %}>
-                                {{ item.1 }} ({{ item.0 }})</option>
+                                {{ item.1 }}</option>
                                 {% endfor %}
                             </select>
                         </div>
