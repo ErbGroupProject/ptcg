@@ -20,39 +20,7 @@
 {% include 'partials/_navbar.html' %}
 {% include 'partials/_alerts.html' %}
 {% block content %}
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item"><a href="{% url 'pages:index' %}">首頁</a></li>
 
-        {% if request.resolver_match.url_name == 'index' %}
-            <li class="breadcrumb-item active">Listings</li>
-
-        {% elif request.resolver_match.url_name == 'detail' %}
-            <li class="breadcrumb-item"><a href="{% url 'listings:index' %}">Listings</a></li>
-            <li class="breadcrumb-item active">商品詳情</li>
-
-        {% elif request.resolver_match.url_name == 'card_listings' %}
-            <li class="breadcrumb-item active">Cards</li>
-
-        {% elif request.resolver_match.url_name == 'dashboard' %}
-            <li class="breadcrumb-item active">Dashboard</li>
-
-        {% elif request.resolver_match.url_name == 'profile' %}
-            <li class="breadcrumb-item active">Profile</li>
-
-        {% elif request.resolver_match.url_name == 'my_listings' %}
-            <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard' %}">Dashboard</a></li>
-            <li class="breadcrumb-item active">Post</li>
-
-        {% elif request.resolver_match.url_name == 'chat_detail' %}
-            <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard' %}">Dashboard</a></li>
-            <li class="breadcrumb-item active">對話</li>
-
-        {% else %}
-            <li class="breadcrumb-item active">主頁</li>
-        {% endif %}
-    </ol>
-</nav>
 
 {% endblock %}
 {% include 'partials/_footer.html' %}
