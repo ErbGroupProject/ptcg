@@ -163,8 +163,16 @@ def dashboard(request):
     
     
     # Deck 優化：查詢使用者的牌組與牌組卡片
-    decks = Deck.objects.filter(user=request.user)
+    decks = Deck.objects.filter(user=request.user).order_by("id")
     deck_cards = DeckCard.objects.filter(deck__user=request.user).select_related("card")
+
+    # 記住選中的牌組（session）
+    selected_deck_id = request.session.get("selected_deck_id")
+    selected_deck = decks.filter(id=selected_deck_id).first()
+    if selected_deck is None:
+        selected_deck = decks.first()
+    if selected_deck:
+        request.session["selected_deck_id"] = selected_deck.id
 
     for chat in all_chats:
         chat.review_state = _review_state(chat, user)
@@ -183,5 +191,6 @@ def dashboard(request):
         "spam_chats": spam_chats,
         "active_tab": active_tab,
         "decks": decks,
-        "deck_cards": deck_cards,        
+        "deck_cards": deck_cards,
+        "selected_deck": selected_deck,
     })

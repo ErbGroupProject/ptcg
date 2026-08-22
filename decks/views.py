@@ -126,3 +126,19 @@ def modify_cards(request):
                 f"{success_count} card(s) removed from {deck.name}.",
             )
     return redirect("listings:card_listings")
+
+
+@login_required
+def remove_deck(request, deck_id):
+    """刪除牌組"""
+    deck = get_object_or_404(
+        Deck,
+        id=deck_id,
+        user=request.user,
+    )
+    if request.method == "POST":
+        deck_name = deck.name
+        deck.delete()
+        request.session.pop("selected_deck_id", None)
+        messages.success(request, f"已刪除牌組「{deck_name}」")
+    return redirect("listings:card_listings")
