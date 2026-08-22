@@ -4,32 +4,6 @@
 
 <!-- Showcase -->
 <section id="shop"></section>
-<div class="container text-center">
-    <div class="home-search p-2">
-        <div class="search">
-            <form action="{% url 'shops:search_shops' %}" method="get">
-                <div class="form-row">
-                    <div class="col mb-2">
-                        <label class="sr-only">Keywords</label>
-                        <input type="text" name="keywords" class="form-control" placeholder="Search shop name" value="{{ values.keywords }}">
-                    </div>
-                    <div class="col mb-2">
-                        <label class="sr-only">District</label>
-                        <select name="district" class="form-control" onchange="this.form.submit()">
-                            <option value="All" {% if not values.district or values.district == 'All' %} selected {% endif %}>District (All)</option>
-                            {% for dist in district_choices %}
-                            <option value="{{ dist }}" {% if values.district == dist %} selected {% endif %}>{{ dist }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary btn-block" type="submit">Search Pokemon TCG shops</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <!-- 搜尋結果列表 -->
 <section>
