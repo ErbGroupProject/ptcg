@@ -56,7 +56,7 @@ class Resistance(models.Model):
     resistance_modifier = models.CharField(max_length=1, choices=modifier_choices.items(), default='-', blank=True)
 
 
-class Retreat(models.Model):..
+class Retreat(models.Model):
     card = models.ForeignKey(Card, on_delete=models.CASCADE, related_name='retreats')
     energy_type = models.CharField(max_length=50, choices=energy_choices.items(), default="Colorless")
     quantity = models.PositiveIntegerField(default=0)
