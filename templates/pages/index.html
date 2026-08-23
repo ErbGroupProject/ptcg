@@ -2,47 +2,48 @@
 {% load static %}
 {% block content %}
 
-<!-- Main Banner Carousel -->
+<!-- Main Banner Carousel (Bootstrap 4) -->
 <div class="container mt-3">
-    <div id="carouselBanner" class="carousel slide">
-        
-        <!-- Indicators -->
-        <div class="carousel-indicators">
-            {% for item in banners_list %}
-            <button type="button" 
-                    data-bs-target="#carouselBanner" 
-                    data-bs-slide-to="{{ forloop.counter0 }}"
-                    {% if forloop.first %}class="active" aria-current="true"{% endif %}
-                    aria-label="Slide {{ forloop.counter }}">
-            </button>
-            {% endfor %}
-        </div>
+    <div id="carouselBanner" class="carousel slide" data-ride="carousel" data-interval="3000">
 
-        <!-- Carousel Slides Loop (FIXED: Added carousel-inner) -->
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            {% for item in banners_list %}
+            <li data-target="#carouselBanner"
+                data-slide-to="{{ forloop.counter0 }}"
+                class="{% if forloop.first %}active{% endif %}"></li>
+            {% endfor %}
+        </ol>
+
+        <!-- Carousel Slides Loop -->
         <div class="carousel-inner">
             {% for item in banners_list %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
                 <a href="{{ item.url_link }}">
-                    <img src="{{ item.photo_banner.url }}" class="d-block w-100" alt="{{ item.title|default:'轮播图' }}">
+                    {% if item.photo_banner %}
+                    <img src="{{ item.photo_banner.url }}" class="d-block w-100" alt="{{ item.banner_id }}">
+                    {% endif %}
                 </a>
             </div>
             {% empty %}
-            <div class="alert alert-info mb-0 text-center">Please go to backend to add carousel photos</div>
+            <div class="carousel-item active">
+                <div class="alert alert-info mb-0 text-center">Please go to backend to add carousel photos</div>
+            </div>
             {% endfor %}
         </div>
 
         <!-- Prev / Next Controls -->
         {% if banners_list %}
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
+        <a class="carousel-control-prev" href="#carouselBanner" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">上一张</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
+            <span class="sr-only">上一張</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselBanner" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">下一张</span>
-        </button>
+            <span class="sr-only">下一張</span>
+        </a>
         {% endif %}
-        
+
     </div>
 </div>
 
@@ -51,25 +52,22 @@
 <section>
     <div class="container">
         <h3 class="text-center m-5">Featured</h3>
-        <hr/>  
+        <hr/>
 
         <!-- First Row of Listings -->
         <div class="row">
-            <!-- Listing 1 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card listing-preview">
-                    <!-- FIXED: Added double quotes around src attribute -->
                     <img src="{% static 'image/sm_banner_02.png' %}" class="card-img-top" alt="card"/>
                     <div class="card-body">
                         <div class="listing-heading text-center">
                             <h4 class="text-primary">News</h4>
                         </div>
-                        <a href="{{ news.html }}" class="btn btn-primary w-100 mt-3">View Details</a>
+                        <a href="{% url 'pages:news' %}" class="btn btn-primary w-100 mt-3">View Details</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Listing 2 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card listing-preview">
                     <img src="{% static 'image/sm_banner_02.png' %}" class="card-img-top" alt="card"/>
@@ -77,12 +75,11 @@
                         <div class="listing-heading text-center">
                             <h4 class="text-primary">Top Hits</h4>
                         </div>
-                        <a href="listing.html" class="btn btn-primary w-100 mt-3">View Details</a>
+                        <a href="{% url 'listings:index' %}" class="btn btn-primary w-100 mt-3">View Details</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Listing 3 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card listing-preview">
                     <img src="{% static 'image/sm_banner_03.png' %}" class="card-img-top" alt="card"/>
@@ -90,15 +87,14 @@
                         <div class="listing-heading text-center">
                             <h4 class="text-primary">Price</h4>
                         </div>
-                        <a href="listing.html" class="btn btn-primary w-100 mt-3">View Details</a>
+                        <a href="{% url 'listings:index' %}" class="btn btn-primary w-100 mt-3">View Details</a>
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
 
         <!-- Second Row of Listings -->
         <div class="row">
-            <!-- Listing 4 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card listing-preview">
                     <img src="{% static 'image/sm_banner_04.jpg' %}" class="card-img-top" alt="card"/>
@@ -106,12 +102,11 @@
                         <div class="listing-heading text-center">
                             <h4 class="text-primary">Tournament</h4>
                         </div>
-                        <a href="listing.html" class="btn btn-primary w-100 mt-3">View Details</a>
+                        <a href="{% url 'listings:index' %}" class="btn btn-primary w-100 mt-3">View Details</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Listing 5 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card listing-preview">
                     <img src="{% static 'image/sm_banner_05.png' %}" class="card-img-top" alt="card"/>
@@ -119,12 +114,11 @@
                         <div class="listing-heading text-center">
                             <h4 class="text-primary">New Products</h4>
                         </div>
-                        <a href="listing.html" class="btn btn-primary w-100 mt-3">View Details</a>
+                        <a href="{% url 'listings:index' %}" class="btn btn-primary w-100 mt-3">View Details</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Listing 6 -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card listing-preview">
                     <img src="{% static 'image/sm_banner_06.jpg' %}" class="card-img-top" alt="card"/>
@@ -132,17 +126,17 @@
                         <div class="listing-heading text-center">
                             <h4 class="text-primary">Up Coming</h4>
                         </div>
-                        <a href="listing.html" class="btn btn-primary w-100 mt-3">View Details</a>
+                        <a href="{% url 'listings:index' %}" class="btn btn-primary w-100 mt-3">View Details</a>
                     </div>
                 </div>
             </div>
-        </div>  
-    </div> <!-- FIXED: Closed container div -->
+        </div>
+    </div>
 </section>
 
 <!-- Custom CSS for Circular Indicators -->
 <style>
-.carousel-indicators [data-bs-target] {
+.carousel-indicators li {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -157,55 +151,5 @@
     transform: scale(1.25);
 }
 </style>
-
-<!-- JavaScript Carousel Controller -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const carouselElement = document.getElementById('carouselBanner');
-
-    if (carouselElement) {
-        const carousel = new bootstrap.Carousel(carouselElement, {
-            interval: 3000,
-            ride: 'carousel',
-            touch: true,
-            wrap: true
-        });
-
-        const indicatorBtns = carouselElement.querySelectorAll('.carousel-indicators button');
-        indicatorBtns.forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                carousel.to(index);
-            });
-        });
-
-        const prevBtn = carouselElement.querySelector('.carousel-control-prev');
-        const nextBtn = carouselElement.querySelector('.carousel-control-next');
-        if (prevBtn) prevBtn.addEventListener('click', () => carousel.prev());
-        if (nextBtn) nextBtn.addEventListener('click', () => carousel.next());
-
-        carouselElement.addEventListener('slid.bs.carousel', function (e) {
-            indicatorBtns.forEach(btn => {
-                btn.classList.remove('active');
-                btn.removeAttribute('aria-current');
-            });
-            
-            const activeIndex = e.to;
-            if (indicatorBtns[activeIndex]) {
-                indicatorBtns[activeIndex].classList.add('active');
-                indicatorBtns[activeIndex].setAttribute('aria-current', 'true');
-            }
-        });
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'ArrowLeft') {
-                carousel.prev();
-            } else if (e.key === 'ArrowRight') {
-                carousel.next();
-            }
-        });
-    }
-});
-</script>
 
 {% endblock content %}

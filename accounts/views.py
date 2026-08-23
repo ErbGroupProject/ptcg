@@ -6,39 +6,16 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.core.paginator import Paginator
 from django.db.models import Q
-from contacts.models import Chat
-from tradings.models import TradingRecord
-from contacts.models import Chat, Message   # Message 記得 import
 
+from contacts.models import Chat, Message
+from tradings.models import TradingRecord
+from cards.models import Card
+from decks.models import Deck, DeckCard
 
 
 from .forms import ProfileForm
 from .models import Profile
-from contacts.models import Chat   # ← 確認你的 Chat 模型路徑正確
 
-
-
-@login_required
-def dashboard(request):
-    user = request.user
-
-    buying_qs = Chat.objects.filter(buyer=user, trade_finished=False)
-    buy_page = request.GET.get("buy_page", 1)
-    buying_chats = Paginator(buying_qs, 7).get_page(buy_page)
-
-    selling_qs = Chat.objects.filter(seller=user, trade_finished=False)
-    sell_page = request.GET.get("sell_page", 1)
-    selling_chats = Paginator(selling_qs, 7).get_page(sell_page)
-
-    completed_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), trade_finished=True)
-    done_page = request.GET.get("done_page", 1)
-    completed_chats = Paginator(completed_qs, 7).get_page(done_page)
-
-    return render(request, "accounts/dashboard.html", {
-        "buying_chats": buying_chats,
-        "selling_chats": selling_chats,
-        "completed_chats": completed_chats,
-    })
 
 @login_required
 def profile(request):
@@ -144,33 +121,58 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
 
     return render(request, "accounts/change_password.html", {"form": form})
+
+
 def _review_state(chat, user):
-    if chat.trade_finished:
-        return "done"          # 灰色：已完成
+    # 注意：不再用 trade_finished 短路。
+    # 交易完成（確認交易）與評價（雙方互評）是兩個獨立維度，
+    # 即使交易已完成，雙方仍應能評價。
     record = TradingRecord.objects.filter(chat=chat).first()
     if record is None:
-        return "none"          # 白色：都還沒評
-    if user == chat.buyer:
-        return "waiting" if record.seller_star is not None else "none"   # 藍色：等買家確認
-    else:
-        return "waiting" if record.buyer_star is not None else "none"    # 藍色：等賣家確認
+        return "none"           # 白色：都還沒評
+    my_star = record.buyer_star if user == chat.buyer else record.seller_star
+    other_star = record.seller_star if user == chat.buyer else record.buyer_star
+    if my_star is not None and other_star is not None:
+        return "done"           # 灰色：雙方都評完
+    elif my_star is not None:
+        return "waiting_other"  # 我已評，等對方 → 灰「等待對方評價」
+    elif other_star is not None:
+        return "waiting_me"     # 對方已評，等我 → 藍「等待評價」
+    return "none"
 
 
 @login_required
 def dashboard(request):
     user = request.user
+    active_tab = request.GET.get('tab', 'buying')
 
-    all_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user)).order_by("-updated_at")
+    all_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), is_spam=False).order_by("-updated_at")
     all_chats = Paginator(all_qs, 7).get_page(request.GET.get("all_page", 1))
 
-    buying_qs = Chat.objects.filter(buyer=user, trade_finished=False)
+    buying_qs = Chat.objects.filter(buyer=user, trade_finished=False, is_spam=False)
     buying_chats = Paginator(buying_qs, 7).get_page(request.GET.get("buy_page", 1))
 
-    selling_qs = Chat.objects.filter(seller=user, trade_finished=False)
+    selling_qs = Chat.objects.filter(seller=user, trade_finished=False, is_spam=False)
     selling_chats = Paginator(selling_qs, 7).get_page(request.GET.get("sell_page", 1))
 
-    completed_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), trade_finished=True)
+    completed_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), trade_finished=True, is_spam=False)
     completed_chats = Paginator(completed_qs, 7).get_page(request.GET.get("done_page", 1))
+
+    spam_qs = Chat.objects.filter(Q(buyer=user) | Q(seller=user), is_spam=True).order_by("-updated_at")
+    spam_chats = Paginator(spam_qs, 7).get_page(request.GET.get("spam_page", 1))
+    
+    
+    # Deck 優化：查詢使用者的牌組與牌組卡片
+    decks = Deck.objects.filter(user=request.user).order_by("id")
+    deck_cards = DeckCard.objects.filter(deck__user=request.user).select_related("card")
+
+    # 記住選中的牌組（session）
+    selected_deck_id = request.session.get("selected_deck_id")
+    selected_deck = decks.filter(id=selected_deck_id).first()
+    if selected_deck is None:
+        selected_deck = decks.first()
+    if selected_deck:
+        request.session["selected_deck_id"] = selected_deck.id
 
     for chat in all_chats:
         chat.review_state = _review_state(chat, user)
@@ -179,15 +181,16 @@ def dashboard(request):
     for chat in selling_chats:
         chat.review_state = _review_state(chat, user)
     for chat in completed_chats:
-        chat.review_state = "done"
+        chat.review_state = _review_state(chat, user)
 
     return render(request, "accounts/dashboard.html", {
         "all_chats": all_chats,
         "buying_chats": buying_chats,
         "selling_chats": selling_chats,
         "completed_chats": completed_chats,
+        "spam_chats": spam_chats,
+        "active_tab": active_tab,
+        "decks": decks,
+        "deck_cards": deck_cards,
+        "selected_deck": selected_deck,
     })
-
-
-
-

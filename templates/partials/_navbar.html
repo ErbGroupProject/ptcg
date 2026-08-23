@@ -2,8 +2,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'pages:index' %}">
-        <wa-icon name="image"></wa-icon></i>PIPKuk
+        <a class="navbar-brand {% if request.path == '/' %}active{% endif %}" href="{% url 'pages:index' %}">
+            <wa-icon name="image"></wa-icon></i>PIPKuk
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,10 +15,10 @@
                 <li class="nav-item mr-3 {% if request.path == '/listings/' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'listings:index' %}">Market</a>
                 </li>
-                <li class="nav-item mr-3">
-                <a class="nav-link" href="{% url 'cards:card_lists' %}">Card</a>
+                <li class="nav-item mr-3 {% if request.path == '/listings/cards/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'listings:card_listings' %}">Card</a>
                 </li>
-                <li class="nav-item mr-3">
+                <li class="nav-item mr-3 {% if '/shops/' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'shops:shop_list' %}">Search shops</a>
                 </li>
             </ul>
@@ -61,4 +61,51 @@
     </div>
 </nav>
 
+<div class="container">
+    <nav aria-label="breadcrumb" class="mt-2">
+        <ol class="breadcrumb mb-0">
+            {% block breadcrumb %}
+            {% if request.path == '/' %}
+                <li class="breadcrumb-item active">Home</li>
+            {% else %}
+                <li class="breadcrumb-item"><a href="{% url 'pages:index' %}">Home</a></li>
 
+                {% if request.path == '/listings/' %}
+                    <li class="breadcrumb-item active">Market</li>
+                {% elif request.path == '/listings/cards/' %}
+                    <li class="breadcrumb-item active">Cards</li>
+                {% elif '/listings/cards/' in request.path %}
+                    <li class="breadcrumb-item"><a href="{% url 'listings:card_listings' %}">Cards</a></li>
+                    <li class="breadcrumb-item active">Card</li>
+                {% elif request.path == '/listings/my/' %}
+                    <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard' %}">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Post</li>
+                {% elif request.path == '/accounts/dashboard/' %}
+                    <li class="breadcrumb-item active">Dashboard</li>
+                {% elif request.path == '/accounts/profile/' %}
+                    <li class="breadcrumb-item active">Profile</li>
+                {% elif request.path == '/accounts/register/' %}
+                    <li class="breadcrumb-item active">Register</li>
+                {% elif request.path == '/accounts/login/' %}
+                    <li class="breadcrumb-item active">Login</li>
+                {% elif request.path == '/shops/search_shops/' %}
+                    <li class="breadcrumb-item active">Search shops</li>
+                {% elif request.path == '/shops/shop_list/' %}
+                    <li class="breadcrumb-item active">Shops</li>
+                {% elif '/shops/shop/' in request.path %}
+                    <li class="breadcrumb-item"><a href="{% url 'shops:shop_list' %}">Shops</a></li>
+                    <li class="breadcrumb-item active">Shop</li>
+                {% elif '/listings/' in request.path %}
+                    <li class="breadcrumb-item"><a href="{% url 'listings:index' %}">Market</a></li>
+                    <li class="breadcrumb-item active">Product</li>
+                {% elif '/contacts/chat/' in request.path %}
+                    <li class="breadcrumb-item"><a href="{% url 'listings:index' %}">Market</a></li>
+                    <li class="breadcrumb-item active">Chat</li>
+                {% else %}
+                    <li class="breadcrumb-item active">Home</li>
+                {% endif %}
+            {% endif %}
+            {% endblock %}
+        </ol>
+    </nav>
+</div>

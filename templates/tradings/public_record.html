@@ -1,40 +1,32 @@
 {% extends "base.html" %}
-
 {% block content %}
-<div class="container mt-5">
-    <h1>交易評價</h1>
+<div class="container mt-5" style="max-width: 600px;">
+    <div class="card">
+        <div class="card-header"><h5 class="mb-0">交易紀錄</h5></div>
+        <div class="card-body">
+            <p>商品：{{ record.chat.listing.sell_item_name }}</p>
+            <hr>
 
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <div class="card h-100">
-                <div class="card-header">買家評價</div>
-                <div class="card-body">
-                    <p>
-                        {% for i in "12345" %}
-                            {% if forloop.counter <= record.buyer_star %}★{% else %}☆{% endif %}
-                        {% endfor %}
-                        （{{ record.buyer_star }} / 5）
-                    </p>
-                    <p>{{ record.buyer_comment }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-3">
-            <div class="card h-100">
-                <div class="card-header">賣家評價</div>
-                <div class="card-body">
-                    <p>
-                        {% for i in "12345" %}
-                            {% if forloop.counter <= record.seller_star %}★{% else %}☆{% endif %}
-                        {% endfor %}
-                        （{{ record.seller_star }} / 5）
-                    </p>
-                    <p>{{ record.seller_comment }}</p>
-                </div>
-            </div>
+            {% if record.buyer_star %}
+            <h6>買家評價</h6>
+            <p class="mb-1 text-warning" style="font-size:1.4rem;">
+                {% for i in "12345" %}
+                    {% if forloop.counter <= record.buyer_star %}★{% else %}☆{% endif %}
+                {% endfor %}
+            </p>
+            <p class="mb-3">{{ record.buyer_comment }}</p>
+            {% endif %}
+
+            {% if record.seller_star %}
+            <h6>賣家評價</h6>
+            <p class="mb-1 text-warning" style="font-size:1.4rem;">
+                {% for i in "12345" %}
+                    {% if forloop.counter <= record.seller_star %}★{% else %}☆{% endif %}
+                {% endfor %}
+            </p>
+            <p class="mb-0">{{ record.seller_comment }}</p>
+            {% endif %}
         </div>
     </div>
-
-    <a href="{% url 'accounts:dashboard' %}" class="btn btn-secondary">返回儀表板</a>
 </div>
 {% endblock %}

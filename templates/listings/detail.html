@@ -1,33 +1,81 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1>{{ listing.sell_item_name }}</h1>
-    <a href="{% url 'listings:seller_profile' listing.user_name.user.id %}" class="btn btn-outline-primary">查看賣家</a>
+<div class="container mt-4">
+    <div class="row">
+        <!-- 圖片 -->
+        <div class="col-md-4 mb-4">
+            {% if listing.sell_item_main_photo %}
+            <img src="{{ listing.sell_item_main_photo.url }}" class="img-fluid rounded" alt="{{ listing.sell_item_name }}">
+            {% else %}
+            <img src="https://picsum.photos/500/500" class="img-fluid rounded" alt="no_photo">
+            {% endif %}
+        </div>
 
-    <p class="text-muted">
-        賣家：{{ listing.user_name.user.username }} | 上架時間：{{ listing.list_date|date:"Y-m-d H:i" }}
-    </p>
+        <!-- 基本資料 -->
+        <div class="col-md-8">
+            <h2>{{ listing.sell_item_name }}</h2>
+            <p class="text-muted">賣家：{{ listing.user_name.user.username }} · 上架時間：{{ listing.list_date|date:"Y-m-d H:i" }}</p>
 
-    {% if listing.sell_item_main_photo %}
-    <img src="{{ listing.sell_item_main_photo.url }}" class="img-fluid mb-3" alt="">
-    {% endif %}
+            <table class="table table-sm w-75">
+                <tbody>
+                    <tr>
+                        <th>價格</th><td class="font-weight-bold text-success">${{ listing.price }}</td>
+                        <th>狀態</th><td>{{ listing.condition }}</td>
+                    </tr>
+                    <tr>
+                        <th>系列</th><td>{{ listing.series_name|default:"—" }}</td>
+                        <th>編號</th><td>{{ listing.series_number|default:"—" }}</td>
+                    </tr>
+                    <tr>
+                        <th>鑑定分數</th><td>{{ listing.identification_score|default:"—" }}</td>
+                        <th>交易地點</th><td>{{ listing.deal_place|default:"—" }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <p class="font-weight-bold text-success" style="font-size:1.5rem;">${{ listing.price }}</p>
-    <p><strong>狀態：</strong>{{ listing.condition }}</p>
-    {% if listing.identification_score %}<p><strong>鑑定分數：</strong>{{ listing.identification_score }}</p>{% endif %}
-    {% if listing.series_name %}<p><strong>系列：</strong>{{ listing.series_name }}</p>{% endif %}
-    {% if listing.deal_place %}<p><strong>交易地點：</strong>{{ listing.deal_place }}</p>{% endif %}
-
-    <div class="card mb-4">
-        <div class="card-body">{{ listing.descriptions|linebreaks }}</div>
+            <!-- 聯絡賣家 / 編輯 -->
+            {% if user.is_authenticated and user != listing.user_name.user %}
+            <a href="{% url 'contacts:start' listing.id %}" class="btn btn-primary mb-3">聯絡賣家</a>
+            {% elif user == listing.user_name.user %}
+            <a href="{% url 'listings:edit' listing.id %}" class="btn btn-outline-secondary mb-3">編輯</a>
+            {% else %}
+            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#loginRequiredModal">聯絡賣家</a>
+            {% endif %}
+        </div>
     </div>
 
-    {% if user.is_authenticated and user != listing.user_name.user %}
-    <a href="{% url 'contacts:start' listing.id %}" class="btn btn-primary mb-4">聯絡賣家</a>
-    {% elif user == listing.user_name.user %}
-    <a href="{% url 'listings:edit' listing.id %}" class="btn btn-outline-secondary mb-4">編輯</a>
-    {% endif %}
+    <!-- 商品描述 -->
+    <div class="card mb-3">
+        <div class="card-header">商品描述</div>
+        <div class="card-body">
+            {% if listing.descriptions %}
+            {{ listing.descriptions|linebreaks }}
+            {% else %}
+            <p class="text-muted mb-0">—</p>
+            {% endif %}
+        </div>
+    </div>
 
+    <a href="{% url 'listings:index' %}" class="btn btn-outline-secondary mb-4">返回商品列表</a>
+</div>
+
+<!-- 未登入彈窗 -->
+<div class="modal fade" id="loginRequiredModal" tabindex="-1" role="dialog" aria-labelledby="loginRequiredModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginRequiredModalLabel">請先登錄</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">您需要先登錄才能聯繫賣家。</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <a href="{% url 'accounts:login' %}" class="btn btn-primary">前往登錄</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

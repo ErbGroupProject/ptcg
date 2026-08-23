@@ -32,3 +32,7 @@ class Tradelist(models.Model):
         local_time = timezone.localtime(self.list_date)
         time_str = local_time.strftime('%Y-%m-%d %H:%M')
         return f"{self.sell_item_name} (release at {time_str})"
+
+    @property
+    def is_trade_done(self):
+        return self.is_sold

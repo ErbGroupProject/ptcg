@@ -3,233 +3,522 @@
 <section id='services' class="auth-shell py-5">
     <div class="auth-bg"></div>
     <div class="container mt-5">
-        <div id="message"></div>
         <h2 style="color: #1448d6">Welcome {{ user.username }}</h2>
         <hr>
 
-        <div class="row mt-3">
-            <div class="col-12">
-                <ul class="nav nav-tabs" id="chatTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="buying-tab" data-toggle="tab" href="#buying" role="tab">我正在買的</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: #0e34db" id="selling-tab" data-toggle="tab" href="#selling" role="tab">我正在賣的</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: #1036df" id="completed-tab" data-toggle="tab" href="#completed" role="tab">我已完成了</a>
-                    </li>
-                </ul>
+        <ul class="nav nav-tabs" id="chatTab" role="tablist">
+            <li class="nav-item"><a class="nav-link {% if active_tab == 'buying' %}active{% endif %}" data-toggle="tab" href="#buying" role="tab">我正在買的</a></li>
+            <li class="nav-item"><a class="nav-link {% if active_tab == 'selling' %}active{% endif %}" data-toggle="tab" href="#selling" role="tab">我正在賣的</a></li>
+            <li class="nav-item"><a class="nav-link {% if active_tab == 'completed' %}active{% endif %}" data-toggle="tab" href="#completed" role="tab">我已完成了</a></li>
+            <li class="nav-item"><a class="nav-link {% if active_tab == 'all' %}active{% endif %}" data-toggle="tab" href="#all" role="tab">所有對話</a></li>
+            <li class="nav-item"><a class="nav-link {% if active_tab == 'spam' %}active{% endif %}" data-toggle="tab" href="#spam" role="tab">垃圾信息</a></li>
+        </ul>
 
-                <div class="tab-content border border-top-0 p-4 mb-4" id="chatTabContent">
-                    <!-- Tab 1：我正在買的 -->
-                    <div class="tab-pane fade show active" id="buying" role="tabpanel">
-                        {% for chat in buying_chats %}
-                        <div class="card bg-white mb-3">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5>{{ chat.listing.topic }}</h5>
-                                    <p class="mb-0">對方：{{ chat.seller.username }}</p>
-                                </div>
-                                {% if chat.trade_finished %}
-                                    <button type="button" class="btn btn-secondary" disabled>交易完成</button>
-                                {% else %}
-                                    <button type="button" class="btn btn-primary finish-trade-btn" data-url="{% url 'tradings:submit_review' chat.id %}">交易完成</button>
-                                {% endif %}
-                            </div>
+        <div class="tab-content border border-top-0 p-4 mb-4">
+            <!-- Tab 1：我正在買的 -->
+            <div class="tab-pane fade {% if active_tab == 'buying' %}show active{% endif %}" id="buying" role="tabpanel">
+                {% for chat in buying_chats %}
+                <div class="card bg-white mb-3">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>{{ chat.listing.sell_item_name }}</h5>
+                            <p class="mb-0">對方：{{ chat.seller.username }}</p>
                         </div>
-                        {% empty %}
-                            <p>暫無正在進行的購買對話</p>
-                        {% endfor %}
-
-                        {% if buying_chats.has_other_pages %}
-                        <nav>
-                            <ul class="pagination">
-                                {% if buying_chats.has_previous %}
-                                    <li class="page-item"><a class="page-link" href="?buy_page={{buying_chats.previous_page_number}}">上一頁</a></li>
-                                {% endif %}
-                                <li class="page-item disabled"><span class="page-link">{{buying_chats.number}} / {{buying_chats.paginator.num_pages}}</span></li>
-                                {% if buying_chats.has_next %}
-                                    <li class="page-item"><a class="page-link" href="?buy_page={{buying_chats.next_page_number}}">下一頁</a></li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                        {% endif %}
-                    </div>
-
-                    <!-- Tab 2：我正在賣的 -->
-                    <div class="tab-pane fade" id="selling" role="tabpanel">
-                        {% for chat in selling_chats %}
-                        <div class="card bg-primary text-white mb-3">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5>{{ chat.listing.topic }}</h5>
-                                    <p class="mb-0">對方：{{ chat.buyer.username }}</p>
-                                </div>
-                                {% if chat.trade_finished %}
-                                    <button type="button" class="btn btn-light text-dark" disabled>交易完成</button>
-                                {% else %}
-                                    <button type="button" class="btn btn-light text-dark finish-trade-btn" data-url="{% url 'tradings:submit_review' chat.id %}">交易完成</button>
-                                {% endif %}
-                            </div>
+                        <div class="d-flex">
+                            <a href="{% url 'contacts:chat_detail' chat.id %}" class="btn btn-outline-primary mr-2">進入對話</a>
+                            {% if chat.buyer == user and not chat.trade_finished and chat.listing.is_trade_done %}
+                                <button class="btn btn-secondary mr-2" disabled>產品已售</button>
+                                <a href="{% url 'contacts:mark_as_spam' chat.id %}" class="btn btn-outline-danger">列為垃圾信息</a>
+                            {% elif chat.review_state == "done" %}
+                                <button class="btn btn-secondary" disabled>已評價</button>
+                            {% elif chat.review_state == "waiting_other" %}
+                                <span class="btn btn-secondary">等待對方評價</span>
+                            {% elif chat.review_state == "waiting_me" %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-primary">等待評價</a>
+                            {% else %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">寫評價</a>
+                            {% endif %}
                         </div>
-                        {% empty %}
-                            <p>暫無正在進行的販賣對話</p>
-                        {% endfor %}
-
-                        {% if selling_chats.has_other_pages %}
-                        <nav>
-                            <ul class="pagination">
-                                {% if selling_chats.has_previous %}
-                                    <li class="page-item"><a class="page-link" href="?sell_page={{selling_chats.previous_page_number}}">上一頁</a></li>
-                                {% endif %}
-                                <li class="page-item disabled"><span class="page-link">{{selling_chats.number}} / {{selling_chats.paginator.num_pages}}</span></li>
-                                {% if selling_chats.has_next %}
-                                    <li class="page-item"><a class="page-link" href="?sell_page={{selling_chats.next_page_number}}">下一頁</a></li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                        {% endif %}
-                    </div>
-
-                    <!-- Tab 3：已完成交易 -->
-                    <div class="tab-pane fade" id="completed" role="tabpanel">
-                        {% for chat in completed_chats %}
-                        <div class="card bg-light mb-3">
-                            <div class="card-body">
-                                <h5>{{ chat.listing.topic }}</h5>
-                                <p class="mb-0">對方：{% if chat.buyer == user %}{{ chat.seller.username }}{% else %}{{ chat.buyer.username }}{% endif %}</p>
-                            </div>
-                        </div>
-                        {% empty %}
-                            <p>暫無完成的交易</p>
-                        {% endfor %}
-
-                        {% if completed_chats.has_other_pages %}
-                        <nav>
-                            <ul class="pagination">
-                                {% if completed_chats.has_previous %}
-                                    <li class="page-item"><a class="page-link" href="?done_page={{completed_chats.previous_page_number}}">上一頁</a></li>
-                                {% endif %}
-                                <li class="page-item disabled"><span class="page-link">{{completed_chats.number}} / {{completed_chats.paginator.num_pages}}</span></li>
-                                {% if completed_chats.has_next %}
-                                    <li class="page-item"><a class="page-link" href="?done_page={{completed_chats.next_page_number}}">下一頁</a></li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                        {% endif %}
                     </div>
                 </div>
+                {% empty %}<p>暫無正在進行的購買對話</p>{% endfor %}
+                {% if buying_chats.has_other_pages %}
+                <nav><ul class="pagination">
+                    {% if buying_chats.has_previous %}<li class="page-item"><a class="page-link" href="?buy_page={{ buying_chats.previous_page_number }}">上一頁</a></li>{% endif %}
+                    <li class="page-item disabled"><span class="page-link">{{ buying_chats.number }} / {{ buying_chats.paginator.num_pages }}</span></li>
+                    {% if buying_chats.has_next %}<li class="page-item"><a class="page-link" href="?buy_page={{ buying_chats.next_page_number }}">下一頁</a></li>{% endif %}
+                </ul></nav>
+                {% endif %}
+            </div>
 
+            <!-- Tab 2：我正在賣的 -->
+            <div class="tab-pane fade {% if active_tab == 'selling' %}show active{% endif %}" id="selling" role="tabpanel">
+                {% for chat in selling_chats %}
+                <div class="card bg-white mb-3">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>{{ chat.listing.sell_item_name }}</h5>
+                            <p class="mb-0">對方：{{ chat.buyer.username }}</p>
+                        </div>
+                        <div class="d-flex">
+                            <a href="{% url 'contacts:chat_detail' chat.id %}" class="btn btn-outline-primary mr-2">進入對話</a>
+                            {% if chat.review_state == "done" %}
+                                <button class="btn btn-secondary" disabled>已評價</button>
+                            {% elif chat.review_state == "waiting_other" %}
+                                <span class="btn btn-secondary">等待對方評價</span>
+                            {% elif chat.review_state == "waiting_me" %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-primary">等待評價</a>
+                            {% else %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">寫評價</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}<p>暫無正在進行的販賣對話</p>{% endfor %}
+                {% if selling_chats.has_other_pages %}
+                <nav><ul class="pagination">
+                    {% if selling_chats.has_previous %}<li class="page-item"><a class="page-link" href="?sell_page={{ selling_chats.previous_page_number }}">上一頁</a></li>{% endif %}
+                    <li class="page-item disabled"><span class="page-link">{{ selling_chats.number }} / {{ selling_chats.paginator.num_pages }}</span></li>
+                    {% if selling_chats.has_next %}<li class="page-item"><a class="page-link" href="?sell_page={{ selling_chats.next_page_number }}">下一頁</a></li>{% endif %}
+                </ul></nav>
+                {% endif %}
+            </div>
+
+            <!-- Tab 3：已完成交易 -->
+            <div class="tab-pane fade {% if active_tab == 'completed' %}show active{% endif %}" id="completed" role="tabpanel">
+                {% for chat in completed_chats %}
+                <div class="card bg-white mb-3">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>{{ chat.listing.sell_item_name }}</h5>
+                            <p class="mb-0">對方：{% if chat.buyer == user %}{{ chat.seller.username }}{% else %}{{ chat.buyer.username }}{% endif %}</p>
+                        </div>
+                        <div class="d-flex">
+                            <a href="{% url 'contacts:chat_detail' chat.id %}" class="btn btn-outline-secondary mr-2">查看對話</a>
+                            {% if chat.review_state == "done" %}
+                                <button class="btn btn-secondary" disabled>已評價</button>
+                            {% elif chat.review_state == "waiting_other" %}
+                                <span class="btn btn-secondary">等待對方評價</span>
+                            {% elif chat.review_state == "waiting_me" %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-primary">等待評價</a>
+                            {% else %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">寫評價</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}<p>暫無完成的交易</p>{% endfor %}
+                {% if completed_chats.has_other_pages %}
+                <nav><ul class="pagination">
+                    {% if completed_chats.has_previous %}<li class="page-item"><a class="page-link" href="?done_page={{ completed_chats.previous_page_number }}">上一頁</a></li>{% endif %}
+                    <li class="page-item disabled"><span class="page-link">{{ completed_chats.number }} / {{ completed_chats.paginator.num_pages }}</span></li>
+                    {% if completed_chats.has_next %}<li class="page-item"><a class="page-link" href="?done_page={{ completed_chats.next_page_number }}">下一頁</a></li>{% endif %}
+                </ul></nav>
+                {% endif %}
+            </div>
+
+            <!-- Tab 4：所有對話 -->
+            <div class="tab-pane fade {% if active_tab == 'all' %}show active{% endif %}" id="all" role="tabpanel">
+                {% for chat in all_chats %}
+                <div class="card bg-white mb-3">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>{{ chat.listing.sell_item_name }}</h5>
+                            <p class="mb-0">對方：{% if chat.buyer == user %}{{ chat.seller.username }}{% else %}{{ chat.buyer.username }}{% endif %}</p>
+                        </div>
+                        <div class="d-flex">
+                            <a href="{% url 'contacts:chat_detail' chat.id %}" class="btn btn-outline-primary mr-2">進入對話</a>
+                            {% if chat.buyer == user and not chat.trade_finished and chat.listing.is_trade_done %}
+                                <button class="btn btn-secondary mr-2" disabled>產品已售</button>
+                                <a href="{% url 'contacts:mark_as_spam' chat.id %}" class="btn btn-outline-danger">列為垃圾信息</a>
+                            {% elif chat.review_state == "done" %}
+                                <button class="btn btn-secondary" disabled>已評價</button>
+                            {% elif chat.review_state == "waiting_other" %}
+                                <span class="btn btn-secondary">等待對方評價</span>
+                            {% elif chat.review_state == "waiting_me" %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-primary">等待評價</a>
+                            {% else %}
+                                <a href="{% url 'tradings:submit_review' chat.id %}" class="btn btn-outline-primary">寫評價</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}<p>暫無對話</p>{% endfor %}
+
+                {% if all_chats.has_other_pages %}
+                <nav><ul class="pagination">
+                    {% if all_chats.has_previous %}<li class="page-item"><a class="page-link" href="?all_page={{ all_chats.previous_page_number }}">上一頁</a></li>{% endif %}
+                    <li class="page-item disabled"><span class="page-link">{{ all_chats.number }} / {{ all_chats.paginator.num_pages }}</span></li>
+                    {% if all_chats.has_next %}<li class="page-item"><a class="page-link" href="?all_page={{ all_chats.next_page_number }}">下一頁</a></li>{% endif %}
+                </ul></nav>
+                {% endif %}
+            </div>
+
+            <!-- Tab 5：垃圾信息 -->
+            <div class="tab-pane fade {% if active_tab == 'spam' %}show active{% endif %}" id="spam" role="tabpanel">
+                {% for chat in spam_chats %}
+                <div class="card bg-white mb-3">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>{{ chat.listing.sell_item_name }}</h5>
+                            <p class="mb-0">對方：{% if chat.buyer == user %}{{ chat.seller.username }}{% else %}{{ chat.buyer.username }}{% endif %}</p>
+                        </div>
+                        <div class="d-flex">
+                            <a href="{% url 'contacts:chat_detail' chat.id %}" class="btn btn-outline-primary mr-2">進入對話</a>
+                            {% if chat.buyer == user %}
+                                <a href="{% url 'contacts:unmark_spam' chat.id %}" class="btn btn-outline-success">取消垃圾信息</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}<p>沒有垃圾信息</p>{% endfor %}
+
+                {% if spam_chats.has_other_pages %}
+                <nav><ul class="pagination">
+                    {% if spam_chats.has_previous %}<li class="page-item"><a class="page-link" href="?spam_page={{ spam_chats.previous_page_number }}">上一頁</a></li>{% endif %}
+                    <li class="page-item disabled"><span class="page-link">{{ spam_chats.number }} / {{ spam_chats.paginator.num_pages }}</span></li>
+                    {% if spam_chats.has_next %}<li class="page-item"><a class="page-link" href="?spam_page={{ spam_chats.next_page_number }}">下一頁</a></li>{% endif %}
+                </ul></nav>
+                {% endif %}
             </div>
         </div>
     </div>
-    <!-- ========== 底部一排正方形按鈕（置中） ========== -->
-    <div class="row">
-        <div class="col-10 d-flex justify-content-end">
-            <a href="#"
-                class="btn btn-outline-secondary d-inline-flex align-items-center justify-content-center m-4"
-                style="width:100px;height:30px; border-radius: 30px; color: #f8f8f8; border-width:0px;background: #1e73f3; font-size:1rem;">
-                Message
-            </a>
-            <a href="#"
-                class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-4 custom-square-btn"
-                style="width:100px;height:30px; border-radius: 30px; color: #f8f8f8; border-width:0px;background: #1e73f3; font-size:1rem;">
-                Deck
-            </a>
+    
+        {% comment %} decks {% endcomment %}
+<div class="container mt-4">
 
-            <a href="{% url 'listings:my_listings' %}"
-                class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-4"
-                style="width:100px;height:30px; border-radius: 30px; color: #f8f8f8; border-width:0px;background: #1e73f3; font-size:1rem;">
-                Post
-            </a>
+    <!-- Deck box -->
+    <div class="border p-4 mb-4">
+        {% if user.is_authenticated %}
+            <div class="d-flex mb-3">
+                <!-- CREATE -->
+                <button type="button"
+                        class="btn btn-sm flex-fill mr-1"
+                        data-toggle="modal"
+                        data-target="#createDeckModal"
+                        style="color:white;border:none;background-color:#5da0df;">
+                    Create
+                </button>
+                <!-- RENAME -->
+                {% if selected_deck %}
+                    <button type="button"
+                            class="btn btn-sm flex-fill ml-1"
+                            data-toggle="modal"
+                            data-target="#renameDeckModal"
+                            style="color:white;border:none;background-color:#5da0df;">
+                        Rename
+                    </button>
+                {% else %}
+                    <button type="button"
+                            class="btn btn-sm flex-fill ml-1"
+                            disabled>
+                        Rename
+                    </button>
+                {% endif %}
+            </div>
 
-            <a href="{% url 'accounts:profile' %}"
-                class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-4"
-                style="width:100px;height:30px; border-radius: 30px; color: #f8f8f8; border-width:0px;background: #1e73f3; font-size:1rem;">
-                Profile
-            </a>
-        </div>
+            {% if selected_deck %}
+                <!-- Remove Deck（刪除整個牌組） -->
+                <button type="button"
+                        class="btn btn-sm btn-block mb-2"
+                        data-toggle="modal"
+                        data-target="#removeDeckModal"
+                        style="color:white;border:none;background-color:#d9534f;">
+                    Remove Deck
+                </button>
+
+                <form method="post"
+                      action="{% url 'decks:modify_cards' %}"
+                      class="mb-3">
+                    {% csrf_token %}
+                    <input type="hidden"
+                           name="deck_id"
+                           value="{{ selected_deck.id }}">
+                    <input type="hidden"
+                           name="action"
+                           value="remove">
+                    <button type="submit"
+                            class="btn btn-sm btn-block mb-2"
+                            style="color:white;border:none;background-color:#5da0df;">
+                        Remove Cards
+                    </button>
+
+                    <!-- Change Decks dropdown -->
+                    <div class="dropdown mt-3">
+                        <button class="btn dropdown-toggle"
+                                type="button"
+                                id="deckDropdown"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                style="color:white;border:none;width:100%;background-color:#5da0df;">
+                            {{ selected_deck.name }}
+                        </button>
+                        <div class="dropdown-menu w-100"
+                             aria-labelledby="deckDropdown">
+                            {% for deck in decks %}
+                                <a class="dropdown-item"
+                                   href="{% url 'decks:select_deck' deck.id %}">
+                                    {{ deck.name }}
+                                </a>
+                            {% empty %}
+                                <span class="dropdown-item-text text-muted">
+                                    No decks yet
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Deck card selection -->
+                    <div class="btn-group-toggle"
+                         data-toggle="buttons">
+                        <div class="row mx-0">
+                            {% for deck_card in selected_deck.deck_cards.all %}
+                                <div class="col-6 col-lg-3 px-1 mb-2">
+                                    <label class="btn btn-secondary btn-block p-1 border-0">
+                                        <input type="checkbox"
+                                               name="card_ids"
+                                               value="{{ deck_card.card.id }}"
+                                               autocomplete="off"
+                                               class="sr-only">
+                                        {% if deck_card.card.photo_main %}
+                                            <img src="{{ deck_card.card.photo_main.url }}"
+                                                 class="img-fluid w-100"
+                                                 alt="{{ deck_card.card.title }}">
+                                        {% endif %}
+                                        <small class="d-block text-white">
+                                            ×{{ deck_card.quantity }}
+                                        </small>
+                                    </label>
+                                </div>
+                            {% empty %}
+                                <div class="col-12 text-center text-white">
+                                    <p class="mb-0">
+                                        This deck is empty.
+                                    </p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+        {% else %}
+            <!-- 未登入：畫面一樣，但操作彈登入提示 -->
+            <div class="d-flex mb-3">
+                <button type="button"
+                        class="btn btn-sm flex-fill mr-1"
+                        data-toggle="modal"
+                        data-target="#loginRequiredModal"
+                        style="color:white;border:none;background-color:#5da0df;">
+                    Create
+                </button>
+                <button type="button"
+                        class="btn btn-sm flex-fill ml-1"
+                        data-toggle="modal"
+                        data-target="#loginRequiredModal"
+                        style="color:white;border:none;background-color:#5da0df;">
+                    Rename
+                </button>
+            </div>
+            <p class="mb-0">
+                登錄後可建立和管理你的牌組
+            </p>
+        {% endif %}
     </div>
-</section>
+</div>
 
-<!-- 彈窗 Modal + JS（保持你原本的） -->
-<div class="modal fade" id="tradeModal" tabindex="-1">
-    <div class="modal-dialog">
+<!-- Create Deck Modal -->
+<div class="modal fade"
+     id="createDeckModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="createDeckModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"
+         role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">完成交易 & 留下評價</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title"
+                    id="createDeckModalLabel">
+                    Create Deck
+                </h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <form id="reviewForm" method="POST" action="">
+            <form method="post"
+                  action="{% url 'decks:create_deck' %}">
                 {% csrf_token %}
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label>評論內容 (必填)</label>
-                        <textarea class="form-control" id="commentText" name="comment_content" rows="3" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>評分 (1-5星)</label>
-                        <div class="star-rating">
-                            <input type="radio" name="star" value="5" id="star5"><label for="star5">★</label>
-                            <input type="radio" name="star" value="4" id="star4"><label for="star4">★</label>
-                            <input type="radio" name="star" value="3" id="star3"><label for="star3">★</label>
-                            <input type="radio" name="star" value="2" id="star2"><label for="star2">★</label>
-                            <input type="radio" name="star" value="1" id="star1"><label for="star1">★</label>
-                        </div>
-                    </div>
+                    <input type="text"
+                           name="name"
+                           class="form-control"
+                           placeholder="Deck name"
+                           required>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                    <button type="submit" id="submitReviewBtn" class="btn btn-primary" disabled>送出評價</button>
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Create
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<script>
-$('.finish-trade-btn').click(function(){
-    var url = $(this).data('url');
-    $('#reviewForm').attr('action', url);
-    $('#reviewForm')[0].reset();
-    $('#submitReviewBtn').prop('disabled', true);
-    $('#tradeModal').modal('show');
-});
-function checkReady(){
-    var comment = $('#commentText').val().trim();
-    var starChecked = $('input[name="star"]:checked').length;
-    $('#submitReviewBtn').prop('disabled', !(comment.length > 0 && starChecked > 0));
-}
-$('#commentText').on('input', checkReady);
-$('input[name="star"]').on('change', checkReady);
-</script>
+{% if selected_deck %}
+<!-- Rename Deck Modal -->
+<div class="modal fade"
+     id="renameDeckModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="renameDeckModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    id="renameDeckModalLabel">
+                    Rename Deck
+                </h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post"
+                  action="{% url 'decks:rename_deck' selected_deck.id %}">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <input type="text"
+                           name="name"
+                           value="{{ selected_deck.name }}"
+                           class="form-control"
+                           required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Rename
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-<style>
-.star-rating { display: flex; flex-direction: row-reverse; justify-content: flex-end; }
-.star-rating input { display: none; }
-.star-rating label { font-size: 30px; color: #ccc; cursor: pointer; padding: 0 2px; }
-.star-rating input:checked ~ label,
-.star-rating label:hover,
-.star-rating label:hover ~ label { color: #ffc107; }
-div#message.container {
-        position: absolute !important;
-        top: 75px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 100% !important;
-        max-width: 400px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        background: transparent !important;
-        z-index: 100 !important;
-    }
-    #message .alert {
-        margin-bottom: 0 !important;
-        color: #ffffff;
-        background-color: rgba(97, 163, 238, 0.64);
-        border-width: 0px;
-        border-radius: 16px !important;
-    }
-</style>
+<!-- Remove Deck Modal -->
+<div class="modal fade"
+     id="removeDeckModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="removeDeckModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    id="removeDeckModalLabel">
+                    確認 Remove？
+                </h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                確定要刪除牌組「{{ selected_deck.name }}」嗎？此操作無法復原。
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">
+                    取消
+                </button>
+                <form method="post"
+                      action="{% url 'decks:remove_deck' selected_deck.id %}"
+                      class="m-0">
+                    {% csrf_token %}
+                    <button type="submit"
+                            class="btn btn-danger">
+                        確認刪除
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Login Required Modal -->
+<div class="modal fade"
+     id="loginRequiredModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="loginRequiredModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"
+         role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    id="loginRequiredModalLabel">
+                    請先登錄
+                </h5>
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                您需要先登錄才能使用牌組功能。
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">
+                    取消
+                </button>
+                <a href="{% url 'accounts:login' %}"
+                   class="btn btn-primary">
+                    前往登錄
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- 底部按鈕：只留 Post 和 Profile -->
+
+    <div class="d-flex justify-content-center">
+        <a href="{% url 'listings:my_listings' %}" class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2"
+           style="width:100px;height:30px; border-radius:30px; color:#fff; background:#1e73f3; font-size:1rem;">Post</a>
+        <a href="{% url 'accounts:profile' %}" class="btn btn-secondary d-inline-flex align-items-center justify-content-center m-2"
+           style="width:100px;height:30px; border-radius:30px; color:#fff; background:#1e73f3; font-size:1rem;">Profile</a>
+
+    </div>
+</section>
 {% endblock %}

@@ -105,7 +105,7 @@ img {
   height: 100vh;
   z-index: -1;
   overflow: hidden;
-  background: linear-gradient(rgba(230, 228, 228, 0.842), rgba(0, 0, 0, 0.247)), url('../img/pokemon_gym_logo.png');
+  background: linear-gradient(rgba(230, 228, 228, 0.842), rgba(0, 0, 0, 0.247)), url('../img/pokemon_gym_logo.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -183,3 +183,4 @@ img {
   box-sizing: border-box;
   overflow: hidden;
 }
+

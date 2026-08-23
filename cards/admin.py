@@ -75,6 +75,7 @@ class RetreatInline(nested_admin.NestedTabularInline):
 class CardAdmin(nested_admin.NestedModelAdmin):
 
     list_display = (
+        "id",
         'title',
         'card_number_display',
         'generation',

@@ -12,8 +12,6 @@
                         <h4 class="mb-0" style="color: #ebe2e2be"><i class="fas fa-user-plus" style="color: #92b3da;"></i> Join </h4>
                     </div>
                     <div class="card-body p-4">
-                        <p class="text-muted"></p>
-                        
                         <form action="{% url 'accounts:register' %}" method="POST">
                             {% csrf_token %} 
                             

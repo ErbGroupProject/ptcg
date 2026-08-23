@@ -10,9 +10,15 @@ class Chat(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     trade_finished = models.BooleanField(default=False, verbose_name="交易是否標記完成")
+    is_spam = models.BooleanField(default=False, verbose_name="垃圾信息")
+
 
     class Meta:
         unique_together = ["listing", "buyer", "seller"]
+    @property
+    def review_record(self):
+        from tradings.models import TradingRecord
+        return TradingRecord.objects.filter(chat=self).first()
 
     def __str__(self):
         return f"Chat-{self.listing.sell_item_name} | {self.buyer.username}-{self.seller.username}"   # ← topic 改 sell_item_name
