@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card listing-preview">
-                    <img src="{% static 'image/sm_banner_02.png' %}" class="card-img-top" alt="card"/>
+                    <img src="{% static 'image/sm_banner_01.jpg' %}" class="card-img-top" alt="card"/>
                     <div class="card-body">
                         <div class="listing-heading text-center">
                             <h4 class="text-primary">News</h4>
@@ -85,52 +85,14 @@
                     <img src="{% static 'image/sm_banner_03.png' %}" class="card-img-top" alt="card"/>
                     <div class="card-body">
                         <div class="listing-heading text-center">
-                            <h4 class="text-primary">Price</h4>
+                            <h4 class="text-primary">Shop</h4>
                         </div>
-                        <a href="{% url 'listings:index' %}" class="btn btn-primary w-100 mt-3">View Details</a>
+                        <a href="{% url 'shops:shop_list' %}" class="btn btn-primary w-100 mt-3">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Second Row of Listings -->
-        <div class="row">
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <img src="{% static 'image/sm_banner_04.jpg' %}" class="card-img-top" alt="card"/>
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Tournament</h4>
-                        </div>
-                        <a href="{% url 'listings:index' %}" class="btn btn-primary w-100 mt-3">View Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <img src="{% static 'image/sm_banner_05.png' %}" class="card-img-top" alt="card"/>
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">New Products</h4>
-                        </div>
-                        <a href="{% url 'listings:index' %}" class="btn btn-primary w-100 mt-3">View Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <img src="{% static 'image/sm_banner_06.jpg' %}" class="card-img-top" alt="card"/>
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Up Coming</h4>
-                        </div>
-                        <a href="{% url 'listings:index' %}" class="btn btn-primary w-100 mt-3">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 

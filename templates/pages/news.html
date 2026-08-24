@@ -1,5 +1,54 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <p>News</p>
+    <!-- Showcase -->
+    <section id="showcase-inner" class="py-5 text-white">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-12">
+          <img src="{% static 'image/banner_06.jpg' %}" alt="new thumbnail" class="img-fluid mb-4" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- about -->
+    <section id="about" class="py-5">
+      <div class="container">
+        <div class="row align-items-start">
+          <div class="col-md-8 pr-md-5">
+            <h2 class="mb-3">系列賽的大型開幕賽！</h2>
+            <p class="lead mb-4">
+              紀念球聯盟賽的獎項從參加獎到高排名獎項應有盡有，從Worlds參賽邀請到大量LP（TCG 部門），各種豪華獎項等你拿！
+            </p>
+            <img src="{% static 'image/sm_banner_02.png' %}" alt="small banner" class="img-fluid mb-4" />
+            <p class="mb-0">
+              紀念球聯盟賽中會同時舉辦各種大朋友小朋友都能樂在其中的附屬活動。
+適合新手的休閒對戰、不懂對戰規則也能輕鬆參與的活動……一應俱全，歡迎來體驗！
+            </p>
+          </div>
+          <div class="col-md-4 mt-4 mt-md-0">
+            <div class="card shadow-sm">
+              <img class="card-img-top" src="{% static 'image/sm_banner_03.png' %}" alt="banner2" />
+              <div class="card-body">
+                <h5 class="card-title mb-2">系列賽的大型開幕賽！</h5>
+               
+                <p class="card-text mb-0">
+                   紀念球聯盟賽的獎項從參加獎到高排名獎項應有盡有，從Worlds參賽邀請到大量LP（TCG 部門），各種豪華獎項等你拿！
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Work -->
+    <section id="work" class="bg-dark text-white text-center py-5">
+      <h2 class="display-4">系列賽的大型開幕賽！</h2>
+      <h4>紀念球聯盟賽中會同時舉辦各種大朋友小朋友都能樂在其中的附屬活動。
+適合新手的休閒對戰、不懂對戰規則也能輕鬆參與的活動……一應俱全，歡迎來體驗！</h4>
+      <hr />
+      <a href="{% url 'listings:index' %}" class="btn btn-danger text-white btn-lg">系時侯姓合最強牌組去爭贏啦！</a>
+    </section>
 
 {% endblock content %} 
