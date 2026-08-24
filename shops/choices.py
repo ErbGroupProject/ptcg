@@ -18,3 +18,23 @@ district_choices = {
     "西灣河":"Eastern",
     "渣華道":"Eastern",
 }
+
+district_list_for_frontend = [
+    ("Kwun Tong", "觀塘"),
+    ("Kwun Tong", "九龍灣"),
+    ("Kowloon City", "黃埔"),
+    ("Kowloon City", "紅磡"),
+    ("Kowloon City", "啟德"),
+    ("Sham Shui Po", "深水埗"),
+    ("Sham Shui Po", "長沙灣"),
+    ("Sham Shui Po", "荔枝角"),
+    ("Wong Tai Sin", "新蒲崗"),
+    ("Yau Tsim Mong", "佐敦"),
+    ("Yau Tsim Mong", "旺角"),
+    ("Yau Tsim Mong", "太子"),
+    ("Yau Tsim Mong", "尖沙咀"),
+    ("Southern", "香港仔"),
+    ("Wan Chai", "天后"),
+    ("Eastern", "西灣河"),
+    ("Eastern", "渣華道"),
+]

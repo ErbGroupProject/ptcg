@@ -61,7 +61,7 @@ img {
 
 
 #showcase2 {
-  background: url(../img/pokemon_gym_logo.jpg) no-repeat top center/cover fixed;
+  background: url(../img/pokemon_gym_logo.png) no-repeat top center/cover fixed;
   position: relative;
   overflow: hidden;
   min-height: 650px;
@@ -95,6 +95,7 @@ img {
   background: linear-gradient(rgba(230, 228, 228, 0.842), rgba(0, 0, 0, 0.247)), url('../img/showcase.jpg');
   background-size: cover;
   background-position: center;
+  background: transparent;
 }
 
 #shop {
@@ -105,7 +106,7 @@ img {
   height: 100vh;
   z-index: -1;
   overflow: hidden;
-  background: linear-gradient(rgba(230, 228, 228, 0.842), rgba(0, 0, 0, 0.247)), url('../img/pokemon_gym_logo.jpg');
+  background: linear-gradient(rgba(230, 228, 228, 0.842), rgba(0, 0, 0, 0.247)), url('../img/pokemon_gym_logo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -174,13 +175,46 @@ img {
   bottom: 0;
 }
 
-.shop-page-wrapper {
-  min-height: 100vh;
+/* .shop-page-wrapper {
+  min-height: 0;
+  height: auto;
   position: relative;
   padding-bottom: 60px;
   display: block;
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
+} */
+
+.shop-page-wrapper {
+  min-height: 0;
+  height: auto;
+  padding-bottom: 20px;
+  overflow: visible;
 }
 
+
+
+.breadcrumb-container,
+.breadcrumb-container .breadcrumb {
+  background-color: transparent ;
+}
+
+body:has(#login) {
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      rgba(230, 228, 228, 0.842),
+      rgba(0, 0, 0, 0.247)
+    ),
+    url("../img/showcase.jpg") center / cover fixed no-repeat;
+}
+
+body:has(#login) #login.auth-shell {
+  background: transparent !important;
+}
+
+body:has(#login) .breadcrumb-container,
+body:has(#login) .breadcrumb {
+  background-color: transparent !important;
+}
