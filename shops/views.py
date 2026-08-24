@@ -15,9 +15,21 @@ def shop(request, slist_id):
     return render(request, "shops/shop.html", context)
 
 
+def _apply_district(queryset_list, district):
+    """把下拉選單傳進來的中文分區，轉成資料庫裡的英文分區再篩選。
+
+    district_choices 是 {中文分區: 英文分區} 的對照表，
+    下拉選單的選項值用的是中文 key，所以要先轉成英文 value 才能對上 DB。
+    """
+    if district and district != 'All':
+        english = district_choices.get(district, district)
+        return queryset_list.filter(district__iexact=english)
+    return queryset_list
+
+
 def search_shops(request):
     """搜尋店鋪"""
-    queryset_list = Shoplist.objects.all()
+    queryset_list = Shoplist.objects.all().order_by("id")
 
     keywords = request.GET.get('keywords', '').strip()
     district = request.GET.get('district', '').strip()
@@ -28,8 +40,7 @@ def search_shops(request):
             Q(address__icontains=keywords) |
             Q(website__icontains=keywords)
         )
-    if district and district != 'All':
-        queryset_list = queryset_list.filter(district__iexact=district)
+    queryset_list = _apply_district(queryset_list, district)
 
     paginator = Paginator(queryset_list, 25)
     page_number = request.GET.get('page')
@@ -45,7 +56,7 @@ def search_shops(request):
 
 def shop_list(request):
     """店鋪列表（含搜尋）"""
-    queryset_list = Shoplist.objects.all()
+    queryset_list = Shoplist.objects.all().order_by("id")
 
     keywords = request.GET.get('keywords', '').strip()
     district = request.GET.get('district', '').strip()
@@ -56,8 +67,7 @@ def shop_list(request):
             Q(address__icontains=keywords) |
             Q(website__icontains=keywords)
         )
-    if district and district != 'All':
-        queryset_list = queryset_list.filter(district__iexact=district)
+    queryset_list = _apply_district(queryset_list, district)
 
     paginator = Paginator(queryset_list, 25)
     page_number = request.GET.get('page')

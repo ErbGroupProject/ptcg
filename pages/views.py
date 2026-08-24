@@ -16,3 +16,9 @@ def about(request):
 
 def news(request):
     return render(request, "pages/news.html")
+
+def tournament(request):
+    return render(request, "pages/tournament.html")
+
+def upcoming(request):
+    return render(request, "pages/tournament.html")
