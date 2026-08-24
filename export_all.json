@@ -1,9 +1,10 @@
 [
 {
   "model": "auth.user",
+  "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1000000$f1MAKE8ZokS41iu1IOwqgk$pvRkccUXPqzgMJUG7bjB3+3hsvKNMx3bAD1AmFJPkHQ=",
-    "last_login": "2026-08-20T01:06:20.889Z",
+    "last_login": "2026-08-24T04:52:21.930Z",
     "is_superuser": true,
     "username": "ptcg_user",
     "first_name": "",
@@ -18,9 +19,10 @@
 },
 {
   "model": "auth.user",
+  "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$1000000$G5TsjMsOHWeFjoyqcs5u6M$tBY9OmQvWnhAuOrxx5SIHPiCg8u7j3cXCaK3uvSXS9Q=",
-    "last_login": "2026-08-19T11:17:28.424Z",
+    "last_login": "2026-08-24T04:48:17.935Z",
     "is_superuser": false,
     "username": "user",
     "first_name": "user",
@@ -35,6 +37,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 3,
   "fields": {
     "password": "pbkdf2_sha256$1000000$sSTvX2nQHknB3zHKroSGyh$c8qUjqjmWuHj9bM0xvSkSNwTNM+d/w+Qx+9l3DeoU2c=",
     "last_login": "2026-08-14T07:51:12.813Z",
@@ -52,6 +55,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 4,
   "fields": {
     "password": "pbkdf2_sha256$1000000$HYMF0ZC33skE6oW8JK8G2d$HnSJDafykw3BUDc4SJuI9nwLpOB70L3AoRU9iQis0+s=",
     "last_login": "2026-08-17T12:43:08.359Z",
@@ -69,6 +73,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 5,
   "fields": {
     "password": "pbkdf2_sha256$1000000$7ugsqFvsR7Ny6bpIRzoysy$KtXCqxVChilwfwyd1eaVRQOuREoqQRMzYpLYg6mmyoA=",
     "last_login": "2026-08-18T04:31:22.686Z",
@@ -86,6 +91,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 6,
   "fields": {
     "password": "pbkdf2_sha256$1000000$EzC0ovIIStfhdCdf0hI955$qzQ9dJNwlzNH7mOcdx5L93ygZ2ZWm6BMRxht4FxuaUU=",
     "last_login": "2026-08-19T09:14:18.734Z",
@@ -103,6 +109,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 7,
   "fields": {
     "password": "pbkdf2_sha256$1000000$QqkxH4RgnlJ4l2uSn3Lb7w$keHS9+UwInottlb9/UGts7J0ZYbUbNqOGYZ8hbbGxls=",
     "last_login": "2026-08-19T11:00:39.835Z",
@@ -120,6 +127,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 8,
   "fields": {
     "password": "pbkdf2_sha256$1000000$NcF6vi0wjGiCMYNaSkOaET$AOa2+Ziyyqmz2g2nU2aDCLHsOE1/ixGsdWz28BBUujA=",
     "last_login": "2026-08-19T14:51:20.415Z",
@@ -137,9 +145,10 @@
 },
 {
   "model": "auth.user",
+  "pk": 9,
   "fields": {
     "password": "pbkdf2_sha256$1000000$ofEOgnIf0x3ThjlXI0pGjx$mJ9z5I0tM4jbMjdebCaIMtE9fY+ishEVgzdlsqWdYI4=",
-    "last_login": "2026-08-19T11:06:35.957Z",
+    "last_login": "2026-08-24T04:43:43.224Z",
     "is_superuser": false,
     "username": "user4",
     "first_name": "User",
@@ -154,6 +163,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 10,
   "fields": {
     "password": "pbkdf2_sha256$1000000$PODfVYMoe4ukhQLRXXM77o$VbwIFcn68a788v8VFHr27DWh8qQuQ9tMxMse3yX3F8U=",
     "last_login": "2026-08-19T06:45:42.573Z",
@@ -171,6 +181,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 11,
   "fields": {
     "password": "pbkdf2_sha256$1000000$alkYbInAWUzqhnOlxB6xZA$bTZwthQfmv3wgw8sm8GjF4bviGpqhl3OPgMhJ5nBFX0=",
     "last_login": null,
@@ -188,6 +199,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 12,
   "fields": {
     "password": "pbkdf2_sha256$1000000$z8iTMsp4EOjlo8XKZil5VE$YrGdM+nCz6y8F7YAFUlQHeoMyMSjLeexPLGj3XsoaH8=",
     "last_login": null,
@@ -205,6 +217,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 13,
   "fields": {
     "password": "pbkdf2_sha256$1000000$WbT8A9KR9mL9n3j7HloaLZ$CSJ5eBSplynN+Yv6/a3++YZU2yhNjow2yUWhCTLhlDw=",
     "last_login": "2026-08-19T04:26:27.355Z",
@@ -222,6 +235,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 14,
   "fields": {
     "password": "pbkdf2_sha256$1000000$o1H892GlrAb9FOWq5poxMt$VtIbx5vbkqKxvch3fuzpx4hPFNiHQWJ92iO8Sn6oAzY=",
     "last_login": "2026-08-19T11:18:13.894Z",
@@ -239,6 +253,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 15,
   "fields": {
     "password": "pbkdf2_sha256$1000000$Ks7s7lRZaXIKUVoOFOZJdO$hVlNq4JDA4FFqCY4XMCuKdPC9do4stCUSO67jzBxtyQ=",
     "last_login": "2026-08-19T07:08:36.128Z",
@@ -256,6 +271,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 16,
   "fields": {
     "password": "pbkdf2_sha256$1000000$CEd0JQWJYZ4yossTX6Wp2B$crkfq9GzE3mlS1KMjk5s3a9lwgkqZr3XXF7RDMTH4WU=",
     "last_login": null,
@@ -273,9 +289,10 @@
 },
 {
   "model": "auth.user",
+  "pk": 17,
   "fields": {
     "password": "pbkdf2_sha256$1000000$0I5ZOJXLuBBlCaxsERwqVr$D+W5SU76KU18OM3LyFVu0HqZlADqWhmoe6GNa6wxnyg=",
-    "last_login": "2026-08-19T03:35:09.528Z",
+    "last_login": "2026-08-24T04:50:26.439Z",
     "is_superuser": false,
     "username": "user12",
     "first_name": "User",
@@ -290,6 +307,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 18,
   "fields": {
     "password": "pbkdf2_sha256$1000000$9UxOKUPMnksbyeCLVMHKk9$Tjfn/E2v3sgTO1gvd086qXcOS/jnoxw++ESG9nzl7I4=",
     "last_login": null,
@@ -307,6 +325,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 19,
   "fields": {
     "password": "pbkdf2_sha256$1000000$OwUuneJxcrsAre76lPI5ii$CArZPFxwvb4FD0QgyG6iFyIZx9iEC7gdu3apVhKNPX0=",
     "last_login": null,
@@ -324,6 +343,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 20,
   "fields": {
     "password": "pbkdf2_sha256$1000000$bpPB0zgTIbcIzpyDKdryER$18eECLmw7+JG5SHZBG7Nu4c/3L+OBqPvgVha7uyIDtU=",
     "last_login": null,
@@ -341,9 +361,10 @@
 },
 {
   "model": "auth.user",
+  "pk": 21,
   "fields": {
     "password": "pbkdf2_sha256$1000000$BDj2ngaVwmr1EX1qFVlOVh$kLdsEiOOWeiIT3zde/2kJ2mZDIwgy/m26H2sDyIRASA=",
-    "last_login": "2026-08-19T11:18:34.427Z",
+    "last_login": "2026-08-24T04:41:19.812Z",
     "is_superuser": false,
     "username": "user16",
     "first_name": "User",
@@ -358,9 +379,10 @@
 },
 {
   "model": "auth.user",
+  "pk": 22,
   "fields": {
     "password": "pbkdf2_sha256$1000000$8g61S3IwBg2zjNoVotQhN8$z4V5k2A8OU0A+50yXs5LTfG5Fa4wWGHK9ECXCbkexYc=",
-    "last_login": "2026-08-19T11:07:16.357Z",
+    "last_login": "2026-08-24T04:43:18.243Z",
     "is_superuser": false,
     "username": "user17",
     "first_name": "User",
@@ -375,6 +397,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 23,
   "fields": {
     "password": "pbkdf2_sha256$1000000$gqdOonLGwTIjTnyGAmyp06$cYwyrLj8WRuJivFrFgOBXRezwNZHuSPzvrb432AkUfk=",
     "last_login": "2026-08-19T09:16:09.825Z",
@@ -392,9 +415,10 @@
 },
 {
   "model": "auth.user",
+  "pk": 24,
   "fields": {
     "password": "pbkdf2_sha256$1000000$iLGAOtmg37mHzDvyOJLPky$JmmMzMC2nkuawUoyNSpdwlBRzNCWw1A4mwy3QCs96Qg=",
-    "last_login": "2026-08-19T11:01:15.903Z",
+    "last_login": "2026-08-24T03:12:14.154Z",
     "is_superuser": false,
     "username": "user19",
     "first_name": "User",
@@ -409,6 +433,7 @@
 },
 {
   "model": "auth.user",
+  "pk": 25,
   "fields": {
     "password": "pbkdf2_sha256$1000000$c0uunpbHOVJOsdvHR3VMly$nO4M8smkB1MCKA23FHgLrDxl0frhnoHvZldHbf+lGZ8=",
     "last_login": "2026-08-19T06:46:41.446Z",
@@ -425,12 +450,28 @@
   }
 },
 {
+  "model": "auth.user",
+  "pk": 26,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$i11TRsckro3MXF7OyrwmSK$M9z7J7qAFXu9WBr+Vd4AX6s5iXlb5Q7pLRj/Tp1tI9Q=",
+    "last_login": "2026-08-24T04:44:25.618Z",
+    "is_superuser": false,
+    "username": "user22",
+    "first_name": "user",
+    "last_name": "user",
+    "email": "123@123.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-24T04:40:45.937Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "accounts.profile",
   "pk": 1,
   "fields": {
-    "user": [
-      "ptcg_user"
-    ],
+    "user": 1,
     "phone": "",
     "bio": ""
   }
@@ -439,9 +480,7 @@
   "model": "accounts.profile",
   "pk": 2,
   "fields": {
-    "user": [
-      "user"
-    ],
+    "user": 2,
     "phone": "",
     "bio": ""
   }
@@ -450,9 +489,7 @@
   "model": "accounts.profile",
   "pk": 3,
   "fields": {
-    "user": [
-      ""
-    ],
+    "user": 4,
     "phone": "",
     "bio": ""
   }
@@ -461,9 +498,7 @@
   "model": "accounts.profile",
   "pk": 4,
   "fields": {
-    "user": [
-      "1234"
-    ],
+    "user": 5,
     "phone": "",
     "bio": ""
   }
@@ -472,9 +507,7 @@
   "model": "accounts.profile",
   "pk": 5,
   "fields": {
-    "user": [
-      "user1"
-    ],
+    "user": 6,
     "phone": "",
     "bio": ""
   }
@@ -483,9 +516,7 @@
   "model": "accounts.profile",
   "pk": 6,
   "fields": {
-    "user": [
-      "user2"
-    ],
+    "user": 7,
     "phone": "",
     "bio": ""
   }
@@ -494,9 +525,7 @@
   "model": "accounts.profile",
   "pk": 7,
   "fields": {
-    "user": [
-      "user3"
-    ],
+    "user": 8,
     "phone": "",
     "bio": ""
   }
@@ -505,9 +534,7 @@
   "model": "accounts.profile",
   "pk": 8,
   "fields": {
-    "user": [
-      "user4"
-    ],
+    "user": 9,
     "phone": "",
     "bio": ""
   }
@@ -516,9 +543,7 @@
   "model": "accounts.profile",
   "pk": 9,
   "fields": {
-    "user": [
-      "user5"
-    ],
+    "user": 10,
     "phone": "",
     "bio": ""
   }
@@ -527,9 +552,7 @@
   "model": "accounts.profile",
   "pk": 10,
   "fields": {
-    "user": [
-      "user6"
-    ],
+    "user": 11,
     "phone": "",
     "bio": ""
   }
@@ -538,9 +561,7 @@
   "model": "accounts.profile",
   "pk": 11,
   "fields": {
-    "user": [
-      "user7"
-    ],
+    "user": 12,
     "phone": "",
     "bio": ""
   }
@@ -549,9 +570,7 @@
   "model": "accounts.profile",
   "pk": 12,
   "fields": {
-    "user": [
-      "user8"
-    ],
+    "user": 13,
     "phone": "",
     "bio": ""
   }
@@ -560,9 +579,7 @@
   "model": "accounts.profile",
   "pk": 13,
   "fields": {
-    "user": [
-      "user9"
-    ],
+    "user": 14,
     "phone": "",
     "bio": ""
   }
@@ -571,9 +588,7 @@
   "model": "accounts.profile",
   "pk": 14,
   "fields": {
-    "user": [
-      "user10"
-    ],
+    "user": 15,
     "phone": "",
     "bio": ""
   }
@@ -582,9 +597,7 @@
   "model": "accounts.profile",
   "pk": 15,
   "fields": {
-    "user": [
-      "user11"
-    ],
+    "user": 16,
     "phone": "",
     "bio": ""
   }
@@ -593,9 +606,7 @@
   "model": "accounts.profile",
   "pk": 16,
   "fields": {
-    "user": [
-      "user12"
-    ],
+    "user": 17,
     "phone": "",
     "bio": ""
   }
@@ -604,9 +615,7 @@
   "model": "accounts.profile",
   "pk": 17,
   "fields": {
-    "user": [
-      "user13"
-    ],
+    "user": 18,
     "phone": "",
     "bio": ""
   }
@@ -615,9 +624,7 @@
   "model": "accounts.profile",
   "pk": 18,
   "fields": {
-    "user": [
-      "user14"
-    ],
+    "user": 19,
     "phone": "",
     "bio": ""
   }
@@ -626,9 +633,7 @@
   "model": "accounts.profile",
   "pk": 19,
   "fields": {
-    "user": [
-      "user15"
-    ],
+    "user": 20,
     "phone": "",
     "bio": ""
   }
@@ -637,9 +642,7 @@
   "model": "accounts.profile",
   "pk": 20,
   "fields": {
-    "user": [
-      "user16"
-    ],
+    "user": 21,
     "phone": "",
     "bio": ""
   }
@@ -648,9 +651,7 @@
   "model": "accounts.profile",
   "pk": 21,
   "fields": {
-    "user": [
-      "user17"
-    ],
+    "user": 22,
     "phone": "",
     "bio": ""
   }
@@ -659,9 +660,7 @@
   "model": "accounts.profile",
   "pk": 22,
   "fields": {
-    "user": [
-      "user18"
-    ],
+    "user": 23,
     "phone": "",
     "bio": ""
   }
@@ -670,9 +669,7 @@
   "model": "accounts.profile",
   "pk": 23,
   "fields": {
-    "user": [
-      "user19"
-    ],
+    "user": 24,
     "phone": "",
     "bio": ""
   }
@@ -681,21 +678,556 @@
   "model": "accounts.profile",
   "pk": 24,
   "fields": {
-    "user": [
-      "user20"
-    ],
+    "user": 25,
+    "phone": "",
+    "bio": ""
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 25,
+  "fields": {
+    "user": 26,
     "phone": "",
     "bio": ""
   }
 },
 {
   "model": "shops.shoplist",
-  "pk": 1,
+  "pk": 8,
   "fields": {
-    "shopname": "1234",
-    "address": "12341",
-    "district": "Islands",
-    "website": "1234.com",
+    "shopname": "CARDSLASH",
+    "address": "觀塘偉業街181號盈達商業大廈9樓A2室",
+    "district": "Kwun Tong",
+    "website": "https://www.cardslash.com.hk/",
+    "monday": "closed",
+    "tuesday": "15:00 ~ 22:00",
+    "wednesday": "15:00 ~ 22:00",
+    "thursday": "15:00 ~ 22:00",
+    "friday": "15:00 ~ 22:00",
+    "saturday": "15:00 ~ 22:00",
+    "sunday": "15:00 ~ 22:00",
+    "card_identification": false,
+    "phone_number": "9617 1004",
+    "shop_logo": "photos/2026/08/24/CARDSLASH.jpg",
+    "latitude": 22.311419468518,
+    "longitude": 114.220359024694
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 17,
+  "fields": {
+    "shopname": "Different Dimension 異次元",
+    "address": "天后清風街6-8號凱豐商業大廈2樓B",
+    "district": "Wan Chai",
+    "website": "",
+    "monday": "15:00 ~ 23:00",
+    "tuesday": "15:00 ~ 23:00",
+    "wednesday": "15:00 ~ 23:00",
+    "thursday": "15:00 ~ 23:00",
+    "friday": "15:00 ~ 23:00",
+    "saturday": "14:00 ~ 23:00",
+    "sunday": "15:00 ~ 23:00",
+    "card_identification": false,
+    "phone_number": "6654 0922",
+    "shop_logo": "photos/2026/08/24/Different_Dimension_異次元_5cMw6kc.jpg",
+    "latitude": 22.2846639,
+    "longitude": 114.1921107
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 19,
+  "fields": {
+    "shopname": "Card Lab 卡研社",
+    "address": "紅磡民裕街30號興業工商大廈4樓B1室",
+    "district": "Kowloon City",
+    "website": "",
+    "monday": "18:30 ~ 23:00",
+    "tuesday": "18:30 ~ 23:00",
+    "wednesday": "18:30 ~ 23:00",
+    "thursday": "18:30 ~ 23:00",
+    "friday": "18:30 ~ 23:00",
+    "saturday": "15:00 ~ 23:00",
+    "sunday": "15:00 ~ 22:00",
+    "card_identification": false,
+    "phone_number": "6461 2153",
+    "shop_logo": "photos/2026/08/24/Card_Lab_卡研社.jpg",
+    "latitude": 22.308432535412,
+    "longitude": 114.188384578651
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 20,
+  "fields": {
+    "shopname": "電電屋",
+    "address": "凱旋工商中心第一期民裕街41號13樓F2室",
+    "district": "Unknown",
+    "website": "https://dendenhouse.com/",
+    "monday": "closed",
+    "tuesday": "15:00 ~ 21:00",
+    "wednesday": "15:00 ~ 21:00",
+    "thursday": "15:00 ~ 21:00",
+    "friday": "15:00 ~ 21:00",
+    "saturday": "15:00 ~ 21:00",
+    "sunday": "13:30 ~ 21:00",
+    "card_identification": false,
+    "phone_number": "6441 4730",
+    "shop_logo": "photos/2026/08/24/電電屋.jpg",
+    "latitude": 22.309350898633,
+    "longitude": 114.18858549287
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 21,
+  "fields": {
+    "shopname": "KEZ TCG SHOP",
+    "address": "紅磡鶴園街2G號恆豐工業大廈1期6樓F1-08室",
+    "district": "Kowloon City",
+    "website": "",
+    "monday": "closed",
+    "tuesday": "16:00 ~ 22:00",
+    "wednesday": "16:00 ~ 22:00",
+    "thursday": "16:00 ~ 22:00",
+    "friday": "16:00 ~ 22:00",
+    "saturday": "15:30 ~ 21:00",
+    "sunday": "15:30 ~ 21:00",
+    "card_identification": false,
+    "phone_number": "4614 9500",
+    "shop_logo": "photos/2026/08/24/KEZ_TCG_SHOP.jpg",
+    "latitude": 22.310952428873,
+    "longitude": 114.188629330224
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 22,
+  "fields": {
+    "shopname": "nsew 啟德體育園 分店",
+    "address": "啟德啟德體育園啟德零售館2, 1樓 M2-111號舖",
+    "district": "Kowloon City",
+    "website": "https://nsewstore.com/",
+    "monday": "11:00 ~ 20:30",
+    "tuesday": "11:00 ~ 20:30",
+    "wednesday": "11:00 ~ 20:30",
+    "thursday": "11:00 ~ 20:30",
+    "friday": "11:00 ~ 20:30",
+    "saturday": "11:00 ~ 20:30",
+    "sunday": "11:00 ~ 20:30",
+    "card_identification": false,
+    "phone_number": "2345 6698",
+    "shop_logo": "photos/2026/08/24/nsew_啟德體育園_分店.jpg",
+    "latitude": null,
+    "longitude": null
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 23,
+  "fields": {
+    "shopname": "Ookido Institute TCG 大木研究所",
+    "address": "新蒲崗六合街25號 嘉時工業大廈 1樓128室",
+    "district": "Wong Tai Sin",
+    "website": "",
+    "monday": "16:00 ~ 23:00",
+    "tuesday": "16:00 ~ 23:00",
+    "wednesday": "closed",
+    "thursday": "19:00 ~ 23:00",
+    "friday": "15:00 ~ 23:00",
+    "saturday": "15:00 ~ 22:00",
+    "sunday": "15:00 ~ 22:00",
+    "card_identification": false,
+    "phone_number": "6367 2549",
+    "shop_logo": "photos/2026/08/24/Ookido_Institute_TCG_大木研究所.jpg",
+    "latitude": 22.33696113915,
+    "longitude": 114.200399953034
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 24,
+  "fields": {
+    "shopname": "Jammy Tribe 酋長部落",
+    "address": "新蒲崗七寶街3號振發工廠大廈3樓D-1室",
+    "district": "Wong Tai Sin",
+    "website": "https://www.jtribetcg.com/",
+    "monday": "13:00 ~ 22:00",
+    "tuesday": "closed",
+    "wednesday": "13:00 ~ 21:00",
+    "thursday": "13:00 ~ 21:00",
+    "friday": "13:00 ~ 22:00",
+    "saturday": "13:00 ~ 22:00",
+    "sunday": "13:00 ~ 22:00",
+    "card_identification": false,
+    "phone_number": "9668 4571",
+    "shop_logo": "photos/2026/08/24/Jammy_Tribe_酋長部落.jpg",
+    "latitude": 22.33641409424,
+    "longitude": 114.198454010393
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 28,
+  "fields": {
+    "shopname": "卡羽",
+    "address": "新蒲崗大有街14號萬星工業大廈6樓606室",
+    "district": "Wong Tai Sin",
+    "website": "",
+    "monday": "closed",
+    "tuesday": "14:00 ~ 20:00",
+    "wednesday": "14:00 ~ 20:00",
+    "thursday": "14:00 ~ 23:00",
+    "friday": "14:00 ~ 20:00",
+    "saturday": "13:00 ~ 20:00",
+    "sunday": "13:00 ~ 20:00",
+    "card_identification": false,
+    "phone_number": "6280 8393",
+    "shop_logo": "photos/2026/08/24/卡羽.jpg",
+    "latitude": 22.338422523969,
+    "longitude": 114.198735809978
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 33,
+  "fields": {
+    "shopname": "MAD MAX TOYS - 瘋狂玩具 (Moko)",
+    "address": "旺角太子道西193號MOKO 新世紀廣場3樓310-311號舖",
+    "district": "Yau Tsim Mong",
+    "website": "https://madmaxtoys.store/",
+    "monday": "12:00 ~ 22:00",
+    "tuesday": "12:00 ~ 22:00",
+    "wednesday": "12:00 ~ 22:00",
+    "thursday": "12:00 ~ 22:00",
+    "friday": "12:00 ~ 22:00",
+    "saturday": "11:00 ~ 22:00",
+    "sunday": "11:00 ~ 22:00",
+    "card_identification": false,
+    "phone_number": "6655 9913",
+    "shop_logo": "photos/2026/08/24/MAD_MAX_TOYS_-_瘋狂玩具_Moko.jpg",
+    "latitude": 22.323067422175,
+    "longitude": 114.171956551341
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 34,
+  "fields": {
+    "shopname": "Have Card 樓上咭店",
+    "address": "九龍弼街49號唐二樓",
+    "district": "Unknown",
+    "website": "",
+    "monday": "closed",
+    "tuesday": "15:00 ~ 23:00",
+    "wednesday": "15:00 ~ 21:00",
+    "thursday": "15:00 ~ 21:00",
+    "friday": "15:00 ~ 23:00",
+    "saturday": "14:00 ~ 20:30",
+    "sunday": "14:00 ~ 20:00",
+    "card_identification": false,
+    "phone_number": "5191 9238",
+    "shop_logo": "photos/2026/08/24/Have_Card_樓上咭店.jpg",
+    "latitude": 22.322378974558,
+    "longitude": 114.169817238194
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 35,
+  "fields": {
+    "shopname": "Home-run fabulous card shop",
+    "address": "太子彌敦道749A愛都婚紗中心 10樓",
+    "district": "Yau Tsim Mong",
+    "website": "",
+    "monday": "13:00 ~ 20:00",
+    "tuesday": "13:00 ~ 20:00",
+    "wednesday": "13:00 ~ 20:00",
+    "thursday": "13:00 ~ 20:00",
+    "friday": "13:00 ~ 20:00",
+    "saturday": "13:00 ~ 18:00",
+    "sunday": "13:00 ~ 18:00",
+    "card_identification": false,
+    "phone_number": "9777 5494",
+    "shop_logo": "photos/2026/08/24/Home-run_fabulous_card_shop.jpg",
+    "latitude": 22.323599505389,
+    "longitude": 114.168181845065
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 36,
+  "fields": {
+    "shopname": "Players’Club TCG",
+    "address": "尖沙咀i Square2樓210鋪",
+    "district": "Yau Tsim Mong",
+    "website": "",
+    "monday": "14:30 ~ 21:00",
+    "tuesday": "14:30 ~ 21:00",
+    "wednesday": "14:30 ~ 21:00",
+    "thursday": "14:30 ~ 21:00",
+    "friday": "14:30 ~ 21:00",
+    "saturday": "14:30 ~ 21:00",
+    "sunday": "14:30 ~ 21:00",
+    "card_identification": false,
+    "phone_number": "5406 7569",
+    "shop_logo": "photos/2026/08/24/PlayersClub_TCG.jpg",
+    "latitude": 22.2970248071,
+    "longitude": 114.171853705389
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 37,
+  "fields": {
+    "shopname": "League Castle",
+    "address": "旺角廣東道1125-1127號廣建中心6樓",
+    "district": "Yau Tsim Mong",
+    "website": "",
+    "monday": "14:00 ~ 21:00",
+    "tuesday": "14:00 ~ 21:00",
+    "wednesday": "14:00 ~ 21:00",
+    "thursday": "closed",
+    "friday": "14:00 ~ 21:00",
+    "saturday": "13:00 ~ 21:00",
+    "sunday": "13:00 ~ 20:00",
+    "card_identification": false,
+    "phone_number": "2380 0316",
+    "shop_logo": "photos/2026/08/24/League_Castle.jpg",
+    "latitude": 22.321054214761,
+    "longitude": 114.166560617353
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 38,
+  "fields": {
+    "shopname": "彩虹島 Rainbow Town",
+    "address": "深水埗西九龍中心7樓7090AB鋪",
+    "district": "Sham Shui Po",
+    "website": "",
+    "monday": "14:00 ~ 19:00",
+    "tuesday": "14:00 ~ 19:00",
+    "wednesday": "14:00 ~ 19:00",
+    "thursday": "14:00 ~ 19:00",
+    "friday": "14:00 ~ 19:00",
+    "saturday": "14:00 ~ 19:30",
+    "sunday": "14:00 ~ 19:30",
+    "card_identification": false,
+    "phone_number": "9192 3332",
+    "shop_logo": "photos/2026/08/24/彩虹島_Rainbow_Town.jpg",
+    "latitude": 22.331095148032,
+    "longitude": 114.159778065123
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 39,
+  "fields": {
+    "shopname": "ARENA",
+    "address": "長沙灣元州街162-188號天悅廣場2樓213號舖",
+    "district": "Sham Shui Po",
+    "website": "",
+    "monday": "random",
+    "tuesday": "random",
+    "wednesday": "15:00 ~ End",
+    "thursday": "15:00 ~ 22:00",
+    "friday": "15:00 ~ 22:00",
+    "saturday": "14:00 ~ End",
+    "sunday": "14:00 ~ End",
+    "card_identification": false,
+    "phone_number": "5110 5961",
+    "shop_logo": "photos/2026/08/24/ARENA.jpg",
+    "latitude": 22.334854012511,
+    "longitude": 114.160279889666
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 40,
+  "fields": {
+    "shopname": "AURORA TCG",
+    "address": "長沙灣元州街162-188號天悅廣場112號鋪",
+    "district": "Sham Shui Po",
+    "website": "",
+    "monday": "16:00 ~ 21:00",
+    "tuesday": "16:00 ~ 21:00",
+    "wednesday": "closed",
+    "thursday": "16:00 ~ 21:00",
+    "friday": "16:00 ~ 21:00",
+    "saturday": "15:00 ~ 22:00",
+    "sunday": "closed",
+    "card_identification": false,
+    "phone_number": "5533 7760",
+    "shop_logo": "photos/2026/08/24/AURORA_TCG.jpg",
+    "latitude": 22.334854012511,
+    "longitude": 114.160279889666
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 41,
+  "fields": {
+    "shopname": "OutPlay Tcg",
+    "address": "長沙灣天悅廣場131號店",
+    "district": "Sham Shui Po",
+    "website": "",
+    "monday": "14:30 ~ 21:00",
+    "tuesday": "14:30 ~ 21:00",
+    "wednesday": "14:30 ~ 21:00",
+    "thursday": "14:30 ~ 21:00",
+    "friday": "14:30 ~ 21:00",
+    "saturday": "13:00 ~ 21:00",
+    "sunday": "13:00 ~ 21:00",
+    "card_identification": false,
+    "phone_number": "6611 9413",
+    "shop_logo": "photos/2026/08/24/OutPlay_Tcg.jpg",
+    "latitude": 22.335162634186,
+    "longitude": 114.159910080098
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 42,
+  "fields": {
+    "shopname": "9號研究所",
+    "address": "青山道155-169號天悅廣場1樓126a號",
+    "district": "Unknown",
+    "website": "",
+    "monday": "14:00 ~ 21:00",
+    "tuesday": "14:00 ~ 21:00",
+    "wednesday": "14:00 ~ 21:00",
+    "thursday": "14:00 ~ 21:00",
+    "friday": "14:00 ~ 21:00",
+    "saturday": "13:00 ~ 21:00",
+    "sunday": "13:00 ~ 21:00",
+    "card_identification": false,
+    "phone_number": "5402 9816",
+    "shop_logo": "photos/2026/08/24/9號研究所.jpg",
+    "latitude": 22.335063266724,
+    "longitude": 114.160387597121
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 43,
+  "fields": {
+    "shopname": "Ptcgcardfans 見卡打牌",
+    "address": "天悅廣埸1樓133A及165號鋪",
+    "district": "Unknown",
+    "website": "",
+    "monday": "15:00 ~ 20:00",
+    "tuesday": "15:00 ~ 20:00",
+    "wednesday": "15:00 ~ 20:00",
+    "thursday": "15:00 ~ 20:00",
+    "friday": "15:00 ~ 20:00",
+    "saturday": "14:00 ~ 22:00",
+    "sunday": "14:00 ~ 22:00",
+    "card_identification": false,
+    "phone_number": "5339 4638",
+    "shop_logo": "photos/2026/08/24/Ptcgcardfans_見卡打牌.jpg",
+    "latitude": null,
+    "longitude": null
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 44,
+  "fields": {
+    "shopname": "日出之國",
+    "address": "長沙灣東京街31號恆邦商業大廈1206室",
+    "district": "Sham Shui Po",
+    "website": "",
+    "monday": "closed",
+    "tuesday": "19:00 ~ 23:00",
+    "wednesday": "19:00 ~ 23:00",
+    "thursday": "19:00 ~ 23:00",
+    "friday": "19:00 ~ 23:00",
+    "saturday": "15:00 ~ 22:00",
+    "sunday": "15:00 ~ 22:00",
+    "card_identification": false,
+    "phone_number": "",
+    "shop_logo": "photos/2026/08/24/日出之國.jpg",
+    "latitude": 22.336274326004,
+    "longitude": 114.158461771048
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 45,
+  "fields": {
+    "shopname": "0H Fantastic Shop T-Breaks",
+    "address": "長沙灣青山道500號百美工廠大廈6樓C3室",
+    "district": "Sham Shui Po",
+    "website": "",
+    "monday": "15:00 ~ 03:00",
+    "tuesday": "15:00 ~ 03:00",
+    "wednesday": "15:00 ~ 03:00",
+    "thursday": "15:00 ~ 03:00",
+    "friday": "15:00 ~ 03:00",
+    "saturday": "15:00 ~ 03:00",
+    "sunday": "15:00 ~ 03:00",
+    "card_identification": false,
+    "phone_number": "5548 8159",
+    "shop_logo": "photos/2026/08/24/0H_Fantastic_Shop_T-Breaks.jpg",
+    "latitude": 22.339983653435,
+    "longitude": 114.152068222944
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 46,
+  "fields": {
+    "shopname": "CardPro 卡鋪",
+    "address": "荔枝角青山道485號九龍廣場10樓1007室",
+    "district": "Sham Shui Po",
+    "website": "https://cardpro.club/",
+    "monday": "14:00 ~ 22:00",
+    "tuesday": "14:00 ~ 22:00",
+    "wednesday": "14:00 ~ 22:00",
+    "thursday": "14:00 ~ 22:00",
+    "friday": "14:00 ~ 22:00",
+    "saturday": "14:00 ~ 22:00",
+    "sunday": "14:00 ~ 22:00",
+    "card_identification": false,
+    "phone_number": "",
+    "shop_logo": "photos/2026/08/24/CardPro_卡鋪.jpg",
+    "latitude": 22.33856090919,
+    "longitude": 114.149371680873
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 47,
+  "fields": {
+    "shopname": "Battleground",
+    "address": "香港九龍荔枝角長順街15號D2 PLACE TWO1樓105-107號",
+    "district": "Sham Shui Po",
+    "website": "https://bgtcg.com/",
+    "monday": "11:00 ~ 23:00",
+    "tuesday": "11:00 ~ 23:00",
+    "wednesday": "11:00 ~ 23:00",
+    "thursday": "11:00 ~ 23:00",
+    "friday": "11:00 ~ 23:00",
+    "saturday": "11:00 ~ 23:00",
+    "sunday": "11:00 ~ 23:00",
+    "card_identification": false,
+    "phone_number": "9529 5720",
+    "shop_logo": "photos/2026/08/24/battlefield_5YfTZM8_76l2zQZ.jpg",
+    "latitude": 22.336144532234,
+    "longitude": 114.147549622761
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 48,
+  "fields": {
+    "shopname": "CardGameStation",
+    "address": "荔枝角青山道658號福至工業大廈2樓212室",
+    "district": "Sham Shui Po",
+    "website": "",
     "monday": "",
     "tuesday": "",
     "wednesday": "",
@@ -703,9 +1235,33 @@
     "friday": "",
     "saturday": "",
     "sunday": "",
-    "card_identification": true,
-    "phone_number": "",
-    "shop_logo": ""
+    "card_identification": false,
+    "phone_number": "6993 1619",
+    "shop_logo": "photos/2026/08/24/cardgamestation.jpg",
+    "latitude": 22.338596825646,
+    "longitude": 114.148016075673
+  }
+},
+{
+  "model": "shops.shoplist",
+  "pk": 49,
+  "fields": {
+    "shopname": "Battlefield",
+    "address": "香港仔富嘉工業大廈6樓607室",
+    "district": "Southern",
+    "website": "",
+    "monday": "16:00 ~ 22:00",
+    "tuesday": "16:00 ~ 22:00",
+    "wednesday": "16:00 ~ 22:00",
+    "thursday": "16:00 ~ 22:00",
+    "friday": "16:00 ~ 22:00",
+    "saturday": "13:00 ~ 21:00",
+    "sunday": "13:00 ~ 21:00",
+    "card_identification": false,
+    "phone_number": "6711 0599",
+    "shop_logo": "photos/2026/08/24/battlefield_5YfTZM8.jpg",
+    "latitude": 22.248857697588,
+    "longitude": 114.15267968278
   }
 },
 {
@@ -2763,6 +3319,32 @@
   }
 },
 {
+  "model": "listings.tradelist",
+  "pk": 162,
+  "fields": {
+    "user_name": 25,
+    "sell_item_name": "12345",
+    "sell_item_main_photo": "photos/2026/08/24/卡羽_dEVkLuZ.jpg",
+    "photo_2": "",
+    "photo_3": "",
+    "photo_4": "",
+    "photo_5": "",
+    "photo_6": "",
+    "photo_7": "",
+    "photo_8": "",
+    "photo_9": "",
+    "price": 0,
+    "condition": "123456",
+    "identification_score": null,
+    "series_name": "",
+    "series_number": "",
+    "descriptions": "",
+    "deal_place": "100",
+    "is_sold": false,
+    "list_date": "2026-08-24T04:45:10.966Z"
+  }
+},
+{
   "model": "tradings.tradingrecord",
   "pk": 2,
   "fields": {
@@ -2923,11 +3505,11 @@
   "pk": 14,
   "fields": {
     "chat": 14,
-    "buyer_comment": "",
-    "buyer_star": null,
+    "buyer_comment": "12345",
+    "buyer_star": 5,
     "seller_comment": "1234",
     "seller_star": 5,
-    "is_public": false,
+    "is_public": true,
     "created_at": "2026-08-19T11:07:48.963Z"
   }
 },
@@ -2945,16 +3527,25 @@
   }
 },
 {
+  "model": "tradings.tradingrecord",
+  "pk": 16,
+  "fields": {
+    "chat": 17,
+    "buyer_comment": "12345",
+    "buyer_star": 5,
+    "seller_comment": "1234",
+    "seller_star": 5,
+    "is_public": true,
+    "created_at": "2026-08-24T04:42:04.767Z"
+  }
+},
+{
   "model": "contacts.chat",
   "pk": 2,
   "fields": {
     "listing": 158,
-    "buyer": [
-      "user"
-    ],
-    "seller": [
-      "user16"
-    ],
+    "buyer": 2,
+    "seller": 21,
     "created_at": "2026-08-18T14:55:41.211Z",
     "updated_at": "2026-08-18T14:55:41.211Z",
     "trade_finished": false,
@@ -2966,12 +3557,8 @@
   "pk": 3,
   "fields": {
     "listing": 161,
-    "buyer": [
-      "ptcg_user"
-    ],
-    "seller": [
-      "user19"
-    ],
+    "buyer": 1,
+    "seller": 24,
     "created_at": "2026-08-19T01:35:33.095Z",
     "updated_at": "2026-08-19T11:16:47.212Z",
     "trade_finished": false,
@@ -2983,12 +3570,8 @@
   "pk": 4,
   "fields": {
     "listing": 160,
-    "buyer": [
-      "user"
-    ],
-    "seller": [
-      "user18"
-    ],
+    "buyer": 2,
+    "seller": 23,
     "created_at": "2026-08-19T03:24:17.364Z",
     "updated_at": "2026-08-19T06:35:28.221Z",
     "trade_finished": true,
@@ -3000,12 +3583,8 @@
   "pk": 5,
   "fields": {
     "listing": 154,
-    "buyer": [
-      "user19"
-    ],
-    "seller": [
-      "user12"
-    ],
+    "buyer": 24,
+    "seller": 17,
     "created_at": "2026-08-19T03:34:55.861Z",
     "updated_at": "2026-08-19T03:34:55.861Z",
     "trade_finished": false,
@@ -3017,12 +3596,8 @@
   "pk": 6,
   "fields": {
     "listing": 160,
-    "buyer": [
-      "user10"
-    ],
-    "seller": [
-      "user18"
-    ],
+    "buyer": 15,
+    "seller": 23,
     "created_at": "2026-08-19T04:00:42.788Z",
     "updated_at": "2026-08-19T06:07:31.530Z",
     "trade_finished": true,
@@ -3034,12 +3609,8 @@
   "pk": 7,
   "fields": {
     "listing": 160,
-    "buyer": [
-      "ptcg_user"
-    ],
-    "seller": [
-      "user18"
-    ],
+    "buyer": 1,
+    "seller": 23,
     "created_at": "2026-08-19T04:13:17.502Z",
     "updated_at": "2026-08-20T01:10:25.771Z",
     "trade_finished": true,
@@ -3051,12 +3622,8 @@
   "pk": 8,
   "fields": {
     "listing": 161,
-    "buyer": [
-      "user18"
-    ],
-    "seller": [
-      "user19"
-    ],
+    "buyer": 23,
+    "seller": 24,
     "created_at": "2026-08-19T04:42:36.937Z",
     "updated_at": "2026-08-19T05:23:15.990Z",
     "trade_finished": true,
@@ -3068,12 +3635,8 @@
   "pk": 9,
   "fields": {
     "listing": 86,
-    "buyer": [
-      "user"
-    ],
-    "seller": [
-      "user4"
-    ],
+    "buyer": 2,
+    "seller": 9,
     "created_at": "2026-08-19T06:40:09.942Z",
     "updated_at": "2026-08-19T06:41:10.944Z",
     "trade_finished": true,
@@ -3085,12 +3648,8 @@
   "pk": 10,
   "fields": {
     "listing": 159,
-    "buyer": [
-      "user19"
-    ],
-    "seller": [
-      "user17"
-    ],
+    "buyer": 24,
+    "seller": 22,
     "created_at": "2026-08-19T06:56:58.233Z",
     "updated_at": "2026-08-19T11:07:40.017Z",
     "trade_finished": true,
@@ -3102,12 +3661,8 @@
   "pk": 11,
   "fields": {
     "listing": 152,
-    "buyer": [
-      "user17"
-    ],
-    "seller": [
-      "user10"
-    ],
+    "buyer": 22,
+    "seller": 15,
     "created_at": "2026-08-19T07:05:59.529Z",
     "updated_at": "2026-08-19T07:07:45.815Z",
     "trade_finished": true,
@@ -3119,12 +3674,8 @@
   "pk": 12,
   "fields": {
     "listing": 152,
-    "buyer": [
-      "user2"
-    ],
-    "seller": [
-      "user10"
-    ],
+    "buyer": 7,
+    "seller": 15,
     "created_at": "2026-08-19T07:08:28.178Z",
     "updated_at": "2026-08-19T07:08:28.178Z",
     "trade_finished": false,
@@ -3136,12 +3687,8 @@
   "pk": 13,
   "fields": {
     "listing": 159,
-    "buyer": [
-      "user"
-    ],
-    "seller": [
-      "user17"
-    ],
+    "buyer": 2,
+    "seller": 22,
     "created_at": "2026-08-19T08:37:38.445Z",
     "updated_at": "2026-08-19T08:37:38.445Z",
     "trade_finished": false,
@@ -3153,15 +3700,11 @@
   "pk": 14,
   "fields": {
     "listing": 159,
-    "buyer": [
-      "user4"
-    ],
-    "seller": [
-      "user17"
-    ],
+    "buyer": 9,
+    "seller": 22,
     "created_at": "2026-08-19T11:06:45.026Z",
-    "updated_at": "2026-08-19T11:06:45.026Z",
-    "trade_finished": false,
+    "updated_at": "2026-08-24T04:43:50.427Z",
+    "trade_finished": true,
     "is_spam": false
   }
 },
@@ -3170,12 +3713,8 @@
   "pk": 15,
   "fields": {
     "listing": 159,
-    "buyer": [
-      "user16"
-    ],
-    "seller": [
-      "user17"
-    ],
+    "buyer": 21,
+    "seller": 22,
     "created_at": "2026-08-19T11:07:06.792Z",
     "updated_at": "2026-08-19T11:07:06.792Z",
     "trade_finished": false,
@@ -3187,15 +3726,24 @@
   "pk": 16,
   "fields": {
     "listing": 151,
-    "buyer": [
-      "user16"
-    ],
-    "seller": [
-      "user9"
-    ],
+    "buyer": 21,
+    "seller": 14,
     "created_at": "2026-08-19T11:18:04.181Z",
     "updated_at": "2026-08-19T11:18:04.181Z",
     "trade_finished": false,
+    "is_spam": false
+  }
+},
+{
+  "model": "contacts.chat",
+  "pk": 17,
+  "fields": {
+    "listing": 158,
+    "buyer": 26,
+    "seller": 21,
+    "created_at": "2026-08-24T04:41:01.698Z",
+    "updated_at": "2026-08-24T04:43:04.944Z",
+    "trade_finished": true,
     "is_spam": false
   }
 },
@@ -3204,9 +3752,7 @@
   "pk": 7,
   "fields": {
     "chat": 3,
-    "sender": [
-      "ptcg_user"
-    ],
+    "sender": 1,
     "content": "ijnijo",
     "created_at": "2026-08-19T01:35:37.965Z",
     "is_read": true
@@ -3217,9 +3763,7 @@
   "pk": 8,
   "fields": {
     "chat": 4,
-    "sender": [
-      "user"
-    ],
+    "sender": 2,
     "content": "12321",
     "created_at": "2026-08-19T03:24:21.574Z",
     "is_read": true
@@ -3230,9 +3774,7 @@
   "pk": 9,
   "fields": {
     "chat": 4,
-    "sender": [
-      "user"
-    ],
+    "sender": 2,
     "content": "1234124",
     "created_at": "2026-08-19T03:24:25.322Z",
     "is_read": true
@@ -3243,9 +3785,7 @@
   "pk": 10,
   "fields": {
     "chat": 5,
-    "sender": [
-      "user19"
-    ],
+    "sender": 24,
     "content": "12341",
     "created_at": "2026-08-19T03:34:57.737Z",
     "is_read": false
@@ -3256,9 +3796,7 @@
   "pk": 11,
   "fields": {
     "chat": 5,
-    "sender": [
-      "user19"
-    ],
+    "sender": 24,
     "content": "124124",
     "created_at": "2026-08-19T03:34:59.855Z",
     "is_read": false
@@ -3269,9 +3807,7 @@
   "pk": 12,
   "fields": {
     "chat": 5,
-    "sender": [
-      "user19"
-    ],
+    "sender": 24,
     "content": "4",
     "created_at": "2026-08-19T03:35:00.590Z",
     "is_read": false
@@ -3282,9 +3818,7 @@
   "pk": 13,
   "fields": {
     "chat": 5,
-    "sender": [
-      "user19"
-    ],
+    "sender": 24,
     "content": "4124",
     "created_at": "2026-08-19T03:35:01.250Z",
     "is_read": false
@@ -3295,9 +3829,7 @@
   "pk": 14,
   "fields": {
     "chat": 6,
-    "sender": [
-      "user10"
-    ],
+    "sender": 15,
     "content": "123412",
     "created_at": "2026-08-19T04:00:44.636Z",
     "is_read": true
@@ -3308,9 +3840,7 @@
   "pk": 15,
   "fields": {
     "chat": 7,
-    "sender": [
-      "ptcg_user"
-    ],
+    "sender": 1,
     "content": "123412",
     "created_at": "2026-08-19T04:13:19.886Z",
     "is_read": true
@@ -3321,9 +3851,7 @@
   "pk": 16,
   "fields": {
     "chat": 3,
-    "sender": [
-      "ptcg_user"
-    ],
+    "sender": 1,
     "content": "1234124",
     "created_at": "2026-08-19T04:25:08.903Z",
     "is_read": true
@@ -3334,9 +3862,7 @@
   "pk": 17,
   "fields": {
     "chat": 8,
-    "sender": [
-      "user18"
-    ],
+    "sender": 23,
     "content": "123412",
     "created_at": "2026-08-19T04:42:38.291Z",
     "is_read": true
@@ -3347,9 +3873,7 @@
   "pk": 18,
   "fields": {
     "chat": 8,
-    "sender": [
-      "user18"
-    ],
+    "sender": 23,
     "content": "12324",
     "created_at": "2026-08-19T04:42:42.375Z",
     "is_read": true
@@ -3360,9 +3884,7 @@
   "pk": 19,
   "fields": {
     "chat": 9,
-    "sender": [
-      "user"
-    ],
+    "sender": 2,
     "content": "12e4",
     "created_at": "2026-08-19T06:40:11.603Z",
     "is_read": true
@@ -3373,9 +3895,7 @@
   "pk": 20,
   "fields": {
     "chat": 9,
-    "sender": [
-      "user4"
-    ],
+    "sender": 9,
     "content": "1234",
     "created_at": "2026-08-19T06:40:26.381Z",
     "is_read": true
@@ -3386,9 +3906,7 @@
   "pk": 21,
   "fields": {
     "chat": 2,
-    "sender": [
-      "user"
-    ],
+    "sender": 2,
     "content": "123124",
     "created_at": "2026-08-19T06:41:17.993Z",
     "is_read": true
@@ -3399,9 +3917,7 @@
   "pk": 22,
   "fields": {
     "chat": 10,
-    "sender": [
-      "user19"
-    ],
+    "sender": 24,
     "content": "hihihih",
     "created_at": "2026-08-19T06:57:01.291Z",
     "is_read": true
@@ -3412,9 +3928,7 @@
   "pk": 23,
   "fields": {
     "chat": 11,
-    "sender": [
-      "user17"
-    ],
+    "sender": 22,
     "content": "1234",
     "created_at": "2026-08-19T07:06:01.607Z",
     "is_read": true
@@ -3425,9 +3939,7 @@
   "pk": 24,
   "fields": {
     "chat": 11,
-    "sender": [
-      "user17"
-    ],
+    "sender": 22,
     "content": "11234",
     "created_at": "2026-08-19T07:08:10.160Z",
     "is_read": false
@@ -3438,9 +3950,7 @@
   "pk": 25,
   "fields": {
     "chat": 12,
-    "sender": [
-      "user2"
-    ],
+    "sender": 7,
     "content": "1234",
     "created_at": "2026-08-19T07:08:29.517Z",
     "is_read": true
@@ -3451,9 +3961,7 @@
   "pk": 26,
   "fields": {
     "chat": 12,
-    "sender": [
-      "user10"
-    ],
+    "sender": 15,
     "content": "1234",
     "created_at": "2026-08-19T07:08:44.374Z",
     "is_read": false
@@ -3464,9 +3972,7 @@
   "pk": 27,
   "fields": {
     "chat": 2,
-    "sender": [
-      "user"
-    ],
+    "sender": 2,
     "content": "手田火田手",
     "created_at": "2026-08-19T08:41:28.366Z",
     "is_read": true
@@ -3477,9 +3983,7 @@
   "pk": 28,
   "fields": {
     "chat": 4,
-    "sender": [
-      "user"
-    ],
+    "sender": 2,
     "content": "12412",
     "created_at": "2026-08-19T08:46:43.763Z",
     "is_read": true
@@ -3490,9 +3994,7 @@
   "pk": 29,
   "fields": {
     "chat": 14,
-    "sender": [
-      "user4"
-    ],
+    "sender": 9,
     "content": "hihi",
     "created_at": "2026-08-19T11:06:46.999Z",
     "is_read": false
@@ -3503,9 +4005,7 @@
   "pk": 30,
   "fields": {
     "chat": 15,
-    "sender": [
-      "user16"
-    ],
+    "sender": 21,
     "content": "hihi",
     "created_at": "2026-08-19T11:07:08.652Z",
     "is_read": false
@@ -3516,9 +4016,7 @@
   "pk": 31,
   "fields": {
     "chat": 10,
-    "sender": [
-      "user17"
-    ],
+    "sender": 22,
     "content": "gugu",
     "created_at": "2026-08-19T11:07:28.844Z",
     "is_read": false
@@ -3529,9 +4027,7 @@
   "pk": 32,
   "fields": {
     "chat": 16,
-    "sender": [
-      "user16"
-    ],
+    "sender": 21,
     "content": "123k12n3jk;n123",
     "created_at": "2026-08-19T11:18:06.017Z",
     "is_read": true
@@ -3542,11 +4038,31 @@
   "pk": 33,
   "fields": {
     "chat": 16,
-    "sender": [
-      "user9"
-    ],
+    "sender": 14,
     "content": "kjn12lkj3n",
     "created_at": "2026-08-19T11:18:23.217Z",
+    "is_read": true
+  }
+},
+{
+  "model": "contacts.message",
+  "pk": 34,
+  "fields": {
+    "chat": 17,
+    "sender": 26,
+    "content": "12345",
+    "created_at": "2026-08-24T04:41:06.277Z",
+    "is_read": true
+  }
+},
+{
+  "model": "contacts.message",
+  "pk": 35,
+  "fields": {
+    "chat": 17,
+    "sender": 21,
+    "content": "1234",
+    "created_at": "2026-08-24T04:41:53.119Z",
     "is_read": true
   }
 },
@@ -3556,6 +4072,14 @@
   "fields": {
     "name": "Test Generation",
     "total_cards": 79
+  }
+},
+{
+  "model": "cards.generation",
+  "pk": 2,
+  "fields": {
+    "name": "Sword & Shield Series",
+    "total_cards": 60
   }
 },
 {
@@ -4823,12 +5347,990 @@
   }
 },
 {
+  "model": "cards.card",
+  "pk": 80,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Bulbasaur",
+    "hp": 70,
+    "energy_type": "Grass",
+    "card_number": 1,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 81,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "U",
+    "title": "Ivysaur",
+    "hp": 90,
+    "energy_type": "Grass",
+    "card_number": 2,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 82,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "R",
+    "title": "Venusaur",
+    "hp": 160,
+    "energy_type": "Grass",
+    "card_number": 3,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 83,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Rowlet",
+    "hp": 60,
+    "energy_type": "Grass",
+    "card_number": 4,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 84,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "R",
+    "title": "Decidueye",
+    "hp": 140,
+    "energy_type": "Grass",
+    "card_number": 5,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 85,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Charmander",
+    "hp": 60,
+    "energy_type": "Fire",
+    "card_number": 6,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 86,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "U",
+    "title": "Charmeleon",
+    "hp": 90,
+    "energy_type": "Fire",
+    "card_number": 7,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 87,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "SAR",
+    "title": "Charizard",
+    "hp": 170,
+    "energy_type": "Fire",
+    "card_number": 8,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 88,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Litten",
+    "hp": 60,
+    "energy_type": "Fire",
+    "card_number": 9,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 89,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "R",
+    "title": "Incineroar",
+    "hp": 160,
+    "energy_type": "Fire",
+    "card_number": 10,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 90,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Squirtle",
+    "hp": 60,
+    "energy_type": "Water",
+    "card_number": 11,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 91,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "U",
+    "title": "Wartortle",
+    "hp": 80,
+    "energy_type": "Water",
+    "card_number": 12,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 92,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "R",
+    "title": "Blastoise",
+    "hp": 160,
+    "energy_type": "Water",
+    "card_number": 13,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 93,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Popplio",
+    "hp": 60,
+    "energy_type": "Water",
+    "card_number": 14,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 94,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Froakie",
+    "hp": 50,
+    "energy_type": "Water",
+    "card_number": 15,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 95,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "ACE",
+    "title": "Greninja",
+    "hp": 130,
+    "energy_type": "Water",
+    "card_number": 16,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 96,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "R",
+    "title": "Primarina",
+    "hp": 150,
+    "energy_type": "Water",
+    "card_number": 17,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 97,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "PROMO",
+    "title": "Pikachu",
+    "hp": 60,
+    "energy_type": "Lighting",
+    "card_number": 18,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 98,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Pichu",
+    "hp": 30,
+    "energy_type": "Lighting",
+    "card_number": 19,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 99,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "U",
+    "title": "Raichu",
+    "hp": 100,
+    "energy_type": "Lighting",
+    "card_number": 20,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 100,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "R",
+    "title": "Jolteon",
+    "hp": 110,
+    "energy_type": "Lighting",
+    "card_number": 21,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 101,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "UR",
+    "title": "Mewtwo",
+    "hp": 130,
+    "energy_type": "Psychic",
+    "card_number": 22,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 102,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "R",
+    "title": "Mew",
+    "hp": 60,
+    "energy_type": "Psychic",
+    "card_number": 23,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 103,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Gastly",
+    "hp": 50,
+    "energy_type": "Psychic",
+    "card_number": 24,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 104,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "U",
+    "title": "Haunter",
+    "hp": 80,
+    "energy_type": "Psychic",
+    "card_number": 25,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 105,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "SR",
+    "title": "Gengar",
+    "hp": 130,
+    "energy_type": "Psychic",
+    "card_number": 26,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 106,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Machop",
+    "hp": 60,
+    "energy_type": "Fighting",
+    "card_number": 27,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 107,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "U",
+    "title": "Machoke",
+    "hp": 90,
+    "energy_type": "Fighting",
+    "card_number": 28,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 108,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "R",
+    "title": "Machamp",
+    "hp": 150,
+    "energy_type": "Fighting",
+    "card_number": 29,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 109,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "U",
+    "title": "Riolu",
+    "hp": 70,
+    "energy_type": "Fighting",
+    "card_number": 30,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 110,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "RR",
+    "title": "Lucario",
+    "hp": 120,
+    "energy_type": "Fighting",
+    "card_number": 31,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 111,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "U",
+    "title": "Umbreon",
+    "hp": 100,
+    "energy_type": "Darkness",
+    "card_number": 32,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 112,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "R",
+    "title": "Scizor",
+    "hp": 120,
+    "energy_type": "Metal",
+    "card_number": 33,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 113,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "R",
+    "title": "Steelix",
+    "hp": 140,
+    "energy_type": "Metal",
+    "card_number": 34,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 114,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "AR",
+    "title": "Zacian",
+    "hp": 120,
+    "energy_type": "Metal",
+    "card_number": 35,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 115,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Eevee",
+    "hp": 60,
+    "energy_type": "Colorless",
+    "card_number": 36,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 116,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "S",
+    "title": "Snorlax",
+    "hp": 150,
+    "energy_type": "Colorless",
+    "card_number": 37,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 117,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Wooloo",
+    "hp": 70,
+    "energy_type": "Colorless",
+    "card_number": 38,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 118,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "U",
+    "title": "Dubwool",
+    "hp": 120,
+    "energy_type": "Colorless",
+    "card_number": 39,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 119,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "R",
+    "title": "Sylveon",
+    "hp": 110,
+    "energy_type": "Fairy",
+    "card_number": 40,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 120,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "R",
+    "title": "Mimikyu",
+    "hp": 70,
+    "energy_type": "Fairy",
+    "card_number": 41,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 121,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Togepi",
+    "hp": 40,
+    "energy_type": "Fairy",
+    "card_number": 42,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 122,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "AR",
+    "title": "Togekiss",
+    "hp": 120,
+    "energy_type": "Fairy",
+    "card_number": 43,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 123,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "C",
+    "title": "Dratini",
+    "hp": 40,
+    "energy_type": "Dragon",
+    "card_number": 44,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 124,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 1",
+    "rarity": "U",
+    "title": "Dragonair",
+    "hp": 80,
+    "energy_type": "Dragon",
+    "card_number": 45,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 125,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "SR",
+    "title": "Dragonite",
+    "hp": 160,
+    "energy_type": "Dragon",
+    "card_number": 46,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 126,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Basic",
+    "rarity": "U",
+    "title": "Dreepy",
+    "hp": 50,
+    "energy_type": "Dragon",
+    "card_number": 47,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 127,
+  "fields": {
+    "category": "Pokemon",
+    "photo_main": "",
+    "stage": "Stage 2",
+    "rarity": "SSR",
+    "title": "Dragapult",
+    "hp": 130,
+    "energy_type": "Dragon",
+    "card_number": 48,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 128,
+  "fields": {
+    "category": "Energy",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "C",
+    "title": "Grass Energy",
+    "hp": null,
+    "energy_type": "Grass",
+    "card_number": 49,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 129,
+  "fields": {
+    "category": "Energy",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "C",
+    "title": "Fire Energy",
+    "hp": null,
+    "energy_type": "Fire",
+    "card_number": 50,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 130,
+  "fields": {
+    "category": "Energy",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "C",
+    "title": "Water Energy",
+    "hp": null,
+    "energy_type": "Water",
+    "card_number": 51,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 131,
+  "fields": {
+    "category": "Energy",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "C",
+    "title": "Lighting Energy",
+    "hp": null,
+    "energy_type": "Lighting",
+    "card_number": 52,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 132,
+  "fields": {
+    "category": "Item",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "C",
+    "title": "Potion",
+    "hp": null,
+    "energy_type": "",
+    "card_number": 53,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 133,
+  "fields": {
+    "category": "Item",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "U",
+    "title": "Great Ball",
+    "hp": null,
+    "energy_type": "",
+    "card_number": 54,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 134,
+  "fields": {
+    "category": "Item",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "U",
+    "title": "Ultra Ball",
+    "hp": null,
+    "energy_type": "",
+    "card_number": 55,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 135,
+  "fields": {
+    "category": "Item",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "U",
+    "title": "Rare Candy",
+    "hp": null,
+    "energy_type": "",
+    "card_number": 56,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 136,
+  "fields": {
+    "category": "Supporter",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "U",
+    "title": "Professor's Research",
+    "hp": null,
+    "energy_type": "",
+    "card_number": 57,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 137,
+  "fields": {
+    "category": "Supporter",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "R",
+    "title": "Boss's Orders",
+    "hp": null,
+    "energy_type": "",
+    "card_number": 58,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 138,
+  "fields": {
+    "category": "Stadium",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "U",
+    "title": "Path to the Peak",
+    "hp": null,
+    "energy_type": "",
+    "card_number": 59,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
+  "model": "cards.card",
+  "pk": 139,
+  "fields": {
+    "category": "Tool",
+    "photo_main": "",
+    "stage": "",
+    "rarity": "U",
+    "title": "Choice Belt",
+    "hp": null,
+    "energy_type": "",
+    "card_number": 60,
+    "generation": 2,
+    "transaction": 0
+  }
+},
+{
   "model": "banners.bannersitem",
   "pk": 2,
   "fields": {
-    "banner_id": "123",
-    "photo_banner": "photos/2026/08/20/辦公三俠高樓躍下.png",
-    "url_link": "123"
+    "banner_id": "01",
+    "photo_banner": "photos/2026/08/24/banner_01.jpg",
+    "url_link": "http://localhost:8000/news/"
+  }
+},
+{
+  "model": "banners.bannersitem",
+  "pk": 3,
+  "fields": {
+    "banner_id": "02",
+    "photo_banner": "photos/2026/08/24/banner_02.jpg",
+    "url_link": "http://localhost:8000/"
+  }
+},
+{
+  "model": "banners.bannersitem",
+  "pk": 4,
+  "fields": {
+    "banner_id": "03",
+    "photo_banner": "photos/2026/08/24/banner_03.png",
+    "url_link": "http://localhost:8000/"
   }
 }
 ]

@@ -7,9 +7,10 @@ from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
 # 要備份的 app：
-#   auth.User = 使用者帳號（Profile / Chat / Tradelist 都依賴它）
-#   （不導出 auth.Permission / auth.Group / contenttypes，
-#    這些是 Django post_migrate 自動管理的資料，導入時會自動重建）
+#   auth.User = 使用者帳號（含密碼 hash，還原後可用「原密碼」登入）
+#   不導出 auth.Permission / auth.Group / contenttypes：
+#   這些是 Django post_migrate 自動管理的資料，migrate 後會自動重建，
+#   匯入時也會自動跳過，避免衝突。
 APPS = [
     "auth.User",
     "pages",
@@ -24,7 +25,7 @@ APPS = [
 
 
 class Command(BaseCommand):
-    help = "導出所有資料到 JSON（災難恢復備份）"
+    help = "導出所有資料到 JSON（災難恢復備份，含 User 與密碼 hash）"
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -42,14 +43,9 @@ class Command(BaseCommand):
             output = os.path.join(settings.BASE_DIR, output)
 
         buf = StringIO()
-        call_command(
-            "dumpdata",
-            *APPS,
-            natural_foreign=True,
-            natural_primary=True,
-            indent=2,
-            stdout=buf,
-        )
+        # 用 pk 導出（最忠實的 snapshot），不套用 natural key，
+        # 避免 username 為空等 edge case 造成還原錯誤。
+        call_command("dumpdata", *APPS, indent=2, stdout=buf)
 
         data = buf.getvalue()
         os.makedirs(os.path.dirname(output), exist_ok=True)

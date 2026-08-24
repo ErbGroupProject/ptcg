@@ -1,0 +1,970 @@
+[
+  {
+    "model": "cards.generation",
+    "pk": 2,
+    "fields": {
+      "name": "Sword & Shield Series",
+      "total_cards": 60
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Bulbasaur",
+      "hp": 70,
+      "energy_type": "Grass",
+      "card_number": 1,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "U",
+      "title": "Ivysaur",
+      "hp": 90,
+      "energy_type": "Grass",
+      "card_number": 2,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "R",
+      "title": "Venusaur",
+      "hp": 160,
+      "energy_type": "Grass",
+      "card_number": 3,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Rowlet",
+      "hp": 60,
+      "energy_type": "Grass",
+      "card_number": 4,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "R",
+      "title": "Decidueye",
+      "hp": 140,
+      "energy_type": "Grass",
+      "card_number": 5,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Charmander",
+      "hp": 60,
+      "energy_type": "Fire",
+      "card_number": 6,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "U",
+      "title": "Charmeleon",
+      "hp": 90,
+      "energy_type": "Fire",
+      "card_number": 7,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "SAR",
+      "title": "Charizard",
+      "hp": 170,
+      "energy_type": "Fire",
+      "card_number": 8,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Litten",
+      "hp": 60,
+      "energy_type": "Fire",
+      "card_number": 9,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "R",
+      "title": "Incineroar",
+      "hp": 160,
+      "energy_type": "Fire",
+      "card_number": 10,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Squirtle",
+      "hp": 60,
+      "energy_type": "Water",
+      "card_number": 11,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "U",
+      "title": "Wartortle",
+      "hp": 80,
+      "energy_type": "Water",
+      "card_number": 12,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "R",
+      "title": "Blastoise",
+      "hp": 160,
+      "energy_type": "Water",
+      "card_number": 13,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Popplio",
+      "hp": 60,
+      "energy_type": "Water",
+      "card_number": 14,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Froakie",
+      "hp": 50,
+      "energy_type": "Water",
+      "card_number": 15,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "ACE",
+      "title": "Greninja",
+      "hp": 130,
+      "energy_type": "Water",
+      "card_number": 16,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "R",
+      "title": "Primarina",
+      "hp": 150,
+      "energy_type": "Water",
+      "card_number": 17,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "PROMO",
+      "title": "Pikachu",
+      "hp": 60,
+      "energy_type": "Lighting",
+      "card_number": 18,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Pichu",
+      "hp": 30,
+      "energy_type": "Lighting",
+      "card_number": 19,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "U",
+      "title": "Raichu",
+      "hp": 100,
+      "energy_type": "Lighting",
+      "card_number": 20,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "R",
+      "title": "Jolteon",
+      "hp": 110,
+      "energy_type": "Lighting",
+      "card_number": 21,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "UR",
+      "title": "Mewtwo",
+      "hp": 130,
+      "energy_type": "Psychic",
+      "card_number": 22,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "R",
+      "title": "Mew",
+      "hp": 60,
+      "energy_type": "Psychic",
+      "card_number": 23,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Gastly",
+      "hp": 50,
+      "energy_type": "Psychic",
+      "card_number": 24,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "U",
+      "title": "Haunter",
+      "hp": 80,
+      "energy_type": "Psychic",
+      "card_number": 25,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "SR",
+      "title": "Gengar",
+      "hp": 130,
+      "energy_type": "Psychic",
+      "card_number": 26,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Machop",
+      "hp": 60,
+      "energy_type": "Fighting",
+      "card_number": 27,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "U",
+      "title": "Machoke",
+      "hp": 90,
+      "energy_type": "Fighting",
+      "card_number": 28,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "R",
+      "title": "Machamp",
+      "hp": 150,
+      "energy_type": "Fighting",
+      "card_number": 29,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "U",
+      "title": "Riolu",
+      "hp": 70,
+      "energy_type": "Fighting",
+      "card_number": 30,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "RR",
+      "title": "Lucario",
+      "hp": 120,
+      "energy_type": "Fighting",
+      "card_number": 31,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "U",
+      "title": "Umbreon",
+      "hp": 100,
+      "energy_type": "Darkness",
+      "card_number": 32,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "R",
+      "title": "Scizor",
+      "hp": 120,
+      "energy_type": "Metal",
+      "card_number": 33,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "R",
+      "title": "Steelix",
+      "hp": 140,
+      "energy_type": "Metal",
+      "card_number": 34,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "AR",
+      "title": "Zacian",
+      "hp": 120,
+      "energy_type": "Metal",
+      "card_number": 35,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Eevee",
+      "hp": 60,
+      "energy_type": "Colorless",
+      "card_number": 36,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "S",
+      "title": "Snorlax",
+      "hp": 150,
+      "energy_type": "Colorless",
+      "card_number": 37,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Wooloo",
+      "hp": 70,
+      "energy_type": "Colorless",
+      "card_number": 38,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "U",
+      "title": "Dubwool",
+      "hp": 120,
+      "energy_type": "Colorless",
+      "card_number": 39,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "R",
+      "title": "Sylveon",
+      "hp": 110,
+      "energy_type": "Fairy",
+      "card_number": 40,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "R",
+      "title": "Mimikyu",
+      "hp": 70,
+      "energy_type": "Fairy",
+      "card_number": 41,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Togepi",
+      "hp": 40,
+      "energy_type": "Fairy",
+      "card_number": 42,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "AR",
+      "title": "Togekiss",
+      "hp": 120,
+      "energy_type": "Fairy",
+      "card_number": 43,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "C",
+      "title": "Dratini",
+      "hp": 40,
+      "energy_type": "Dragon",
+      "card_number": 44,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 1",
+      "rarity": "U",
+      "title": "Dragonair",
+      "hp": 80,
+      "energy_type": "Dragon",
+      "card_number": 45,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "SR",
+      "title": "Dragonite",
+      "hp": 160,
+      "energy_type": "Dragon",
+      "card_number": 46,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Basic",
+      "rarity": "U",
+      "title": "Dreepy",
+      "hp": 50,
+      "energy_type": "Dragon",
+      "card_number": 47,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Pokemon",
+      "photo_main": "",
+      "stage": "Stage 2",
+      "rarity": "SSR",
+      "title": "Dragapult",
+      "hp": 130,
+      "energy_type": "Dragon",
+      "card_number": 48,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Energy",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "C",
+      "title": "Grass Energy",
+      "hp": null,
+      "energy_type": "Grass",
+      "card_number": 49,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Energy",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "C",
+      "title": "Fire Energy",
+      "hp": null,
+      "energy_type": "Fire",
+      "card_number": 50,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Energy",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "C",
+      "title": "Water Energy",
+      "hp": null,
+      "energy_type": "Water",
+      "card_number": 51,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Energy",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "C",
+      "title": "Lighting Energy",
+      "hp": null,
+      "energy_type": "Lighting",
+      "card_number": 52,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Item",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "C",
+      "title": "Potion",
+      "hp": null,
+      "energy_type": "",
+      "card_number": 53,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Item",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "U",
+      "title": "Great Ball",
+      "hp": null,
+      "energy_type": "",
+      "card_number": 54,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Item",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "U",
+      "title": "Ultra Ball",
+      "hp": null,
+      "energy_type": "",
+      "card_number": 55,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Item",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "U",
+      "title": "Rare Candy",
+      "hp": null,
+      "energy_type": "",
+      "card_number": 56,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Supporter",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "U",
+      "title": "Professor's Research",
+      "hp": null,
+      "energy_type": "",
+      "card_number": 57,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Supporter",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "R",
+      "title": "Boss's Orders",
+      "hp": null,
+      "energy_type": "",
+      "card_number": 58,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Stadium",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "U",
+      "title": "Path to the Peak",
+      "hp": null,
+      "energy_type": "",
+      "card_number": 59,
+      "generation": 2,
+      "transaction": 0
+    }
+  },
+  {
+    "model": "cards.card",
+    "pk": null,
+    "fields": {
+      "category": "Tool",
+      "photo_main": "",
+      "stage": "",
+      "rarity": "U",
+      "title": "Choice Belt",
+      "hp": null,
+      "energy_type": "",
+      "card_number": 60,
+      "generation": 2,
+      "transaction": 0
+    }
+  }
+]

@@ -1,0 +1,942 @@
+[
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "card knight 卡爵士",
+      "address": "西灣河聖十字徑2號協青社大樓地舖4號",
+      "district": "Eastern",
+      "website": "https://cardknighthk.shop",
+      "monday": "15:00 ~ 22:00",
+      "tuesday": "15:00 ~ 22:00",
+      "wednesday": "15:00 ~ 22:00",
+      "thursday": "15:00 ~ 22:00",
+      "friday": "15:00 ~ 22:00",
+      "saturday": "15:00 ~ 16:30",
+      "sunday": "to be confirm",
+      "card_identification": false,
+      "phone_number": "6410 2357",
+      "shop_logo": "photos/shop_logos/card knight 卡爵士.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Card Legacy",
+      "address": "九龍觀塘開源道47號凱源工業大廈1/f C室",
+      "district": "Kwun Tong",
+      "website": "",
+      "monday": "14:00 ~ 22:00",
+      "tuesday": "14:00 ~ 22:00",
+      "wednesday": "14:00 ~ 22:00",
+      "thursday": "14:00 ~ 22:00",
+      "friday": "14:00 ~ 22:00",
+      "saturday": "14:00 ~ 22:00",
+      "sunday": "14:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "",
+      "shop_logo": "photos/shop_logos/name_Card Legacy.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "MOONROAD HK",
+      "address": "觀塘成業街19-21號成業工業大廈7樓17室",
+      "district": "Kwun Tong",
+      "website": "https://www.moonroadhk.com/",
+      "monday": "14:00 ~ 23:00",
+      "tuesday": "14:00 ~ 23:00",
+      "wednesday": "14:00 ~ 23:00",
+      "thursday": "14:00 ~ 23:00",
+      "friday": "14:00 ~ 23:00",
+      "saturday": "13:00 ~ 23:00",
+      "sunday": "13:00 ~ 23:00",
+      "card_identification": false,
+      "phone_number": "6915 7469",
+      "shop_logo": "photos/shop_logos/MOONROAD HK.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Cardland 卡之島",
+      "address": "九龍觀塘開源道55號開聯工業中心A座5樓512室",
+      "district": "Kwun Tong",
+      "website": "https://cardland.com.hk/",
+      "monday": "14:00 ~ 21:00",
+      "tuesday": "14:00 ~ 21:00",
+      "wednesday": "14:00 ~ 21:00",
+      "thursday": "14:00 ~ 21:00",
+      "friday": "14:00 ~ 21:00",
+      "saturday": "14:00 ~ 21:00",
+      "sunday": "14:00 ~ 21:00",
+      "card_identification": true,
+      "phone_number": "9457 7992",
+      "shop_logo": "photos/shop_logos/Cardland 卡之島.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Top Draw",
+      "address": "觀塘開源道72號溢財中心地下A2舖 Store/ A2, G/F, 72 Hoi Yuen Rd, Lladro Centre, Kwun Tong,Hong Kong",
+      "district": "Kwun Tong",
+      "website": "https://www.topdraw.hk/",
+      "monday": "13:00 ~ 00:00",
+      "tuesday": "13:00 ~ 00:00",
+      "wednesday": "13:00 ~ 00:00",
+      "thursday": "13:00 ~ 00:00",
+      "friday": "13:00 ~ 00:00",
+      "saturday": "13:00 ~ 00:00",
+      "sunday": "13:00 ~ 00:00",
+      "card_identification": false,
+      "phone_number": "6572 3153",
+      "shop_logo": "photos/shop_logos/Top Draw.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "CARDSLASH",
+      "address": "觀塘偉業街181號盈達商業大廈9樓A2室",
+      "district": "Kwun Tong",
+      "website": "https://www.cardslash.com.hk/",
+      "monday": "closed",
+      "tuesday": "15:00 ~ 22:00",
+      "wednesday": "15:00 ~ 22:00",
+      "thursday": "15:00 ~ 22:00",
+      "friday": "15:00 ~ 22:00",
+      "saturday": "15:00 ~ 22:00",
+      "sunday": "15:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "9617 1004",
+      "shop_logo": "photos/shop_logos/CARDSLASH.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "CardKoi 卡酷愛玩具",
+      "address": "觀塘偉業街179號德隆工業大廈A座6樓",
+      "district": "Kwun Tong",
+      "website": "",
+      "monday": "18:30 ~ 23:00",
+      "tuesday": "15:00 ~ 00:00",
+      "wednesday": "15:00 ~ 00:00",
+      "thursday": "closed",
+      "friday": "15:00 ~ 00:00",
+      "saturday": "14:00 ~ 00:00",
+      "sunday": "14:00 ~ 00:00",
+      "card_identification": false,
+      "phone_number": "",
+      "shop_logo": "photos/shop_logos/CardKoi 卡酷愛玩具.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "KaBoomTCGStore",
+      "address": "觀塘 巧明街105號 好運工業大廈 6樓B室",
+      "district": "Kwun Tong",
+      "website": "",
+      "monday": "14:30 ~ 00:30",
+      "tuesday": "14:30 ~ 00:30",
+      "wednesday": "14:30 ~ 00:30",
+      "thursday": "14:30 ~ 00:30",
+      "friday": "14:30 ~ 00:30",
+      "saturday": "14:30 ~ 00:30",
+      "sunday": "14:30 ~ 00:30",
+      "card_identification": false,
+      "phone_number": "",
+      "shop_logo": "photos/shop_logos/KaBoomTCGStore.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "半日閒",
+      "address": "觀塘觀塘道368號波頓科創中心1樓C店鋪",
+      "district": "Kwun Tong",
+      "website": "",
+      "monday": "closed",
+      "tuesday": "17:00 ~ 21:00",
+      "wednesday": "17:00 ~ 21:00",
+      "thursday": "17:00 ~ 21:00",
+      "friday": "17:00 ~ 21:00",
+      "saturday": "14:00 ~ 19:00",
+      "sunday": "14:00 ~ 19:00",
+      "card_identification": false,
+      "phone_number": "",
+      "shop_logo": "photos/shop_logos/半日閒.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Beehive 皇巢",
+      "address": "觀塘時運工業大廈1樓A室觀塘時運工業大廈1樓A室",
+      "district": "Kwun Tong",
+      "website": "https://beehivetcg.com/",
+      "monday": "13:30 ~ 21:00",
+      "tuesday": "13:30 ~ 21:00",
+      "wednesday": "13:30 ~ 21:00",
+      "thursday": "13:30 ~ 21:00",
+      "friday": "13:30 ~ 21:00",
+      "saturday": "13:30 ~ 21:00",
+      "sunday": "13:30 ~ 21:00",
+      "card_identification": false,
+      "phone_number": "2367 8086",
+      "shop_logo": "photos/shop_logos/Beehive 皇巢.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "許願星 Wishing Star",
+      "address": "官塘鴻圖道25號瑞泰偉基商業廣場1樓118及120室",
+      "district": "Kwun Tong",
+      "website": "https://www.wishingstarhk.com/",
+      "monday": "17:00 ~ 22:00",
+      "tuesday": "17:00 ~ 22:00",
+      "wednesday": "17:00 ~ 22:00",
+      "thursday": "17:00 ~ 22:00",
+      "friday": "17:00 ~ 22:00",
+      "saturday": "17:00 ~ 22:00",
+      "sunday": "17:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "",
+      "shop_logo": "photos/shop_logos/許願星 Wishing Star.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Card Buddies",
+      "address": "渣華道108號商業中心6樓全層",
+      "district": "Eastern",
+      "website": "",
+      "monday": "closed",
+      "tuesday": "19:30 ~ 00:00",
+      "wednesday": "19:30 ~ 00:00",
+      "thursday": "19:30 ~ 00:00",
+      "friday": "19:30 ~ 00:00",
+      "saturday": "17:30 ~ 00:00",
+      "sunday": "15:00 ~ 21:00",
+      "card_identification": false,
+      "phone_number": "",
+      "shop_logo": "photos/shop_logos/Card Buddies.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "OA Card",
+      "address": "九龍荔枝角長順街11號長城工廠大厦9樓B01室",
+      "district": "Sham Shui Po",
+      "website": "https://oztetamigo.com/",
+      "monday": "13:00 ~ 23:30",
+      "tuesday": "13:00 ~ 21:00",
+      "wednesday": "13:00 ~ 23:30",
+      "thursday": "13:00 ~ 21:00",
+      "friday": "13:00 ~ 23:30",
+      "saturday": "12:00 ~ 23:30",
+      "sunday": "12:00 ~ 23:30",
+      "card_identification": false,
+      "phone_number": "5584 3788",
+      "shop_logo": "photos/shop_logos/OA Card.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Biroko Store",
+      "address": "香港九龍九龍灣常悅道20號環球工商大廈618室",
+      "district": "Kwun Tong",
+      "website": "",
+      "monday": "closed",
+      "tuesday": "closed",
+      "wednesday": "18:30 ~ 23:30",
+      "thursday": "18:30 ~ 23:30",
+      "friday": "18:30 ~ 23:30",
+      "saturday": "14:00 ~ 20:00",
+      "sunday": "14:00 ~ 20:00",
+      "card_identification": false,
+      "phone_number": "4708 8128",
+      "shop_logo": "photos/shop_logos/Biroko Store.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Different Dimension 異次元",
+      "address": "天后清風街6-8號凱豐商業大廈2樓B",
+      "district": "Wan Chai",
+      "website": "",
+      "monday": "15:00 ~ 23:00",
+      "tuesday": "15:00 ~ 23:00",
+      "wednesday": "15:00 ~ 23:00",
+      "thursday": "15:00 ~ 23:00",
+      "friday": "15:00 ~ 23:00",
+      "saturday": "14:00 ~ 23:00",
+      "sunday": "15:00 ~ 23:00",
+      "card_identification": false,
+      "phone_number": "6654 0922",
+      "shop_logo": "photos/shop_logos/Different Dimension 異次元.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Cardtheland 咭之島",
+      "address": "黃埔凱旋工商中心2期3樓G1B室",
+      "district": "Kowloon City",
+      "website": "https://.boutir.com/",
+      "monday": "15:30 ~ 22:00",
+      "tuesday": "15:30 ~ 22:00",
+      "wednesday": "15:30 ~ 22:00",
+      "thursday": "15:30 ~ 22:00",
+      "friday": "15:30 ~ 22:00",
+      "saturday": "15:30 ~ 22:00",
+      "sunday": "15:30 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "6573 2844",
+      "shop_logo": "photos/shop_logos/Cardtheland 咭之島.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Card Lab 卡研社",
+      "address": "紅磡民裕街30號興業工商大廈4樓B1室",
+      "district": "Kowloon City",
+      "website": "",
+      "monday": "18:30 ~ 23:00",
+      "tuesday": "18:30 ~ 23:00",
+      "wednesday": "18:30 ~ 23:00",
+      "thursday": "18:30 ~ 23:00",
+      "friday": "18:30 ~ 23:00",
+      "saturday": "15:00 ~ 23:00",
+      "sunday": "15:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "6461 2153",
+      "shop_logo": "photos/shop_logos/Card Lab 卡研社.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "電電屋",
+      "address": "凱旋工商中心第一期民裕街41號13樓F2室",
+      "district": "Kowloon City",
+      "website": "https://dendenhouse.com/",
+      "monday": "closed",
+      "tuesday": "15:00 ~ 21:00",
+      "wednesday": "15:00 ~ 21:00",
+      "thursday": "15:00 ~ 21:00",
+      "friday": "15:00 ~ 21:00",
+      "saturday": "15:00 ~ 21:00",
+      "sunday": "13:30 ~ 21:00",
+      "card_identification": false,
+      "phone_number": "6441 4730",
+      "shop_logo": "photos/shop_logos/電電屋.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "KEZ TCG SHOP",
+      "address": "紅磡鶴園街2G號恆豐工業大廈1期6樓F1-08室",
+      "district": "Kowloon City",
+      "website": "",
+      "monday": "closed",
+      "tuesday": "16:00 ~ 22:00",
+      "wednesday": "16:00 ~ 22:00",
+      "thursday": "16:00 ~ 22:00",
+      "friday": "16:00 ~ 22:00",
+      "saturday": "15:30 ~ 21:00",
+      "sunday": "15:30 ~ 21:00",
+      "card_identification": false,
+      "phone_number": "4614 9500",
+      "shop_logo": "photos/shop_logos/KEZ TCG SHOP.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "nsew 啟德體育園 分店",
+      "address": "啟德啟德體育園啟德零售館2, 1樓 M2-111號舖",
+      "district": "Kowloon City",
+      "website": "https://nsewstore.com/",
+      "monday": "11:00 ~ 20:30",
+      "tuesday": "11:00 ~ 20:30",
+      "wednesday": "11:00 ~ 20:30",
+      "thursday": "11:00 ~ 20:30",
+      "friday": "11:00 ~ 20:30",
+      "saturday": "11:00 ~ 20:30",
+      "sunday": "11:00 ~ 20:30",
+      "card_identification": false,
+      "phone_number": "2345 6698",
+      "shop_logo": "photos/shop_logos/nsew 啟德體育園 分店.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Ookido Institute TCG 大木研究所",
+      "address": "新蒲崗六合街25號 嘉時工業大廈 1樓128室",
+      "district": "Wong Tai Sin",
+      "website": "",
+      "monday": "16:00 ~ 23:00",
+      "tuesday": "16:00 ~ 23:00",
+      "wednesday": "closed",
+      "thursday": "19:00 ~ 23:00",
+      "friday": "15:00 ~ 23:00",
+      "saturday": "15:00 ~ 22:00",
+      "sunday": "15:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "6367 2549",
+      "shop_logo": "photos/shop_logos/Ookido Institute TCG 大木研究所.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Jammy Tribe 酋長部落",
+      "address": "新蒲崗七寶街3號振發工廠大廈3樓D-1室",
+      "district": "Wong Tai Sin",
+      "website": "https://www.jtribetcg.com/",
+      "monday": "13:00 ~ 22:00",
+      "tuesday": "closed",
+      "wednesday": "13:00 ~ 21:00",
+      "thursday": "13:00 ~ 21:00",
+      "friday": "13:00 ~ 22:00",
+      "saturday": "13:00 ~ 22:00",
+      "sunday": "13:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "9668 4571",
+      "shop_logo": "photos/shop_logos/Jammy Tribe 酋長部落.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Play Card Chill",
+      "address": "九龍新蒲崗五芳街26號榮盛工業大廈15樓B06室",
+      "district": "Wong Tai Sin",
+      "website": "https://playcardchill.com/",
+      "monday": "closed",
+      "tuesday": "closed",
+      "wednesday": "15:30 ~ 20:30",
+      "thursday": "15:30 ~ 21:30",
+      "friday": "15:30 ~ 20:30",
+      "saturday": "11:00 ~ 20:30",
+      "sunday": "11:00 ~ 20:30",
+      "card_identification": false,
+      "phone_number": "63458076 / 9062 3439",
+      "shop_logo": "photos/shop_logos/Play Card Chill.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "ACARD TCG",
+      "address": "香港新蒲崗五芳街10號新寶中心19樓06室",
+      "district": "Wong Tai Sin",
+      "website": "https://www.acardtcg.com/",
+      "monday": "14:00 ~ 21:00",
+      "tuesday": "14:00 ~ 21:00",
+      "wednesday": "14:00 ~ 21:00",
+      "thursday": "14:00 ~ 21:00",
+      "friday": "14:00 ~ 21:00",
+      "saturday": "14:00 ~ 22:00",
+      "sunday": "14:00 ~ 21:00",
+      "card_identification": false,
+      "phone_number": "9493 9343",
+      "shop_logo": "photos/shop_logos/ACARD TCG.JPG"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Carder Toysnplace 卡達",
+      "address": "九龍新蒲崗大有街32號泰力工業中心6樓7室",
+      "district": "Wong Tai Sin",
+      "website": "https://cardertoysnplace.store/",
+      "monday": "closed",
+      "tuesday": "16:00 ~ 23:00",
+      "wednesday": "16:00 ~ 23:00",
+      "thursday": "16:00 ~ 23:00",
+      "friday": "16:00 ~ 23:00",
+      "saturday": "14:00 ~ 23:00",
+      "sunday": "14:00 ~ 23:00",
+      "card_identification": false,
+      "phone_number": "9028 8751",
+      "shop_logo": "photos/shop_logos/Carder Toysnplace 卡達.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "卡羽",
+      "address": "新蒲崗大有街14號萬星工業大廈6樓606室",
+      "district": "Wong Tai Sin",
+      "website": "",
+      "monday": "closed",
+      "tuesday": "14:00 ~ 20:00",
+      "wednesday": "14:00 ~ 20:00",
+      "thursday": "14:00 ~ 23:00",
+      "friday": "14:00 ~ 20:00",
+      "saturday": "13:00 ~ 20:00",
+      "sunday": "13:00 ~ 20:00",
+      "card_identification": false,
+      "phone_number": "6280 8393",
+      "shop_logo": "photos/shop_logos/卡羽.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Brave Soul 闘卡魂",
+      "address": "新蒲崗勤達中心12樓1室",
+      "district": "Wong Tai Sin",
+      "website": "https://www.bravesoulcard.com/",
+      "monday": "13:00 ~ 23:00",
+      "tuesday": "13:00 ~ 23:00",
+      "wednesday": "13:00 ~ 23:00",
+      "thursday": "13:00 ~ 23:00",
+      "friday": "13:00 ~ 23:00",
+      "saturday": "13:00 ~ 23:00",
+      "sunday": "01:00 ~ 23:00",
+      "card_identification": false,
+      "phone_number": "",
+      "shop_logo": "photos/shop_logos/Brave Soul 闘卡魂.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Mox Saga",
+      "address": "佐敦偉晴街44～52街聯美中心13樓A室",
+      "district": "Yau Tsim Mong",
+      "website": "",
+      "monday": "15:00 ~ 22:00",
+      "tuesday": "closed",
+      "wednesday": "15:00 ~ 22:00",
+      "thursday": "15:00 ~ 22:00",
+      "friday": "15:00 ~ 22:00",
+      "saturday": "15:00 ~ 22:00",
+      "sunday": "15:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "9616 5023",
+      "shop_logo": "photos/shop_logos/Mox Saga.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "HobbyX",
+      "address": "旺角彌敦道608號總統商業大廈20樓02室",
+      "district": "Yau Tsim Mong",
+      "website": "https://hobbyxstore.com/",
+      "monday": "closed",
+      "tuesday": "14:00 ~ 21:00",
+      "wednesday": "14:00 ~ 21:00",
+      "thursday": "14:00 ~ 21:00",
+      "friday": "13:00 ~ 21:00",
+      "saturday": "13:00 ~ 21:00",
+      "sunday": "13:00 ~ 21:00",
+      "card_identification": true,
+      "phone_number": "6298 0425",
+      "shop_logo": "photos/shop_logos/HobbyX.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "BasicLand (MK)",
+      "address": "旺角彌敦道608號總統商業中心15樓1506室",
+      "district": "Yau Tsim Mong",
+      "website": "https://www.basiclandtcg.com/",
+      "monday": "15:00 ~ 21:00",
+      "tuesday": "15:00 ~ 21:00",
+      "wednesday": "15:00 ~ 21:00",
+      "thursday": "15:00 ~ 21:00",
+      "friday": "15:00 ~ 22:00",
+      "saturday": "13:00 ~ 22:00",
+      "sunday": "13:00 ~ 21:00",
+      "card_identification": false,
+      "phone_number": "6747 6513",
+      "shop_logo": "photos/shop_logos/BasicLand (MK).jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "MAD MAX TOYS - 瘋狂玩具 (Moko)",
+      "address": "旺角太子道西193號MOKO 新世紀廣場3樓310-311號舖",
+      "district": "Yau Tsim Mong",
+      "website": "https://madmaxtoys.store/",
+      "monday": "12:00 ~ 22:00",
+      "tuesday": "12:00 ~ 22:00",
+      "wednesday": "12:00 ~ 22:00",
+      "thursday": "12:00 ~ 22:00",
+      "friday": "12:00 ~ 22:00",
+      "saturday": "11:00 ~ 22:00",
+      "sunday": "11:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "6655 9913",
+      "shop_logo": "photos/shop_logos/MAD MAX TOYS - 瘋狂玩具 (Moko).jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Have Card 樓上咭店",
+      "address": "九龍弼街49號唐二樓",
+      "district": "Yau Tsim Mong",
+      "website": "",
+      "monday": "closed",
+      "tuesday": "15:00 ~ 23:00",
+      "wednesday": "15:00 ~ 21:00",
+      "thursday": "15:00 ~ 21:00",
+      "friday": "15:00 ~ 23:00",
+      "saturday": "14:00 ~ 20:30",
+      "sunday": "14:00 ~ 20:00",
+      "card_identification": false,
+      "phone_number": "5191 9238",
+      "shop_logo": "photos/shop_logos/Have Card 樓上咭店.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Home-run fabulous card shop",
+      "address": "太子彌敦道749A愛都婚紗中心 10樓",
+      "district": "Yau Tsim Mong",
+      "website": "",
+      "monday": "13:00 ~ 20:00",
+      "tuesday": "13:00 ~ 20:00",
+      "wednesday": "13:00 ~ 20:00",
+      "thursday": "13:00 ~ 20:00",
+      "friday": "13:00 ~ 20:00",
+      "saturday": "13:00 ~ 18:00",
+      "sunday": "13:00 ~ 18:00",
+      "card_identification": false,
+      "phone_number": "9777 5494",
+      "shop_logo": "photos/shop_logos/Home-run fabulous card shop.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Players’Club TCG",
+      "address": "尖沙咀i Square2樓210鋪",
+      "district": "Yau Tsim Mong",
+      "website": "",
+      "monday": "14:30 ~ 21:00",
+      "tuesday": "14:30 ~ 21:00",
+      "wednesday": "14:30 ~ 21:00",
+      "thursday": "14:30 ~ 21:00",
+      "friday": "14:30 ~ 21:00",
+      "saturday": "14:30 ~ 21:00",
+      "sunday": "14:30 ~ 21:00",
+      "card_identification": false,
+      "phone_number": "5406 7569",
+      "shop_logo": "photos/shop_logos/Players’Club TCG.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "League Castle",
+      "address": "旺角廣東道1125-1127號廣建中心6樓",
+      "district": "Yau Tsim Mong",
+      "website": "",
+      "monday": "14:00 ~ 21:00",
+      "tuesday": "14:00 ~ 21:00",
+      "wednesday": "14:00 ~ 21:00",
+      "thursday": "closed",
+      "friday": "14:00 ~ 21:00",
+      "saturday": "13:00 ~ 21:00",
+      "sunday": "13:00 ~ 20:00",
+      "card_identification": false,
+      "phone_number": "2380 0316",
+      "shop_logo": "photos/shop_logos/League Castle.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "彩虹島 Rainbow Town",
+      "address": "深水埗西九龍中心7樓7090AB鋪",
+      "district": "Sham Shui Po",
+      "website": "",
+      "monday": "14:00 ~ 19:00",
+      "tuesday": "14:00 ~ 19:00",
+      "wednesday": "14:00 ~ 19:00",
+      "thursday": "14:00 ~ 19:00",
+      "friday": "14:00 ~ 19:00",
+      "saturday": "14:00 ~ 19:30",
+      "sunday": "14:00 ~ 19:30",
+      "card_identification": false,
+      "phone_number": "9192 3332",
+      "shop_logo": "photos/shop_logos/彩虹島 Rainbow Town.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "ARENA",
+      "address": "長沙灣元州街162-188號天悅廣場2樓213號舖",
+      "district": "Sham Shui Po",
+      "website": "",
+      "monday": "random",
+      "tuesday": "random",
+      "wednesday": "15:00 ~ End",
+      "thursday": "15:00 ~ 22:00",
+      "friday": "15:00 ~ 22:00",
+      "saturday": "14:00 ~ End",
+      "sunday": "14:00 ~ End",
+      "card_identification": false,
+      "phone_number": "5110 5961",
+      "shop_logo": "photos/shop_logos/ARENA.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "AURORA TCG",
+      "address": "長沙灣元州街162-188號天悅廣場112號鋪",
+      "district": "Sham Shui Po",
+      "website": "",
+      "monday": "16:00 ~ 21:00",
+      "tuesday": "16:00 ~ 21:00",
+      "wednesday": "closed",
+      "thursday": "16:00 ~ 21:00",
+      "friday": "16:00 ~ 21:00",
+      "saturday": "15:00 ~ 22:00",
+      "sunday": "closed",
+      "card_identification": false,
+      "phone_number": "5533 7760",
+      "shop_logo": "photos/shop_logos/AURORA TCG.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "OutPlay Tcg",
+      "address": "長沙灣天悅廣場131號店",
+      "district": "Sham Shui Po",
+      "website": "",
+      "monday": "14:30 ~ 21:00",
+      "tuesday": "14:30 ~ 21:00",
+      "wednesday": "14:30 ~ 21:00",
+      "thursday": "14:30 ~ 21:00",
+      "friday": "14:30 ~ 21:00",
+      "saturday": "13:00 ~ 21:00",
+      "sunday": "13:00 ~ 21:00",
+      "card_identification": false,
+      "phone_number": "6611 9413",
+      "shop_logo": "photos/shop_logos/OutPlay Tcg.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "9號研究所",
+      "address": "青山道155-169號天悅廣場1樓126a號",
+      "district": "Sham Shui Po",
+      "website": "",
+      "monday": "14:00 ~ 21:00",
+      "tuesday": "14:00 ~ 21:00",
+      "wednesday": "14:00 ~ 21:00",
+      "thursday": "14:00 ~ 21:00",
+      "friday": "14:00 ~ 21:00",
+      "saturday": "13:00 ~ 21:00",
+      "sunday": "13:00 ~ 21:00",
+      "card_identification": false,
+      "phone_number": "5402 9816",
+      "shop_logo": "photos/shop_logos/9號研究所.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Ptcgcardfans 見卡打牌",
+      "address": "天悅廣埸1樓133A及165號鋪",
+      "district": "Sham Shui Po",
+      "website": "",
+      "monday": "15:00 ~ 20:00",
+      "tuesday": "15:00 ~ 20:00",
+      "wednesday": "15:00 ~ 20:00",
+      "thursday": "15:00 ~ 20:00",
+      "friday": "15:00 ~ 20:00",
+      "saturday": "14:00 ~ 22:00",
+      "sunday": "14:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "5339 4638",
+      "shop_logo": "photos/shop_logos/Ptcgcardfans 見卡打牌.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "日出之國",
+      "address": "長沙灣東京街31號恆邦商業大廈1206室",
+      "district": "Sham Shui Po",
+      "website": "",
+      "monday": "closed",
+      "tuesday": "19:00 ~ 23:00",
+      "wednesday": "19:00 ~ 23:00",
+      "thursday": "19:00 ~ 23:00",
+      "friday": "19:00 ~ 23:00",
+      "saturday": "15:00 ~ 22:00",
+      "sunday": "15:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "",
+      "shop_logo": "photos/shop_logos/日出之國.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "0H Fantastic Shop T-Breaks",
+      "address": "長沙灣青山道500號百美工廠大廈6樓C3室",
+      "district": "Sham Shui Po",
+      "website": "",
+      "monday": "15:00 ~ 03:00",
+      "tuesday": "15:00 ~ 03:00",
+      "wednesday": "15:00 ~ 03:00",
+      "thursday": "15:00 ~ 03:00",
+      "friday": "15:00 ~ 03:00",
+      "saturday": "15:00 ~ 03:00",
+      "sunday": "15:00 ~ 03:00",
+      "card_identification": false,
+      "phone_number": "5548 8159",
+      "shop_logo": "photos/shop_logos/0H Fantastic Shop T-Breaks.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "CardPro 卡鋪",
+      "address": "荔枝角青山道485號九龍廣場10樓1007室",
+      "district": "Sham Shui Po",
+      "website": "https://cardpro.club/",
+      "monday": "14:00 ~ 22:00",
+      "tuesday": "14:00 ~ 22:00",
+      "wednesday": "14:00 ~ 22:00",
+      "thursday": "14:00 ~ 22:00",
+      "friday": "14:00 ~ 22:00",
+      "saturday": "14:00 ~ 22:00",
+      "sunday": "14:00 ~ 22:00",
+      "card_identification": false,
+      "phone_number": "",
+      "shop_logo": "photos/shop_logos/CardPro 卡鋪.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Battleground",
+      "address": "香港九龍荔枝角長順街15號D2 PLACE TWO1樓105-107號",
+      "district": "Sham Shui Po",
+      "website": "https://bgtcg.com/",
+      "monday": "11:00 ~ 23:00",
+      "tuesday": "11:00 ~ 23:00",
+      "wednesday": "11:00 ~ 23:00",
+      "thursday": "11:00 ~ 23:00",
+      "friday": "11:00 ~ 23:00",
+      "saturday": "11:00 ~ 23:00",
+      "sunday": "11:00 ~ 23:00",
+      "card_identification": false,
+      "phone_number": "9529 5720",
+      "shop_logo": "photos/shop_logos/battleground.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "CardGameStation",
+      "address": "荔枝角青山道658號福至工業大廈2樓212室",
+      "district": "Sham Shui Po",
+      "website": "",
+      "monday": "",
+      "tuesday": "",
+      "wednesday": "",
+      "thursday": "",
+      "friday": "",
+      "saturday": "",
+      "sunday": "",
+      "card_identification": false,
+      "phone_number": "6993 1619",
+      "shop_logo": "photos/shop_logos/cardgamestation.jpg"
+    }
+  },
+  {
+    "model": "shops.shoplist",
+    "pk": null,
+    "fields": {
+      "shopname": "Battlefield",
+      "address": "香港仔富嘉工業大廈6樓607室",
+      "district": "Southern",
+      "website": "",
+      "monday": "16:00 ~ 22:00",
+      "tuesday": "16:00 ~ 22:00",
+      "wednesday": "16:00 ~ 22:00",
+      "thursday": "16:00 ~ 22:00",
+      "friday": "16:00 ~ 22:00",
+      "saturday": "13:00 ~ 21:00",
+      "sunday": "13:00 ~ 21:00",
+      "card_identification": false,
+      "phone_number": "6711 0599",
+      "shop_logo": "photos/shop_logos/battlefield.jpg"
+    }
+  }
+]
