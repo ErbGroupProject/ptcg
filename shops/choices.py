@@ -38,3 +38,4 @@ district_list_for_frontend = [
     ("Eastern", "西灣河"),
     ("Eastern", "渣華道"),
 ]
+
